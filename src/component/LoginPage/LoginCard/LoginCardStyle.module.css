@@ -1,0 +1,49 @@
+.container {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-image: linear-gradient(#4069a3, #406497); */
+  background-image: linear-gradient(
+    rgba(64, 105, 163, 1),
+    rgba(64, 100, 151, 0.2)
+  );
+  border-radius: 30px;
+  min-width: 300px;
+}
+
+.user_box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 30px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.user_box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 22px;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.user_box input:focus ~ label,
+.user_box input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #fff;
+  font-size: 16px;
+}
+
+form {
+  width: 70%;
+}
