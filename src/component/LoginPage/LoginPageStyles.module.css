@@ -1,0 +1,79 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: #edf0f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container_card {
+  /* margin: 50px; */
+  background-color: #fff;
+  width: 100%;
+  height: 90vh;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px #d5dcec;
+}
+.container_card_background {
+  width: 97%;
+  height: 96%;
+  border-radius: 40px;
+  background-color: #f4f7fe;
+  display: flex;
+  justify-content: center;
+}
+
+.left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* height: 100%; */
+}
+.right {
+  display: none;
+
+  width: 50vw;
+  height: 100%;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.right h1 {
+  margin: 0;
+}
+.right h1 span {
+  color: red;
+}
+
+.login_card {
+  width: 85vw;
+  height: 85vh;
+  /* background-color: rgb(225, 250, 178); */
+  z-index: 55;
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 992px) {
+  .left {
+    width: 50%;
+  }
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+  }
+  .login_card {
+    width: 80%;
+    height: 85%;
+  }
+}
