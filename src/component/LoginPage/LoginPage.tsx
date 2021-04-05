@@ -16,6 +16,7 @@ function LoginPage() {
           isFlipped={isFlip}
           flipDirection="horizontal"
           containerStyle={{ width: "90%" }}
+          flipSpeedBackToFront={1}
           //   cardStyles={{}}
         >
           <div>
