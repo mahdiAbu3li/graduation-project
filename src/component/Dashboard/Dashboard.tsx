@@ -5,6 +5,8 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoMdSettings } from "react-icons/io";
 import { Switch, Route, useHistory } from "react-router-dom";
+import UploadImages from "../CreateNewModel/UploadImages/UploadImages";
+import CreateNewModel from "../CreateNewModel/CreateNewModel";
 
 function Dashboard() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -84,7 +86,9 @@ function Dashboard() {
             <Route exact path={["/dashboard", "/dashboard/model"]}>
               myModel
             </Route>
-            <Route path="/dashboard/create">create new model</Route>
+            <Route path="/dashboard/create">
+              <CreateNewModel />
+            </Route>
             <Route path="/dashboard/setting">setting</Route>
           </Switch>
         </div>
