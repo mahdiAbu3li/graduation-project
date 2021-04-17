@@ -5,7 +5,6 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoMdSettings } from "react-icons/io";
 import { Switch, Route, useHistory } from "react-router-dom";
-import UploadImages from "../CreateNewModel/UploadImages/UploadImages";
 import CreateNewModel from "../CreateNewModel/CreateNewModel";
 
 function Dashboard() {

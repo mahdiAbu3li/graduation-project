@@ -7,9 +7,6 @@ import { Stepper, Step } from "react-form-stepper";
 function CreateNewModel() {
   const history = useHistory();
   const [step, setStep] = useState(0);
-  // const handleStep = (step: number) => {
-  //   setStep(step);
-  // };
 
   console.log(step);
   React.useEffect(() => {
@@ -25,12 +22,6 @@ function CreateNewModel() {
         <h2>Create New Model</h2>
       </div>
       <div className={styles.steps}>
-        {/* <ol>
-          <li>1. upload image</li>
-          <li>2. Verify Files</li>
-          <li>3. manage labels</li>
-          <li>4. train the model</li>
-        </ol> */}
         <Stepper activeStep={step} className={styles.stepper}>
           <Step label="upload images" onClick={() => setStep(0)} />
           <Step label="verify images" onClick={() => setStep(1)} />
