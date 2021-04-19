@@ -8,7 +8,6 @@ function CreateNewModel() {
   const history = useHistory();
   const [step, setStep] = useState(0);
 
-  console.log(step);
   React.useEffect(() => {
     if (step === 0) {
       history.push("/dashboard/create/upload");
@@ -22,7 +21,11 @@ function CreateNewModel() {
         <h2>Create New Model</h2>
       </div>
       <div className={styles.steps}>
-        <Stepper activeStep={step} className={styles.stepper}>
+        <Stepper
+          activeStep={step}
+          className={styles.stepper}
+          stepClassName={styles.step}
+        >
           <Step label="upload images" onClick={() => setStep(0)} />
           <Step label="verify images" onClick={() => setStep(1)} />
           <Step label="Children Step 3" onClick={() => setStep(2)} />

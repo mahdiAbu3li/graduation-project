@@ -3,7 +3,8 @@
   height: 100%;
   /* background-color: aqua; */
   display: grid;
-  grid-template: 80px 90px 20px auto 80px / auto;
+  grid-template: 80px 90px 20px minmax(400px, 1fr) 80px / auto;
+  /* overflow: auto; */
 }
 
 .header {
@@ -21,6 +22,7 @@
   padding-left: 50px;
   display: flex;
   align-items: center;
+  height: 50px;
 }
 
 .steps ol li {
@@ -35,7 +37,12 @@
 
 .stepper {
   width: 60%;
+  height: 50px;
   padding: 0 !important;
+  margin: 0 !important;
+}
+.steps .stepper > * {
+  margin: 0 !important;
 }
 
 .footer {
