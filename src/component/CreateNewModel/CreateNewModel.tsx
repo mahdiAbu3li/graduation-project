@@ -1,26 +1,30 @@
 import React, { useState } from "react";
-import { Route, Switch, useHistory } from "react-router";
+import { Route, Switch, useHistory, useRouteMatch } from "react-router";
 import styles from "./CreateNewModelStyles.module.css";
 import UploadImages from "./UploadImages/UploadImages";
 import { Stepper, Step } from "react-form-stepper";
-
+import Labelling from "../CreateNewModel/Labelling/Labelling";
 function CreateNewModel() {
   const history = useHistory();
-  const [step, setStep] = useState(0);
-
+  const localStep = window.localStorage.getItem("step");
+  const [step, setStep] = useState(localStep ? parseInt(localStep) : 0);
+  let { path, url } = useRouteMatch();
   React.useEffect(() => {
     if (step === 0) {
       history.push("/dashboard/create/upload");
+      window.localStorage.setItem("step", "0");
     } else if (step === 1) {
       history.push("/dashboard/create/verify");
+      window.localStorage.setItem("step", "1");
+    } else if (step === 2) {
+      history.push("/dashboard/create/labels");
+      window.localStorage.setItem("step", "2");
     }
   }, [step, history]);
-  
+
   return (
     <div className={styles.container}>
-      <div className={styles.header} onClick={() => history.push("/da")}>
-        <h2>Create New Model</h2>
-      </div>
+      <div className={styles.header}>{/* <h2>Create New Model</h2> */}</div>
       <div className={styles.steps}>
         <Stepper
           activeStep={step}
@@ -35,10 +39,13 @@ function CreateNewModel() {
       </div>
       <div></div>
       <Switch>
-        <Route exact path={["/dashboard/create", "/dashboard/create/upload"]}>
+        <Route exact path={[path, `${path}/upload`]}>
           <UploadImages />
         </Route>
-        <Route path="/dashboard/create/verify">var</Route>
+        <Route path={`${path}/verify`}>var</Route>
+        <Route path={`${path}/labels`}>
+          <Labelling />
+        </Route>
       </Switch>
       <div className={styles.footer}>
         {step > 0 && (

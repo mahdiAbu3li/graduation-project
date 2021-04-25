@@ -25,6 +25,13 @@
   outline: none;
   background: transparent;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  /* background: transparent !important; */
+}
 
 .user_box label {
   position: absolute;
@@ -37,8 +44,7 @@
   transition: 0.5s;
 }
 
-.user_box input:focus ~ label,
-.user_box input:valid ~ label {
+.user_box .activeLabel {
   top: -20px;
   left: 0;
   color: #fff;
