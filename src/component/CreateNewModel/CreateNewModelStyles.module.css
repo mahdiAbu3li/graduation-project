@@ -3,25 +3,26 @@
   height: 100%;
   /* background-color: aqua; */
   display: grid;
-  grid-template: 80px 90px 20px minmax(400px, 1fr) 80px / auto;
+  grid-template: 28px 90px 10px minmax(500px, 1fr) 80px / auto;
   /* overflow: auto; */
 }
 
-.header {
-  /* background-color: beige; */
+/* .header {
+  background-color: beige;
   padding: 0px 30px;
   display: flex;
   align-items: center;
-}
+} */
 .header h2 {
   margin: 0;
 }
 
 .steps {
   /* background-color: cadetblue; */
-  padding-left: 50px;
+  /* padding-left: 50px; */
   display: flex;
   align-items: center;
+  /* justify-content: center; */
   height: 50px;
 }
 

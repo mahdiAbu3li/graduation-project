@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./UploadImagesStyles.module.css";
 import uploadGif from "../../../assets/images/upload.gif";
 import loadingGif from "../../../assets/images/loading.gif";
+import { AuthContext } from "../../../Contexts/AuthContext/AuthContext";
 function UploadImages() {
   const [files, setFiles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [uploadComponent, setUploadComponent] = useState<JSX.Element>();
-  console.log(isLoading);
+  const values = useContext(AuthContext);
 
   const loading = <img src={loadingGif} alt="" />;
   const uploading = <img src={uploadGif} alt="ad" style={{ width: "70%" }} />;
@@ -17,7 +18,10 @@ function UploadImages() {
     setUploadComponent(loading);
     fetch(url, {
       method: "get",
-      mode: "cors",
+      headers: {
+        Authorization: `Bearer ` + values.data.token,
+        "Content-Type": "application/json",
+      },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -35,6 +39,10 @@ function UploadImages() {
       method: "post",
       mode: "cors",
       body: data,
+      headers: {
+        Authorization: `Bearer ` + values.data.token,
+        "Content-Type": "application/json",
+      },
     });
     console.log(response);
     setIsLoading(false);
