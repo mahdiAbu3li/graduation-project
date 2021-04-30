@@ -3,6 +3,7 @@ import styles from "./UploadImagesStyles.module.css";
 import uploadGif from "../../../assets/images/upload.gif";
 import loadingGif from "../../../assets/images/loading.gif";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext";
+import { useParams } from "react-router-dom";
 function UploadImages() {
   const [files, setFiles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -12,8 +13,12 @@ function UploadImages() {
   const loading = <img src={loadingGif} alt="" />;
   const uploading = <img src={uploadGif} alt="ad" style={{ width: "70%" }} />;
   const [x, setx] = useState(false);
+  const { modelId } = useParams<{ modelId: string }>();
   React.useEffect(() => {
-    const url = "https://graduationprojectt.herokuapp.com/api/dataset/55";
+    console.log(modelId);
+    const url =
+      "https://graduationprojectt.herokuapp.com/api/dataset/" + modelId;
+    console.log(url);
     setIsLoading(true);
     setUploadComponent(loading);
     fetch(url, {
@@ -34,14 +39,16 @@ function UploadImages() {
   }, [x]);
 
   const uploadfile = async (data: FormData) => {
-    const url = "https://graduationprojectt.herokuapp.com/api/dataset/55";
+    const url =
+      "https://graduationprojectt.herokuapp.com/api/dataset/" + modelId;
     const response = await fetch(url, {
       method: "post",
       mode: "cors",
       body: data,
       headers: {
         Authorization: `Bearer ` + values.data.token,
-        "Content-Type": "application/json",
+        // "Content-Type": "application/json",
+        "Content-Type": "multipart/form-data",
       },
     });
     console.log(response);
@@ -65,8 +72,8 @@ function UploadImages() {
     }
   };
 
-  const images = files?.map((file: { url: string }) => (
-    <img src={file.url} alt="preview" />
+  const images = files?.map((file: { url: string }, i) => (
+    <img src={file.url} alt="preview" key={i} />
   ));
 
   return (
