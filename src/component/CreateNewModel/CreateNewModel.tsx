@@ -5,6 +5,7 @@ import UploadImages from "./UploadImages/UploadImages";
 import { Stepper, Step } from "react-form-stepper";
 import Labelling from "../CreateNewModel/Labelling/Labelling";
 import CreateModel from "./CreateModel/CreateModel";
+import CreateLabels from "./CreateLabels/CreateLabels";
 function CreateNewModel() {
   const history = useHistory();
   const localStep = window.localStorage.getItem("step");
@@ -20,10 +21,10 @@ function CreateNewModel() {
       history.push("/dashboard/create/upload/" + modelId);
       window.localStorage.setItem("step", "1");
     } else if (step === 2) {
-      history.push("/dashboard/create/create-label/" + modelId);
+      history.push("/dashboard/create/labels/" + modelId);
       window.localStorage.setItem("step", "2");
     } else if (step === 3) {
-      history.push("/dashboard/create/labels/" + modelId);
+      history.push("/dashboard/create/training/" + modelId);
       window.localStorage.setItem("step", "3");
     }
   }, [step, history]);
@@ -55,19 +56,21 @@ function CreateNewModel() {
         <Route path={`${path}/upload/:modelId`}>
           <UploadImages />
         </Route>
-        <Route path={`${path}/verify/:modelId`}>var</Route>
         <Route path={`${path}/labels/:modelId`}>
+          <CreateLabels changeStep={changeStep} />
+        </Route>
+        <Route path={`${path}/training/:modelId`}>
           <Labelling />
         </Route>
       </Switch>
-      {
+      {step !== 2 && (
         <div className={styles.footer}>
           {step > 0 && (
             <button onClick={() => setStep((step - 1) % 4)}>back</button>
           )}
           <button onClick={() => setStep((step + 1) % 4)}>Next</button>
         </div>
-      }
+      )}
     </div>
   );
 }
