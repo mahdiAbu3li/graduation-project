@@ -23,6 +23,7 @@
     "react-form-stepper": "^1.4.0",
     "react-google-login": "^5.2.2",
     "react-icons": "^4.2.0",
+    "react-image-annotate": "^1.8.0",
     "react-picture-annotation": "^1.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
