@@ -41,19 +41,38 @@ function UploadImages() {
   const uploadfile = async (data: FormData) => {
     const url =
       "https://graduationprojectt.herokuapp.com/api/dataset/" + modelId;
-    const response = await fetch(url, {
-      method: "post",
-      mode: "cors",
-      body: data,
-      headers: {
-        Authorization: `Bearer ` + values.data.token,
-        // "Content-Type": "application/json",
-        "Content-Type": "multipart/form-data",
-      },
-    });
-    console.log(response);
+    const requests = [];
+    for (var pair of data.entries()) {
+      const newData = {
+        "images[]": pair[1],
+      };
+      requests.push(
+        fetch(url, {
+          method: "post",
+          mode: "cors",
+          body: JSON.stringify(newData),
+          headers: {
+            Authorization: `Bearer ` + values.data.token,
+            // "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
+          },
+        })
+      );
+    }
+    // const response = await fetch(url, {
+    //   method: "post",
+    //   mode: "cors",
+    //   body: data,
+    //   headers: {
+    //     Authorization: `Bearer ` + values.data.token,
+    //     // "Content-Type": "application/json",
+    //     "Content-Type": "multipart/form-data",
+    //   },
+    // });
+    // console.log(response);
     setIsLoading(false);
     setx(!x);
+    return Promise.all(requests).then((res) => console.log(res));
   };
   const imageSelectedHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsLoading(true);
