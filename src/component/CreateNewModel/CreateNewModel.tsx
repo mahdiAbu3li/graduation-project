@@ -28,7 +28,7 @@ function CreateNewModel() {
       history.push("/dashboard/create/training/" + modelId);
       window.localStorage.setItem("step", "3");
     }
-  }, [step, history]);
+  }, [step, history, modelId]);
 
   const changeStep = (step: number, modelId: number) => {
     setModelId(modelId);

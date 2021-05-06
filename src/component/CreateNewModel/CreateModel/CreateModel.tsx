@@ -1,12 +1,11 @@
 import React, { useState, useContext } from "react";
 import styles from "./CreateModelStyles.module.css";
-import { Formik, Form, Field, FormikProps } from "formik";
+import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
 import Button from "@material-ui/core/Button";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext";
 import mahdi from "../../../assets/images/login.png";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import { GrWindows } from "react-icons/gr";
 
 // const MyInput = ({ field, form, ...props }: any) => {
 //   return (
@@ -20,7 +19,7 @@ interface Change {
 function CreateModel({ changeStep }: Change) {
   const [image, setImage] = useState<File>();
   const [urlImage, setUrlImage] = useState("");
-  const [modelID, setModelID] = useState(1);
+  const [modelID] = useState(1);
   const values = useContext(AuthContext);
   const initialValues = {
     name: "",

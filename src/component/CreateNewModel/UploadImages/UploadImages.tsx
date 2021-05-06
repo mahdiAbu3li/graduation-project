@@ -10,11 +10,11 @@ function UploadImages() {
   const [uploadComponent, setUploadComponent] = useState<JSX.Element>();
   const values = useContext(AuthContext);
 
-  const loading = <img src={loadingGif} alt="" />;
   const uploading = <img src={uploadGif} alt="ad" style={{ width: "70%" }} />;
   const [x, setx] = useState(false);
   const { modelId } = useParams<{ modelId: string }>();
   React.useEffect(() => {
+    const loading = <img src={loadingGif} alt="" />;
     console.log(modelId);
     const url =
       "https://graduationprojectt.herokuapp.com/api/dataset/" + modelId;
@@ -36,7 +36,7 @@ function UploadImages() {
           setFiles(data.resources);
         } else return false;
       });
-  }, [x]);
+  }, [modelId, values.data.token, x]);
 
   const uploadfile = async (data: FormData) => {
     const url =

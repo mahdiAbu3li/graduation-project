@@ -52,10 +52,10 @@ function CreateLabels({ changeStep }: Change) {
   const initialValues = {
     data: [{ label: "", color: "" }],
   };
-  interface Values {
-    label: string;
-    color: string;
-  }
+  // interface Values {
+  //   label: string;
+  //   color: string;
+  // }
 
   const handleLabel = (index: number, value: string) => {
     data[index].label = value;

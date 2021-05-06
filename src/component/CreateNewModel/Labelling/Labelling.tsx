@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./LabellingStyles.module.css";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext";
 import ReactImageAnnotate from "react-image-annotate";
 
-import {
-  ReactPictureAnnotation,
-  defaultShapeStyle,
-  DefaultInputSection,
-} from "react-picture-annotation";
+// import {
+//   ReactPictureAnnotation,
+//   defaultShapeStyle,
+//   DefaultInputSection,
+// } from "react-picture-annotation";
 function Labelling() {
   const values = React.useContext(AuthContext);
   const [files, setFiles] = useState([]);
-  const [id, setid] = useState("");
-  const onSelect = (selectedId: any) => console.log(selectedId);
-  const [pageSize, setPageSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  // const [ setid] = useState("");
+  // const onSelect = (selectedId: any) => console.log(selectedId);
+  // const [pageSize, setPageSize] = useState({
+  //   width: window.innerWidth,
+  //   height: window.innerHeight,
+  // });
   interface ActiveImage {
     url: string;
     name: string;
@@ -28,13 +28,13 @@ function Labelling() {
     name: string;
     regions: [];
   }
-  interface Data {
-    id: string;
-    mark: {};
-  }
+  // interface Data {
+  //   id: string;
+  //   mark: {};
+  // }
   const [activeImage, setActiveImage] = useState<ActiveImage>();
   const [activeImage2, setActiveImage2] = useState<Array<ActiveImage2>>();
-  const [annotationData, setAnnotationData] = useState<Array<Data>>([]);
+  // const [annotationData, setAnnotationData] = useState<Array<Data>>([]);
   //   const onResize = () => {
   //     setPageSize({ width: window.innerWidth, height: window.innerHeight });
   //   };
@@ -43,10 +43,10 @@ function Labelling() {
   //     window.addEventListener("resize", onResize);
   //     return () => window.removeEventListener("resize", onResize);
   //   }, []);
-  const onChange = (data: any) => {
-    console.log(data);
-    setAnnotationData(data);
-  };
+  // const onChange = (data: any) => {
+  //   console.log(data);
+  //   setAnnotationData(data);
+  // };
   React.useEffect(() => {
     const url = "https://graduationprojectt.herokuapp.com/api/dataset/55";
     fetch(url, {
@@ -66,7 +66,7 @@ function Labelling() {
           setFiles(data.resources);
         } else return false;
       });
-  }, []);
+  }, [values.data.token]);
   // console.log(JSON.stringify(annotationData));
   const Annotator = () => {
     return (
@@ -208,11 +208,11 @@ function Labelling() {
         <h1>Labels</h1>
         <div
           className={styles.label}
-          onClick={() =>
-            setid(
-              typeof annotationData !== "undefined" ? annotationData[1].id : ""
-            )
-          }
+          // onClick={() =>
+          //   setid(
+          //     typeof annotationData !== "undefined" ? annotationData[1].id : ""
+          //   )
+          // }
         >
           <pre>phone</pre>
           <pre>0595780154</pre>
