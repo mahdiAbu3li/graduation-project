@@ -6,7 +6,6 @@ import { Stepper, Step } from "react-form-stepper";
 import Labelling from "../CreateNewModel/Labelling/Labelling";
 import CreateModel from "./CreateModel/CreateModel";
 import CreateLabels from "./CreateLabels/CreateLabels";
-import TestFarah from "../CreateNewModel/TestFarah/TestFarah";
 
 function CreateNewModel() {
   const history = useHistory();
@@ -14,7 +13,7 @@ function CreateNewModel() {
   const [step, setStep] = useState(localStep ? parseInt(localStep) : 0);
   const mod = window.localStorage.getItem("modelId");
   const [modelId, setModelId] = useState(mod ? mod : 0);
-  let { path, url } = useRouteMatch();
+  let { path } = useRouteMatch();
   React.useEffect(() => {
     if (step === 0) {
       history.push("/dashboard/create/create");
@@ -63,7 +62,6 @@ function CreateNewModel() {
         </Route>
         <Route path={`${path}/training/:modelId`}>
           <Labelling />
-          {/* <TestFarah /> */}
         </Route>
       </Switch>
       {step !== 2 && (
