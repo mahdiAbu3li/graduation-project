@@ -38,23 +38,30 @@ function UploadImages() {
       });
   }, [x]);
 
-  const uploadfile = async (data: FormData) => {
+  const uploadfile = async (data: any) => {
     const url =
       "https://graduationprojectt.herokuapp.com/api/dataset/" + modelId;
     const requests = [];
-    for (var pair of data.entries()) {
-      const newData = {
-        "images[]": pair[1],
-      };
+    // for (var pair of data.entries()) {
+    for (let i = 0; i < data.length; i++) {
+      console.log(data[i], "i");
+      var nx = new FormData();
+      nx.append("image", data[i]);
+
+      // console.log(123);
+      // const newData = {
+      //   image: pair[1],
+      // };
+      // nx.append("image", pair[1]);
       requests.push(
         fetch(url, {
           method: "post",
           mode: "cors",
-          body: JSON.stringify(newData),
+          body: nx,
           headers: {
             Authorization: `Bearer ` + values.data.token,
             // "Content-Type": "application/json",
-            "Content-Type": "multipart/form-data",
+            // "Content-Type": "multipart/form-data",
           },
         })
       );
@@ -70,23 +77,24 @@ function UploadImages() {
     //   },
     // });
     // console.log(response);
+    const result = await Promise.all(requests).then((res) => console.log(res));
     setIsLoading(false);
     setx(!x);
-    return Promise.all(requests).then((res) => console.log(res));
+    console.log(result);
   };
   const imageSelectedHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsLoading(true);
 
     setUploadComponent(uploading);
-    console.log("mahdi");
+    // console.log("mahdi 111111111");
     if (e.target.files !== null) {
-      let files = e.currentTarget.files;
-      const data = new FormData();
-      if (files === null) return;
-      for (let i in e.target.files) {
-        data.append("images[]", e.target.files[i]);
-      }
-      uploadfile(data);
+      // let files = e.currentTarget.files;
+      // const data = new FormData();
+      // if (files === null) return;
+      // for (let i in e.target.files) {
+      //   data.append("images[]", e.target.files[i]);
+      // }
+      uploadfile(e.target.files);
       // setUploadComponent(uploading);
     }
   };
