@@ -4,6 +4,8 @@ import uploadGif from "../../../assets/images/upload.gif";
 import loadingGif from "../../../assets/images/loading.gif";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext";
 import { useParams } from "react-router-dom";
+
+
 function UploadImages() {
   const [files, setFiles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);

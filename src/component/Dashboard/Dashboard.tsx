@@ -5,7 +5,12 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoMdSettings } from "react-icons/io";
 import { Switch, Route, useHistory } from "react-router-dom";
+// import Models from "../Models/Models";
 import CreateNewModel from "../CreateNewModel/CreateNewModel";
+
+import ModelsRout from "../ModelRout/ModelRoute";
+
+// import ModelPage from "../ModelPage/ModelPage";
 
 function Dashboard() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -76,17 +81,19 @@ function Dashboard() {
               className={`${styles.back} ${isOpen ? styles.close_back : ""}`}
             >
               <IoIosArrowBack />
+              
             </div>
           </div>
         </div>
         <div className={styles.header}>header</div>
         <div className={styles.content}>
           <Switch>
-            <Route exact path={["/dashboard", "/dashboard/model"]}>
-              myModel
+            <Route  path={[ "/dashboard/model"]}>
+              {/* <Models /> */}
+              <ModelsRout/>
             </Route>
             <Route path="/dashboard/create">
-              <CreateNewModel />
+              <CreateNewModel/>
             </Route>
             <Route path="/dashboard/setting">setting</Route>
           </Switch>
