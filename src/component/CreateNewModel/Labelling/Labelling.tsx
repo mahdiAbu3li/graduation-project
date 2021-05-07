@@ -75,9 +75,9 @@ function Labelling() {
     const url = "https://graduationprojectt.herokuapp.com/api/object_map_labeling/55";//req url
     
     console.log("data")
-    for (var key of data.entries()) {
-      console.log(key[0] + ', ' + key[1]);
-  }
+  //   for (var key of data.entries()) {
+  //     console.log(key[0] + ', ' + key[1]);
+  // }
     const response = await fetch(url, {
       method: "post",
       body: (data),     
