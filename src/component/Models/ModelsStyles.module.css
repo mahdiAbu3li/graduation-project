@@ -1,15 +1,17 @@
 .container {
   width: 100%;
   height: 100%;
-  /* background-color: antiquewhite; */
+  background-color: red;
   display: flex;
   flex-direction: column;
+  padding:10px;
 }
 
 .container_states {
   /* background-color: aqua; */
   flex-basis: 80px;
 }
+
 .container_states {
   display: flex;
   align-items: center;
@@ -30,18 +32,12 @@
 }
 
 .container_models {
-  /* flex-grow: 1; */
-  background-color: red;
+  background-color:#eff0f7;
   display: grid;
   grid-template-columns: repeat(auto-fill , minmax(300px,1fr));
   grid-column-gap: 2vw;
   grid-row-gap: 20px;
-  padding: 20px;
-  /* --aspect-ratio:var(2/1) */
-  /* grid-auto-rows: 30%; */
-  
-
-  /* grid-template-rows: repeat(auto-fit , minmax(250px,  1fr)) */
+  padding: 20px; 
 }
 
 .maincontainer{
@@ -106,8 +102,8 @@
   grid-template-areas:  "text" "stats";
 
   /* border-radius: 18px; */
-  background: white;
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+  background: #f5f9ff;
+  box-shadow: 1px 1px 10px rgb(41 84 144);
   font-family: roboto;
   text-align: center;
   
@@ -128,6 +124,7 @@
   color: #333;
   text-align: center;
   transform: rotateY(180deg);
+  /* background-image: url('../../assets/images/color2.jpg') */
 }
 
 /* .card_text{
@@ -145,12 +142,12 @@
 
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  background: rgb(255, 7, 110);
+  background: linear-gradient(rgb(122 176 251)0%, rgb(62 114 187) 10%, rgb(32 70 123) 50%,rgb(12 39 76) 100%);
   align-items: center;
 }
 
 .card_text {
-  background-color: rgb(250, 223, 232);
+  /* background-color: rgb(250, 223, 232); */
   grid-area: text;
   /* margin: 25px; */
   height: 100%;
@@ -170,18 +167,39 @@
 } */
 .card_text_name {
   grid-area: model_name;
-  margin-top:10px;
+  margin-top:1px;
   font-size:100%;
   height: 100%;
-  background-color: pink
+  /* border-bottom:rgb(3, 3, 71) solid ; */
+  /* border-style: outset; */
+  box-shadow: 1px 1px 10px rgb(41 84 144);
+  /* border-style: outset; */
+  /* background-color: pink */
+}
+
+
+.card_text_1{
+  grid-area: date;
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+.card_text_circle{
+  display: flex;
+  justify-content: flex-end;
+  align-content: stretch;
+  flex-direction: row;
+  align-items: center;
 }
 .card_text_date {
-  grid-area: date;
   /* margin-top:10px; */
   /* font-size:90000%; */
   /* height: 100%; */
-  background-color:rgb(71, 7, 29);
+  /* background-color:rgb(71, 7, 29); */
   justify-content: center;
+  text-align: left;
+  vertical-align: middle;
+  
+  
   
 }
 .card_text_pareraph {
@@ -192,7 +210,7 @@
    font-size: width / 12 ;
   /* font-size:  calc(1vw + 2vh);;  */
   
-  background-color: rgb(222, 135, 176);
+  /* background-color: rgb(222, 135, 176); */
 }
 
 .card_stats .stat {

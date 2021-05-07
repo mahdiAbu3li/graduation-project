@@ -1,5 +1,6 @@
 .container {
   /* background-color: aqua; */
+  
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -12,11 +13,18 @@
 .nav {
   grid-area: nav;
   /* background-color: #f9f9f9; */
-  background-color: #f4f7fe;
-  border-right: 1px solid #cccccc;
+  /* background-color: #f4f7fe; */
+  /* background: linear-gradient(rgb(122 176 251)0%, rgb(62 114 187) 10%, rgb(32 70 123) 50%,rgb(12 39 76) 100%); */
+  
+  background: linear-gradient( rgb(12 39 76) 0%, rgb(32 70 123) 30% ,rgb(62 114 187) 80%,rgb(78 145 239) 100% );
+  color:#e8eeff; 
+ 
+  border-right: 1px outset #cccccc;
   display: flex;
   flex-direction: column;
-  /* position: fixed; */
+
+   box-shadow: 1px 1px 10px rgb(41 84 144);
+  
 }
 .nav .navLogo {
   flex-basis: 50px;
@@ -31,14 +39,21 @@
 }
 .nav .navShrink:hover {
   cursor: pointer;
-  color: blue;
+  color: #0f2b52;
   background-color: #d2dffc;
+}
+
+.nav .navShrink:hover span {
+  
+  color: #0f2b52;
+  
 }
 .nav .navShrink .back {
   font-size: 25px;
   padding: 8px;
   display: grid;
   place-items: center;
+  color: rgb(12 39 76);
 }
 
 .header {
@@ -52,7 +67,9 @@
 .content {
   grid-area: content;
   overflow-y: scroll;
-  /* background-color: blue; */
+  background-color:#eff0f7;
+  /* padding: 10px 10px 100px 10px; */
+  margin: 10px;
 }
 .nav .navList {
   flex-grow: 1;
@@ -65,11 +82,23 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  /* color:rgb(221 60 51); */
+}
+.navList .item span{
+  color:#e8eeff;
 }
 .navList .item:hover {
   background-color: #d2dffc;
-  color: blue;
+  color:#0f2b52;
+  box-shadow: 1px 1px 5px #6992ce;
+  border-bottom: 2px solid #0f2b52;
+  border-top: 2px solid #0f2b52;
 }
+.navList .item:hover span{
+  /* background-color: #d2dffc; */
+  color:#0f2b52;
+}
+
 .icon {
   display: flex;
   justify-content: center;
@@ -79,6 +108,8 @@
 span {
   width: 100%;
   padding: 8px;
+
+  color:#0f2b52;
 }
 
 /* when close nav side  */

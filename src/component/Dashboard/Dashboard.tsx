@@ -81,6 +81,7 @@ function Dashboard() {
               className={`${styles.back} ${isOpen ? styles.close_back : ""}`}
             >
               <IoIosArrowBack />
+              
             </div>
           </div>
         </div>

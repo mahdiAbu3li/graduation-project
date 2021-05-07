@@ -7,7 +7,7 @@
   padding:8px;
 }
 
-.container_taps {
+.container_cards {
   display: flex;
   flex-basis: 80px;
   align-items: center;
@@ -102,19 +102,11 @@
   /* size : 50px; */
   /* height: 50px; */
   color:rgb(3, 3, 71);
-  cursor: pointer;
   /* padding: 3px */
-}
 
-.icons:hover{
-  /* size : 50px; */
-  /* height: 50px; */
-  color:rgb(230, 234, 247);
-  cursor: pointer;
-  /* padding: 3px */
 }
 .cintainer_button{
-  
+  cursor: pointer;
 }
 .container_states > div {
   display: flex;
@@ -128,11 +120,3 @@
   font-size: 18px;
 }
 
-.checkBox{
-  size: 100px;
-  /* background: red;
-  border-radius: 10px; */
-  width: 40px;
-  height: 15px;
-  background: #555;
-}

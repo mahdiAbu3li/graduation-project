@@ -100,23 +100,23 @@ const models = [
 
 const labels = [
   {
-    color: "lightblue",
+    color: "#b7dfec",
     title: "Model Created",
   },
   {
-    color: "orange",
+    color: "#fad276",
     title: "Data Uploded",
   },
   {
-    color: "lightgreen",
+    color: "c4f6ab",
     title: "Data Processed",
   },
   {
-    color: "lightyellow",
+    color: "f3c8ef",
     title: "Model Training",
   },
   {
-    color: "green",
+    color: "02b902",
     title: "Model Ready",
   },
  
@@ -134,11 +134,11 @@ const Models = () => {
   //   }
   // }, [step, history]);
 
-
   return (
     <div className={styles.container}>
+      <img src={require('../../assets/images/color.jpg').default}></img>
+      <img src={require('../../assets/images/color2.jpg').default}></img>
    
-
       <div className={styles.container_states}>
         {labels.map((i) => (
           <div>
@@ -155,22 +155,22 @@ const Models = () => {
       </div>
 
       <div className={styles.container_models}>
-
         {models.map((i) => (
           <div className={styles.maincontainer}>
             <div className={styles.thecard}>
               <div className={styles.thefront} >
-
                 <div className={styles.card_text}>
-                  <div className={styles.card_text_name}><h2 >{i.name}</h2></div>
-                  <div className={styles.card_text_date}>
-                    <p > 
-                    {/* <IoEllipse color={i.color} size="25px"></IoEllipse> */}
-                    {i.date}</p></div>
+                  <div className={styles.card_text_name}><h2 >{i.name}</h2></div>                 
+                  <div className={styles.card_text_1}>
+                    <div className={styles.card_text_circle}>
+                     <IoEllipse color={i.color} size="25px"></IoEllipse></div>
+                    <div className={styles.card_text_date}>
+                    <p >Created at {i.date}</p>
+                    </div>
+                    </div>
                   <div className={styles.card_text_pareraph}><p >{i.description}</p>
                   </div>
                 </div>
-
                 <div className={styles.card_stats}>
                   <div className={styles.stat}>
                     <div className={styles.value}>4<sup>m</sup></div>
@@ -185,11 +185,10 @@ const Models = () => {
                     <div className={styles.type}>photos training</div>
                   </div>
                 </div>
-              </div>
-
-              <div className={styles.theback}>
-                <img src={i.image.default}  alt="" style={{width : "100%" , opacity: "0.5"}}  onClick={() => history.push("/dashboard/model/modelpage")} />
-           
+              </div>             
+              <div className={styles.theback}  >
+                <img src={i.image.default}  alt="" style={{width : "100%" , opacity: "0.5" , position:"absolute" , left:"0" , top:"0" , alignContent:"center" , marginLeft:"auto" , marginRight:"auto"}}  onClick={() => history.push("/dashboard/model/modelpage")} />
+                <div style ={{position : "relative" , width:"40%" , height:"20%" , background:"red" , top:"38%" , left:"28%"}}></div>
             </div>
           </div>
           </div>
