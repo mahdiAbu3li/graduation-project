@@ -89,17 +89,38 @@ function CreateLabels({ changeStep }: Change) {
   };
   const createRequest = async () => {
     const url = "https://graduationprojectt.herokuapp.com/api/label";
-    const response = await fetch(url, {
-      method: "post",
-      body: JSON.stringify(data),
-      headers: {
-        Authorization: `Bearer ` + values.data.token,
-        // "Content-Type": "application/json",
-        // "Content-Type": "multipart/form-data",
-        // Accept: "application/json",
-        // 'Content-Type': 'application/json'
-      },
+    // const response = await fetch(url, {
+    //   method: "post",
+    //   body: JSON.stringify(data),
+    //   headers: {
+    //     Authorization: `Bearer ` + values.data.token,
+    //     // "Content-Type": "application/json",
+    //     // "Content-Type": "multipart/form-data",
+    //     // Accept: "application/json",
+    //     // 'Content-Type': 'application/json'
+    //   },
+    var requests = [] as any;
+    data.map((item) => {
+      const newData = {
+        label: item.label,
+        model_id: item.model_id,
+      };
+      console.log(newData);
+      requests.push(
+        fetch(url, {
+          method: "post",
+          body: JSON.stringify(newData),
+          headers: {
+            Authorization: `Bearer ` + values.data.token,
+            "Content-Type": "application/json",
+            // "Content-Type": "multipart/form-data",
+            // Accept: "application/json",
+            // 'Content-Type': 'application/json'
+          },
+        })
+      );
     });
+    const response = await Promise.all(requests);
     console.log(response);
     // if (response.status === 201) {
     //   const res = await response.json();
@@ -126,7 +147,7 @@ function CreateLabels({ changeStep }: Change) {
             // return errors;
           }}
           onSubmit={(values, { setSubmitting, setErrors }) => {
-            changeStep(3, parseInt(modelId));
+            // changeStep(3, parseInt(modelId));
             createRequest();
             setSubmitting(false);
           }}
