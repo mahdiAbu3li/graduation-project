@@ -3,7 +3,7 @@ import styles from "./LoginPageStyles.module.css";
 import login from "../../assets/images/login.png";
 import ReactCardFlip from "react-card-flip";
 import LoginCard from "./LoginCard/LoginCard";
-
+import SignupCard from "./SignupCard/SignupCard";
 function LoginPage() {
   const [isFlip, setisFlip] = useState(false);
   const handleFlip = () => {
@@ -56,7 +56,9 @@ function LoginPage() {
                   <img src={login} alt="" />
                 </div>
                 <div className={styles.left}>
-                  <div className={styles.login_card}></div>
+                  <div className={styles.login_card}>
+                    <SignupCard />
+                  </div>
                 </div>
               </div>
             </div>
