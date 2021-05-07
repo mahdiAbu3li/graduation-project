@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import styles from "./DescriptionStyles.module.css";
-import { FaCircle } from "react-icons/fa";
-import { RiDeleteBin5Fill } from "react-icons/all";
-import { IoEllipse } from "react-icons/all";
-import { HiOutlineDownload } from "react-icons/all";
-import { AiOutlineCheckCircle } from "react-icons/all";
-import { Route, Switch, useHistory } from "react-router";
-import login from "../../assets/images/login.png";
-import mahdi from "../../assets/images/img1.png"
-import { GrStatusDisabledSmall } from "react-icons/gr";
+// import { FaCircle } from "react-icons/fa";
+// import { RiDeleteBin5Fill } from "react-icons/all";
+// import { IoEllipse } from "react-icons/all";
+// import { HiOutlineDownload } from "react-icons/all";
+// import { AiOutlineCheckCircle } from "react-icons/all";
+// import { useHistory } from "react-router";
+// import login from "../../assets/images/login.png";
+// import mahdi from "../../assets/images/img1.png"
+// import { GrStatusDisabledSmall } from "react-icons/gr";
 
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
 
 
 
 const Description = () => {
-  const history = useHistory();
-  const [file, setFile] = useState([]);
+  // const history = useHistory();
+  // const [file, setFile] = useState([]);
 
 
 
   const values = React.useContext(AuthContext);//2
-  const [annotationData, setAnnotationData] = useState();
-  const [files, setFiles] = useState([]);
+  const [annotationData] = useState();
+  // const [files, setFiles] = useState([]);
 
 
   // const [files, setFiles] = useState([]);
@@ -52,10 +52,10 @@ const Description = () => {
             data,
             "mmmmmmmmmmmmmmmmmmmmmmKKKKKKKKKKKKKmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
           );
-          setFiles(data);
+          // setFiles(data);
         } else return false;
       });
-  }, []);
+  }, [values.data.id , values.data.token]);
   console.log(JSON.stringify(annotationData));
 
 

@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./ModelsStyles.module.css";
-import {FaCircle } from "react-icons/fa";
+// import {FaCircle } from "react-icons/fa";
 import { IoEllipse } from "react-icons/io5";
 
-import { useState } from "react";
-import { Route, Switch, useHistory } from "react-router";
-import ModelPage from "../ModelPage/ModelPage";
+// import { useState } from "react";
+import { useHistory } from "react-router";
+// import ModelPage from "../ModelPage/ModelPage";
 const models = [
   {
     name: "invoice 1",
@@ -136,8 +136,8 @@ const Models = () => {
 
   return (
     <div className={styles.container}>
-      <img src={require('../../assets/images/color.jpg').default}></img>
-      <img src={require('../../assets/images/color2.jpg').default}></img>
+      <img src={require('../../assets/images/color.jpg').default} alt=""></img>
+      <img src={require('../../assets/images/color2.jpg').default} alt=""></img>
    
       <div className={styles.container_states}>
         {labels.map((i) => (

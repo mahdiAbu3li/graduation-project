@@ -1,4 +1,4 @@
-import { Route, Switch, useHistory } from "react-router";
+import { Route, Switch } from "react-router";
 
 import ModelPage from "../ModelPage/ModelPage";
 import Models from "../Models/Models";

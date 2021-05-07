@@ -1,135 +1,112 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import styles from "./ModelPageStyles.module.css";
-import { FaCircle } from "react-icons/fa";
+// import { FaCircle } from "react-icons/fa";
 import { RiDeleteBin5Fill } from "react-icons/all";
-import { IoEllipse } from "react-icons/all";
+// import { IoEllipse } from "react-icons/all";
 import { HiOutlineDownload } from "react-icons/all";
 import { AiOutlineCheckCircle } from "react-icons/all";
-import { Route, Switch, useHistory } from "react-router";
-import login from "../../assets/images/login.png";
-import mahdi from "../../assets/images/img1.png"
-import { GrStatusDisabledSmall } from "react-icons/gr";
+import {  useHistory } from "react-router";
+// import login from "../../assets/images/login.png";
+// import mahdi from "../../assets/images/img1.png"
+// import { GrStatusDisabledSmall } from "react-icons/gr";
 
 import { AuthContext } from "../../Contexts/AuthContext/AuthContext"; //1
 
 
 
 
-const filess = [
-  {
-    name: "invoice 1",
-    id: "1",
-    date: "12/5/1555",
-    image: require('../../assets/images/img1.png'),
-    manual_varifaction: "true"
+// const filess = [
+//   {
+//     name: "invoice 1",
+//     id: "1",
+//     date: "12/5/1555",
+//     image: require('../../assets/images/img1.png'),
+//     manual_varifaction: "true"
 
-  },
-  {
-    name: "invoice 2",
-    id: "1",
-    date: "12/5/1555",
-    image: require('../../assets/images/img4.jpg'),
-    manual_varifaction: "true"
+//   },
+//   {
+//     name: "invoice 2",
+//     id: "1",
+//     date: "12/5/1555",
+//     image: require('../../assets/images/img4.jpg'),
+//     manual_varifaction: "true"
 
-  },
-  {
-    name: "invoice 3",
-    id: "1",
-    date: "12/5/1555",
-    image: require('../../assets/images/img2.png'),
-    manual_varifaction: "false"
-  },
-  {
-    name: "invoice 4",
-    id: "1",
-    date: "12/5/1555",
-    image: require('../../assets/images/img3.png'),
-    manual_varifaction: "flase"
+//   },
+//   {
+//     name: "invoice 3",
+//     id: "1",
+//     date: "12/5/1555",
+//     image: require('../../assets/images/img2.png'),
+//     manual_varifaction: "false"
+//   },
+//   {
+//     name: "invoice 4",
+//     id: "1",
+//     date: "12/5/1555",
+//     image: require('../../assets/images/img3.png'),
+//     manual_varifaction: "flase"
 
-  },
-  {
-    name: "invoice 5",
-    id: "1",
-    date: "12/5/1555",
-    image: require('../../assets/images/img5.png'),
-    manual_varifaction: "true"
+//   },
+//   {
+//     name: "invoice 5",
+//     id: "1",
+//     date: "12/5/1555",
+//     image: require('../../assets/images/img5.png'),
+//     manual_varifaction: "true"
 
-  },
-  {
-    name: "invoice 6",
-    id: "1",
-    date: "12/5/1555",
-    image: require('../../assets/images/img6.png'),
-    manual_varifaction: "false"
+//   },
+//   {
+//     name: "invoice 6",
+//     id: "1",
+//     date: "12/5/1555",
+//     image: require('../../assets/images/img6.png'),
+//     manual_varifaction: "false"
 
-  },
-  {
-    name: "invoice 7",
-    id: "1",
-    date: "12/5/1555",
-    image: require('../../assets/images/img8.JPG'),
-    manual_varifaction: "true"
+//   },
+//   {
+//     name: "invoice 7",
+//     id: "1",
+//     date: "12/5/1555",
+//     image: require('../../assets/images/img8.JPG'),
+//     manual_varifaction: "true"
 
-  },
-  {
-    name: "invoice 4",
-    id: "1",
-    date: "12/5/1555",
-    image: require('../../assets/images/img3.png'),
-    manual_varifaction: "true"
+//   },
+//   {
+//     name: "invoice 4",
+//     id: "1",
+//     date: "12/5/1555",
+//     image: require('../../assets/images/img3.png'),
+//     manual_varifaction: "true"
 
 
-  },
-  {
-    name: "invoice 5",
-    id: "1",
-    date: "12/5/1555",
-    image: require('../../assets/images/img5.png'),
-    manual_varifaction: "true"
+//   },
+//   {
+//     name: "invoice 5",
+//     id: "1",
+//     date: "12/5/1555",
+//     image: require('../../assets/images/img5.png'),
+//     manual_varifaction: "true"
 
-  },
-  {
-    name: "invoice 6",
-    id: "1",
-    date: "12/5/1555",
-    image: require('../../assets/images/img6.png'),
-    manual_varifaction: "true"
+//   },
+//   {
+//     name: "invoice 6",
+//     id: "1",
+//     date: "12/5/1555",
+//     image: require('../../assets/images/img6.png'),
+//     manual_varifaction: "true"
 
-  },
-  {
-    name: "invoice 8",
-    id: "1",
-    date: "12/5/1555",
-    image: require('../../assets/images/img6.jpg'),
-    manual_varifaction: "true"
+//   },
+//   {
+//     name: "invoice 8",
+//     id: "1",
+//     date: "12/5/1555",
+//     image: require('../../assets/images/img6.jpg'),
+//     manual_varifaction: "true"
 
-  },
+//   },
 
-];
+// ];
 
-const labels = [
-  {
-    color: "lightblue",
-    title: "Model Created",
-  },
-  {
-    color: "orange",
-    title: "Data Uploded",
-  },
-  {
-    color: "lightgreen",
-    title: "Data Processed",
-  },
-  {
-    color: "lightyellow",
-    title: "Model Training",
-  },
-  {
-    color: "green",
-    title: "Model Ready",
-  },
-
-];
 
 
 const ModelPage = () => {
@@ -198,15 +175,16 @@ const ModelPage = () => {
   const [selected, setSelected] = useState<Array<string>>([]);
 
   function deleteFile(arr :any){
-    var payload = {
-      "publicIds[]" : arr,
-      "user_id":'1'
-    };
+    // var payload = {
+    //   "publicIds[]" : arr,
+    //   "user_id":'1'
+    // };
 
     var data = new FormData();
     data.append("user_id", "1");
     arr.map( (name : string ) => {
         data.append("publicIds[]", name);
+        return null;
     } )
     
 
@@ -256,7 +234,7 @@ const ModelPage = () => {
           setFiles(data);
         } else return false;
       });
-  }, []);
+  }, [values.data.id , values.data.token]);
 
 
   console.log(selected);

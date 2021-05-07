@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styles from "./LabellingStyles.module.css";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
-import {
-  ReactPictureAnnotation,
-  defaultShapeStyle,
-  DefaultInputSection,
-} from "react-picture-annotation";
+// import {
+//   ReactPictureAnnotation,
+//   defaultShapeStyle,
+//   DefaultInputSection,
+// } from "react-picture-annotation";
 
 import ReactImageAnnotate from "react-image-annotate";
 
@@ -16,7 +16,7 @@ function Labelling() {
   const values = React.useContext(AuthContext);//2
 
   const [files, setFiles] = useState([]);
-  const [annotationData, setAnnotationData] = useState();
+  // const [annotationData, setAnnotationData] = useState();
 
   React.useEffect(() => {// بس لما تتحمل الصفحة اول مرة
     const url = "https://graduationprojectt.herokuapp.com/api/dataset/55";//req url
@@ -38,7 +38,7 @@ function Labelling() {
           setFiles(data.resources);
         } else return false;
       });
-  }, []);
+  }, [values.data.token ]);
   // console.log(JSON.stringify(annotationData));
 
   const setLabels = async (name : string ,regions:any )=>{
@@ -61,7 +61,7 @@ function Labelling() {
           
         }
       )
-      })
+      return null;})
     var payload = {
       src:"",
       name:name,
@@ -144,7 +144,7 @@ function Labelling() {
   const [activeImage2, setActiveImage2] = useState<ActiveImage2>({ src: "https://placekitten.com/408/287", name: "Image 1", regions: [], width: 20, height: 20 });
 
   function setSelectedImage(name:string ){
-    var jsonData="";
+   
     const url = "https://graduationprojectt.herokuapp.com/api/modelfile/labels/55?image="+name;//req url
     console.log(name);
     fetch(url, {
@@ -166,6 +166,8 @@ function Labelling() {
         console.log(data)
         console.log("obj" , data[0]) 
         if(data.length!==0 && data[0].labels!==null){
+          /*eslint-disable no-eval */
+        //@ts-ignore;
         var labels = eval(data[0].labels);
         
         
@@ -184,7 +186,7 @@ function Labelling() {
               
             }
           )
-          })
+         return null; })
         }
         else{
           newArr=[];

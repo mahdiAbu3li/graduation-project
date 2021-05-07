@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./fileVerStyles.module.css";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
 import {
@@ -19,10 +19,10 @@ const FileVer = () => {
 
   const onSelect = (selectedId: any) => console.log(selectedId);
   
-  const [pageSize, setPageSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
-  });
+  // const [pageSize, setPageSize] = useState({
+  //   width: window.innerWidth,
+  //   height: window.innerHeight,
+  // });
   interface ActiveImage {
     url: string;
     name: string;
@@ -64,7 +64,7 @@ const FileVer = () => {
           setFiles(data.resources);
         } else return false;
       });
-  }, []);
+  }, [values.data.token]);
   console.log(JSON.stringify(annotationData));
   
   return (

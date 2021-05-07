@@ -5,12 +5,12 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoMdSettings } from "react-icons/io";
 import { Switch, Route, useHistory } from "react-router-dom";
-import Models from "../Models/Models";
+// import Models from "../Models/Models";
 import CreateNewModel from "../CreateNewModel/CreateNewModel";
 
 import ModelsRout from "../ModelRout/ModelRoute";
 
-import ModelPage from "../ModelPage/ModelPage";
+// import ModelPage from "../ModelPage/ModelPage";
 
 function Dashboard() {
   const [isOpen, setIsOpen] = React.useState(false);
