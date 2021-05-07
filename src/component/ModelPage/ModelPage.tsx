@@ -189,9 +189,9 @@ const ModelPage = () => {
     
 
     console.log("hi" , arr , "ok" , data.entries()    );
-    for (var key of data.entries()) {
-      console.log(key[0] + ', ' + key[1]);
-  }
+  //   for (var key of data.entries()) {
+  //     console.log(key[0] + ', ' + key[1]);
+  // }
 
     
     const url = "https://graduationprojectt.herokuapp.com/api/images/predictdel/57";//req url
