@@ -1,17 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import styles from "./LoginCardStyle.module.css";
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-import GoogleLogin from "react-google-login";
+// import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
+// import GoogleLogin from "react-google-login";
 import { Formik, Form, Field } from "formik";
-import { GrFacebook } from "react-icons/gr";
-import { GrGoogle } from "react-icons/gr";
+// import { GrFacebook } from "react-icons/gr";
+// import { GrGoogle } from "react-icons/gr";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { TextField } from "formik-material-ui";
 import Button from "@material-ui/core/Button";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import LockIcon from "@material-ui/icons/Lock";
-import { Redirect, useHistory } from "react-router-dom";
+// import { Redirect, useHistory } from "react-router-dom";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext";
 function LoginCard() {
   interface Data {
@@ -19,7 +19,7 @@ function LoginCard() {
     token: string;
     name: string;
   }
-  const history = useHistory();
+  // const history = useHistory();
   const value = useContext(AuthContext);
 
   const validateLogin = async (email: string, password: string) => {
@@ -56,13 +56,13 @@ function LoginCard() {
     }
   };
 
-  const [isActive, setIsActive] = useState(false);
-  const responseFacebook = (response: any) => {
-    console.log(response);
-  };
-  const responseGoogle = (response: any) => {
-    console.log(response);
-  };
+  // const [isActive, setIsActive] = useState(false);
+  // const responseFacebook = (response: any) => {
+  //   console.log(response);
+  // };
+  // const responseGoogle = (response: any) => {
+  //   console.log(response);
+  // };
   const initialValues = {
     email: "",
     password: "",
@@ -82,7 +82,7 @@ function LoginCard() {
             const errors: Partial<Values> = {};
             if (values.email === "") {
               errors.email = "Required";
-              setIsActive(false);
+              // setIsActive(false);
             }
             if (!values.password) {
               errors.password = "Required";

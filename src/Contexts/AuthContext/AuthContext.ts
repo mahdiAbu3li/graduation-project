@@ -11,6 +11,7 @@ export const AuthContext = React.createContext({
     token: "",
     name: "",
   },
+  // eslint-disable-next-line no-empty-pattern
   setData: ({}: Data) => {},
   onLogin: () => {},
   onLogout: () => {},

@@ -3,17 +3,22 @@ import styles from "./UploadImagesStyles.module.css";
 import uploadGif from "../../../assets/images/upload.gif";
 import loadingGif from "../../../assets/images/loading.gif";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext";
+import { useParams } from "react-router-dom";
 function UploadImages() {
   const [files, setFiles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [uploadComponent, setUploadComponent] = useState<JSX.Element>();
   const values = useContext(AuthContext);
 
-  const loading = <img src={loadingGif} alt="" />;
   const uploading = <img src={uploadGif} alt="ad" style={{ width: "70%" }} />;
   const [x, setx] = useState(false);
+  const { modelId } = useParams<{ modelId: string }>();
   React.useEffect(() => {
-    const url = "https://graduationprojectt.herokuapp.com/api/dataset/55";
+    const loading = <img src={loadingGif} alt="" />;
+    console.log(modelId);
+    const url =
+      "https://graduationprojectt.herokuapp.com/api/dataset/" + modelId;
+    console.log(url);
     setIsLoading(true);
     setUploadComponent(loading);
     fetch(url, {
@@ -31,22 +36,62 @@ function UploadImages() {
           setFiles(data.resources);
         } else return false;
       });
-  }, [x]);
+  }, [modelId, values.data.token, x]);
 
-  const uploadfile = async (data: FormData) => {
-    const url = "https://graduationprojectt.herokuapp.com/api/dataset/55";
-    const response = await fetch(url, {
-      method: "post",
-      mode: "cors",
-      body: data,
-      headers: {
-        Authorization: `Bearer ` + values.data.token,
-        "Content-Type": "application/json",
-      },
-    });
-    console.log(response);
+  const uploadfile = async (data: any) => {
+    const url =
+      "https://graduationprojectt.herokuapp.com/api/dataset/" + modelId;
+    const requests = [];
+    // for (var pair of data.entries()) {
+    for (let i = 0; i < data.length; i++) {
+      console.log(data[i], "i");
+      var nx = new FormData();
+      nx.append("image", data[i]);
+
+      // console.log(123);
+      // const newData = {
+      //   image: pair[1],
+      // };
+      // nx.append("image", pair[1]);
+      requests.push(
+        fetch(url, {
+          method: "post",
+          mode: "cors",
+          body: nx,
+          headers: {
+            Authorization: `Bearer ` + values.data.token,
+            // "Content-Type": "application/json",
+            // "Content-Type": "multipart/form-data",
+          },
+        })
+      );
+    }
+    // const response = await fetch(url, {
+    //   method: "post",
+    //   mode: "cors",
+    //   body: data,
+    //   headers: {
+    //     Authorization: `Bearer ` + values.data.token,
+    //     // "Content-Type": "application/json",
+    //     "Content-Type": "multipart/form-data",
+    //   },
+    // });
+    // console.log(response);
+    const result = await Promise.all(requests).then((res) => console.log(res));
+    // const response = await fetch(url, {
+    //   method: "post",
+    //   mode: "cors",
+    //   body: data,
+    //   headers: {
+    //     Authorization: `Bearer ` + values.data.token,
+    //     // "Content-Type": "application/json",
+    //     "Content-Type": "multipart/form-data",
+    //   },
+    // });
+    // console.log(response);
     setIsLoading(false);
     setx(!x);
+    console.log(result);
   };
   const imageSelectedHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setIsLoading(true);
@@ -54,19 +99,19 @@ function UploadImages() {
     setUploadComponent(uploading);
     console.log("mahdi");
     if (e.target.files !== null) {
-      let files = e.currentTarget.files;
-      const data = new FormData();
-      if (files === null) return;
-      for (let i in e.target.files) {
-        data.append("images[]", e.target.files[i]);
-      }
-      uploadfile(data);
+      // let files = e.currentTarget.files;
+      // const data = new FormData();
+      // if (files === null) return;
+      // for (let i in e.target.files) {
+      //   data.append("images[]", e.target.files[i]);
+      // }
+      uploadfile(e.target.files);
       // setUploadComponent(uploading);
     }
   };
 
-  const images = files?.map((file: { url: string }) => (
-    <img src={file.url} alt="preview" />
+  const images = files?.map((file: { url: string }, i) => (
+    <img src={file.url} alt="preview" key={i} />
   ));
 
   return (

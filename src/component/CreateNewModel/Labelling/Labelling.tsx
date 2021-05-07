@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./LabellingStyles.module.css";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
 import {
@@ -244,7 +244,14 @@ function Labelling() {
       </div>
       <div className={styles.labels_container}>
         <h1>Labels</h1>
-        <div className={styles.label}>
+        <div
+          className={styles.label}
+          // onClick={() =>
+          //   setid(
+          //     typeof annotationData !== "undefined" ? annotationData[1].id : ""
+          //   )
+          // }
+        >
           <pre>phone</pre>
           <pre>0595780154</pre>
         </div>
