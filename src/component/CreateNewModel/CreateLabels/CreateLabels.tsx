@@ -100,6 +100,7 @@ function CreateLabels({ changeStep }: Change) {
     //     // 'Content-Type': 'application/json'
     //   },
     var requests = [] as any;
+    // eslint-disable-next-line array-callback-return
     data.map((item) => {
       const newData = {
         label: item.label,
