@@ -213,7 +213,7 @@ const ModelPage = () => {
   const [files, setFiles] = useState([]);
   
   React.useEffect(() => {// بس لما تتحمل الصفحة اول مرة
-    const url = "https://graduationprojectt.herokuapp.com/api/images/predict/57?user_id=" + values.data.id;//req url
+    const url = "https://graduationprojectt.herokuapp.com/api/images/predict/57?user_id=1" ;//req url
     fetch(url, {
       method: "get",
       headers: {//the same
@@ -262,16 +262,11 @@ const ModelPage = () => {
           <span className={styles.tap} onClick={() => history.push("/dashboard/model/modelpage/description")}>Model Description</span>
         </div>
         <div onClick={() => downloadeselected()}>Downlade Selected</div>
-        <div onClick={() => deleteFile(selected)}>Delete Selected</div>
-
-
+        <div onClick={() => deleteFile(selected)}>Delete Selected</div> 
       </div>
 
       <div >
-
         <div className={styles.container_files}>
-
-
           {files?.map((file: any) => (
             <div className={styles.container_file}  >
               <div className={styles.imageandcheck}>
@@ -280,11 +275,12 @@ const ModelPage = () => {
                   <img src={file.url} alt="" className={styles.img} />
                 </div>
               </div>
-              <div style={{ "justifyContent": "center" }}>
+              <div style={{ "justifyContent": "center" }} onClick={() => history.push("/dashboard/model/modelpage/verify")}>
                 {file.name}
               </div>
               <div>
-                {file.verify_state}
+                
+                {file.verify_state ===0 ? <HiOutlineDownload/> : <RiDeleteBin5Fill/>}
               </div>
               <div>
                 {file.created_at}

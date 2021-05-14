@@ -10,7 +10,7 @@ import CreateNewModel from "../CreateNewModel/CreateNewModel";
 
 import ModelsRout from "../ModelRout/ModelRoute";
 
-// import ModelPage from "../ModelPage/ModelPage";
+import ModelPage from "../ModelPage/ModelPage";
 
 function Dashboard() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -88,6 +88,7 @@ function Dashboard() {
         <div className={styles.header}>header</div>
         <div className={styles.content}>
           <Switch>
+            
             <Route  path={[ "/dashboard/model"]}>
               {/* <Models /> */}
               <ModelsRout/>
@@ -95,7 +96,7 @@ function Dashboard() {
             <Route path="/dashboard/create">
               <CreateNewModel/>
             </Route>
-            <Route path="/dashboard/setting">setting</Route>
+            <Route path="/dashboard/setting">setting</Route> 
           </Switch>
         </div>
       </div>

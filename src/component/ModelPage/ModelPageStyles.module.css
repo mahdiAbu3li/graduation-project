@@ -136,3 +136,13 @@
   height: 15px;
   background: #555;
 }
+
+.divUseButton{
+  position : "relative" ;
+  width:"40%" ; height:"20%" ;
+  background:"red" ;
+  top:"38%" ;
+  left:"28%";
+  align-items: center;
+  align-items: center;
+}

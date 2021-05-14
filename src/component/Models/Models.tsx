@@ -187,8 +187,10 @@ const Models = () => {
                 </div>
               </div>             
               <div className={styles.theback}  >
-                <img src={i.image.default}  alt="" style={{width : "100%" , opacity: "0.5" , position:"absolute" , left:"0" , top:"0" , alignContent:"center" , marginLeft:"auto" , marginRight:"auto"}}  onClick={() => history.push("/dashboard/model/modelpage")} />
-                <div style ={{position : "relative" , width:"40%" , height:"20%" , background:"red" , top:"38%" , left:"28%"}}></div>
+                <img src={i.image.default}  alt="" style={{width : "100%" , opacity: "0.5" , position:"absolute" , left:"0" , top:"0" , alignContent:"center" , marginLeft:"auto" , marginRight:"auto"}}  />
+                <div style ={{position : "relative" , width:"40%" , height:"20%" , background:"red" , top:"38%" , left:"28%"}} onClick={() => history.push("/dashboard/model/modelpage")} >
+                  click to use this model
+                </div>
             </div>
           </div>
           </div>

@@ -126,7 +126,7 @@ function CreateLabels({ changeStep }: Change) {
     // if (response.status === 201) {
     //   const res = await response.json();
 
-    //   changeStep(2, parseInt(modelId));
+      changeStep(3, parseInt(modelId));
 
     //   return true;
     // } else return false;
