@@ -18,6 +18,7 @@ function LoginCard() {
     id: number;
     token: string;
     name: string;
+    email: string;
   }
   // const history = useHistory();
   const value = useContext(AuthContext);
@@ -50,6 +51,7 @@ function LoginCard() {
         id: result.user.id,
         name: result.user.name,
         token: result.token,
+        email: result.user.email,
       };
       value.setData(data);
       return true;

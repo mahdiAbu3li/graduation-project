@@ -1,0 +1,44 @@
+.container {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  display: grid;
+  grid-template-columns: minmax(500px, 1fr) minmax(500px, 1fr);
+  height: 100%;
+}
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 500px; */
+  /* background-color: antiquewhite; */
+}
+
+.passwordContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  /* align-self: flex-start; */
+  color: #7e7c7c;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* background-color: aqua; */
+
+  height: 400px;
+}
+
+.password {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 400px;
+}
