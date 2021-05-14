@@ -8,12 +8,13 @@ const AuthController: React.FC<{}> = ({ children }) => {
     id: number;
     token: string;
     name: string;
+    email: string;
   }
   const isLoginLoc = window.localStorage.getItem("isLogin");
   const dataLoc = window.localStorage.getItem("data");
   const [isLogin, setIsLogin] = useState(isLoginLoc ? isLoginLoc : "false");
   const [data, setdata] = useState<Data>(
-    dataLoc ? JSON.parse(dataLoc) : { id: 0, name: "", token: "" }
+    dataLoc ? JSON.parse(dataLoc) : { id: 0, name: "", token: "", email: "" }
   );
 
   const onLogin = () => {
