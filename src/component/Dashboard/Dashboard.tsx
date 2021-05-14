@@ -11,7 +11,7 @@ import CreateNewModel from "../CreateNewModel/CreateNewModel";
 import ModelsRout from "../ModelRout/ModelRoute";
 import Settings from "../Settings/Settings";
 
-// import ModelPage from "../ModelPage/ModelPage";
+import ModelPage from "../ModelPage/ModelPage";
 
 function Dashboard() {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -98,6 +98,7 @@ function Dashboard() {
             <Route path="/dashboard/setting">
               <Settings />
             </Route>
+            {/* <Route path="/dashboard/setting">setting</Route>  */}
           </Switch>
         </div>
       </div>
