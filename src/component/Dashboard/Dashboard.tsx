@@ -98,6 +98,7 @@ function Dashboard() {
             <Route path="/dashboard/setting">
               <Settings />
             </Route>
+            {/* <Route path="/dashboard/setting">setting</Route>  */}
           </Switch>
         </div>
       </div>

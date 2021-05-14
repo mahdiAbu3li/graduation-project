@@ -37,7 +37,7 @@
   width: 100%;
 }
 .annotation_container {
-  border: 1px solid red;
+  border: 1px solid #cccccc;
   overflow-y: scroll;
   /* display: flex; */
   /* margin: auto; */
@@ -47,9 +47,6 @@
   width: 100%;
   height: 100%;
   margin: auto;
-
-  border: 1px solid red;
-
 }
 .div2 {
   position: relative;
@@ -72,11 +69,3 @@
   font-size: 16px;
   margin: 10px 0;
 }
-
-.ReactPictureAnnotation{
-  border: 1px solid red;
-  /* fontSize: 12,  */
-  background-color: royalblue;
-
-}
-
