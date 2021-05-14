@@ -9,20 +9,20 @@ import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
 
 import ReactImageAnnotate from "react-image-annotate";
 
-
-
 function Labelling() {
-
-  const values = React.useContext(AuthContext);//2
+  const values = React.useContext(AuthContext); //2
 
   const [files, setFiles] = useState([]);
   // const [annotationData, setAnnotationData] = useState();
 
-  React.useEffect(() => {// بس لما تتحمل الصفحة اول مرة
-    const url = "https://graduationprojectt.herokuapp.com/api/images/predict/57?user_id=1";//req url
+  React.useEffect(() => {
+    // بس لما تتحمل الصفحة اول مرة
+    const url =
+      "https://graduationprojectt.herokuapp.com/api/images/predict/57?user_id=1"; //req url
     fetch(url, {
       method: "get",
-      headers: {//the same
+      headers: {
+        //the same
         Authorization: `Bearer ${values.data.token}`,
         "Content-Type": "application/json",
       },
@@ -31,7 +31,7 @@ function Labelling() {
       .then((data) => {
         if (data.length > 0) {
           //   console.log(
-              // data.resources.length,
+          // data.resources.length,
           //     "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
           //   );
 
@@ -40,55 +40,52 @@ function Labelling() {
       });
   }, [values.data.token]);
 
-  interface Text {
-
-  }
-
   const [texts, setTexts] = useState<Array<any>>();
 
-
   const setLabels = async (name: string, regions: any) => {
-    var newArr = [] as any
+    var newArr = [] as any;
     // console.log("region in set label", regions)
     regions.map((region: any) => {
-      newArr.push(
-        {
-          cls: region.cls,
-          color: region.color,
-          editingLabels: true,
-          h: region.h * activeImage2.height,
-          highlighted: true,
-          id: region.id,
-          type: "box",
-          // tags: ["tag2"],
-          w: region.w * activeImage2.width, "x": region.x * activeImage2.width, "y": region.y * activeImage2.height
-        }
-      )
+      newArr.push({
+        cls: region.cls,
+        color: region.color,
+        editingLabels: true,
+        h: region.h * activeImage2.height,
+        highlighted: true,
+        id: region.id,
+        type: "box",
+        // tags: ["tag2"],
+        w: region.w * activeImage2.width,
+        x: region.x * activeImage2.width,
+        y: region.y * activeImage2.height,
+      });
       return null;
-    })
-
+    });
 
     var payload = {
       json: "[{name:farah}]",
       image: name,
       labels: newArr,
-      user_id: 1
-
+      user_id: 1,
     };
 
     var data = new FormData();
 
     data.append("nodes", JSON.stringify(payload));
 
-    const url = "https://graduationprojectt.herokuapp.com/api/verify/57?image="+name+"&json="+  "{\"a\" : 5}"  +"&labels="+newArr+"&user_id=1";//req url
+    const url =
+      "https://graduationprojectt.herokuapp.com/api/verify/57?image=" +
+      name +
+      '&json={"a" : 5}&labels=' +
+      newArr +
+      "&user_id=1"; //req url
 
-    console.log("data")
+    console.log("data");
     //   for (var key of data.entries()) {
     //     console.log(key[0] + ', ' + key[1]);
     // }
     fetch(url, {
       method: "get",
-     
     })
       .then((res) => res.json())
       .then((data) => {
@@ -97,38 +94,34 @@ function Labelling() {
           //     data.resources.length,
           //     "mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
           //   );
-          
           // setFiles(data.resources);
         } else return false;
       });
-  }
-  
+  };
+
   function Anotate() {
     return (
       <ReactImageAnnotate
         labelImages
         regionClsList={["Name", "Major", "ID", "Date"]}
         regionTagList={["tag1", "tag2", "tag3"]}
-
         images={[
           {
             src: activeImage2.src,
             name: activeImage2.name,
 
-            regions: activeImage2.regions
-          }
+            regions: activeImage2.regions,
+          },
         ]}
         enabledTools={["create-box"]}
         allowComments={true}
         onExit={(a: any) => {
-
-          console.log("a in exit" , a)
+          console.log("a in exit", a);
           setLabels(a.images[0].name, a.images[0].regions);
         }}
       />
     );
   }
-
 
   interface ActiveImage2 {
     src: string;
@@ -138,40 +131,41 @@ function Labelling() {
     height: number;
   }
 
+  const [activeImage2, setActiveImage2] = useState<ActiveImage2>({
+    src: "https://placekitten.com/408/287",
+    name: "Image 1",
+    regions: [],
+    width: 20,
+    height: 20,
+  });
 
- 
-  const [activeImage2, setActiveImage2] = useState<ActiveImage2>({ src: "https://placekitten.com/408/287", name: "Image 1", regions: [], width: 20, height: 20 });
-
-
-  const[json , setJson] = useState();
+  // const[json , setJson] = useState();
   function setSelectedImage(name: string) {
-
-    const url = "https://graduationprojectt.herokuapp.com/api/predictfile/labels/57?image="+name+"&user_id=1";//req url
+    const url =
+      "https://graduationprojectt.herokuapp.com/api/predictfile/labels/57?image=" +
+      name +
+      "&user_id=1"; //req url
     console.log("name of imageee", name);
     fetch(url, {
       method: "get",
-      headers: {//the same
+      headers: {
+        //the same
         Authorization: `Bearer ${values.data.token}`,
         // "Content-Type": "application/json",
       },
     })
-
       .then((res) => res.json())
       .then((data) => {
-        console.log(
-
-          (data[0].labels),
-          "Yes Yes Yes Yes Yes"
-        );
+        console.log(data[0].labels, "Yes Yes Yes Yes Yes");
         var newArr = [] as any;
 
-        console.log("data in setSelected ", data)
-        console.log("data[1] in setSelected", data[1])
+        console.log("data in setSelected ", data);
+        console.log("data[1] in setSelected", data[1]);
         if (data.length !== 0 && data[0].labels !== null) {
           /*eslint-disable no-eval */
           // console.log("true");
 
-          console.log("data[0] .labels" , data[0].labels[0])
+          console.log("data[0] .labels", data[0].labels[0]);
           //@ts-ignore;
           var labels = eval(data[0].labels[0]);
           //@ts-ignore;
@@ -184,43 +178,46 @@ function Labelling() {
 
           const arr = [];
           for (const [key, value] of Object.entries(text)) {
-            console.log("key value in setSelected ",key, "  ", value);
+            console.log("key value in setSelected ", key, "  ", value);
             //@ts-ignore;
-            value.push(key)
-            arr.push(value)
+            value.push(key);
+            arr.push(value);
           }
 
-          console.log("arr in setSelected", arr)
+          console.log("arr in setSelected", arr);
           setTexts(arr);
 
           labels.map((region: any) => {
-            console.log("reagion csl :" ,region.cls)
-            newArr.push(
-              {
-                cls: region.cls,
-                color:"red",
-                editingLabels: true,
-                h: region.h / activeImage2.height,
-                highlighted: true,
-                id: region.id,
-                type: "box",
-                // tags: ["tag2"],
-                w: region.w / activeImage2.width, "x": region.x / activeImage2.width, "y": region.y / activeImage2.height
-
-              }
-            )
+            console.log("reagion csl :", region.cls);
+            newArr.push({
+              cls: region.cls,
+              color: "red",
+              editingLabels: true,
+              h: region.h / activeImage2.height,
+              highlighted: true,
+              id: region.id,
+              type: "box",
+              // tags: ["tag2"],
+              w: region.w / activeImage2.width,
+              x: region.x / activeImage2.width,
+              y: region.y / activeImage2.height,
+            });
             return null;
-          })
-        }
-        else {
+          });
+        } else {
           newArr = [];
           // console.log("false");
         }
         // console.log("abu 3li new arr in setSelected", newArr)
 
-        setActiveImage2({ src: activeImage2.src, name: name, regions: newArr, width: activeImage2.width, height: activeImage2.height })
+        setActiveImage2({
+          src: activeImage2.src,
+          name: name,
+          regions: newArr,
+          width: activeImage2.width,
+          height: activeImage2.height,
+        });
       });
-
   }
 
   // console.log(files , 123456789)
@@ -228,12 +225,14 @@ function Labelling() {
   return (
     <div className={styles.container}>
       <div className={styles.images_container}>
-        {files?.map((file: any) => (//files
+        {files?.map((
+          file: any //files
+        ) => (
           <div
-            className={`${styles.images} ${file.url === activeImage2?.src ? styles.active : ""
-              }`}
+            className={`${styles.images} ${
+              file.url === activeImage2?.src ? styles.active : ""
+            }`}
             key={file.public_id.split("/")[5]}
-
           >
             <img
               src={file.url}
@@ -248,15 +247,13 @@ function Labelling() {
                 // })
 
                 // console.log(file.public_id.split("/")[5])
-                setSelectedImage(file.public_id.split("/")[5])
+                setSelectedImage(file.public_id.split("/")[5]);
 
-                activeImage2.height = file.height
-                activeImage2.width = file.width
-                activeImage2.src = file.url
-              }
-              }
+                activeImage2.height = file.height;
+                activeImage2.width = file.width;
+                activeImage2.src = file.url;
+              }}
             />
-
           </div>
         ))}
       </div>
@@ -270,22 +267,14 @@ function Labelling() {
       </div>
       <div className={styles.labels_container}>
         <h1>Labels</h1>
-        {
-          texts?.map((item, index) =>
-          (
-            <>
-              
-                <div className={styles.label} >
-                  <pre>{item[2]}</pre>
-                  <pre>{item[0]}</pre>
-                </div>
-              
-              
-            </>
-          )
-          )
-        }
-
+        {texts?.map((item, index) => (
+          <>
+            <div className={styles.label}>
+              <pre>{item[2]}</pre>
+              <pre>{item[0]}</pre>
+            </div>
+          </>
+        ))}
       </div>
     </div>
   );
