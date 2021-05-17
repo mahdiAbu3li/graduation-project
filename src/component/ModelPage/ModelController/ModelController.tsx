@@ -1,8 +1,6 @@
 import React, {  useState } from "react";
-import styles from "./DescriptionStyles.module.css";
+import styles from "./ModelController.module.css";
 // import  Chart1  from '../Description/Chart1';
-import Chart1 from "./Chart1";
-import Chart2 from "./Chart2";
 
 // import { FaCircle } from "react-icons/fa";
 // import { RiDeleteBin5Fill } from "react-icons/all";
@@ -18,7 +16,7 @@ import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
 
 
 
-const Description = () => {
+const ModelController = () => {
   // const history = useHistory();
   // const [file, setFile] = useState([]);
 
@@ -114,21 +112,7 @@ const Description = () => {
 
         </div>
 
-        <div className={styles.chartAndPic}>
-        <div className={styles.chart}>
-          <Chart1 />
-        </div>
-
-        <div className={styles.picContainer}>
-          <img src=  {mahdi}  alt="" className={styles.pic}/>
-        </div>
-
-        </div>
-
-        <div>
-          <Chart2/>
-
-        </div>
+    
 
         
 
@@ -137,4 +121,4 @@ const Description = () => {
   );
 };
 
-export default Description;
+export default ModelController;
