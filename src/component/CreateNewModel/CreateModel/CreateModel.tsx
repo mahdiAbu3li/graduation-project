@@ -6,6 +6,8 @@ import Button from "@material-ui/core/Button";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext";
 import mahdi from "../../../assets/images/login.png";
 import CircularProgress from "@material-ui/core/CircularProgress";
+// import { CheckboxWithLabel } from "formik-material-ui";
+import MenuItem from "@material-ui/core/MenuItem";
 
 // const MyInput = ({ field, form, ...props }: any) => {
 //   return (
@@ -16,27 +18,34 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 interface Change {
   changeStep: (a: number, b: number) => void;
 }
+const options = ["invoices", "paper", "government paper"];
 function CreateModel({ changeStep }: Change) {
   const [image, setImage] = useState<File>();
   const [urlImage, setUrlImage] = useState("");
   const [modelID] = useState(1);
+  const [selected, setSelected] = useState("invoices");
   const values = useContext(AuthContext);
   const initialValues = {
     name: "",
     short_description: "",
     long_description: "",
     image: "",
+    public: "",
+    sel: "",
   };
   interface Values {
     name: string;
     short_description: string;
     long_description: string;
     image: string;
+    public: string;
+    sel: string;
   }
   const createRequest = async (
     name: string,
     short_description: string,
-    description: string
+    description: string,
+    isPublic: string
   ) => {
     // const data = {
     //   name: name,
@@ -46,11 +55,14 @@ function CreateModel({ changeStep }: Change) {
     // };
     const data = new FormData();
     console.log(image);
+    if (isPublic === "true") data.append("public_state", "1");
+    else data.append("public_state", "0");
     data.append("name", name);
     data.append("short_description", short_description);
     data.append("description", description);
     data.append("image", image ? image : "");
     data.append("owner_id", values.data.id.toString());
+    data.append("type", selected);
 
     const url = "https://graduationprojectt.herokuapp.com/api/model";
     const response = await fetch(url, {
@@ -84,6 +96,9 @@ function CreateModel({ changeStep }: Change) {
       reader.readAsDataURL(e.target.files[0]);
     }
   };
+  const handleChosen = (value: string) => {
+    setSelected(value);
+  };
   console.log(modelID, "mahdiimad");
   return (
     <div className={styles.container}>
@@ -101,13 +116,17 @@ function CreateModel({ changeStep }: Change) {
             if (!values.short_description) {
               errors.short_description = "Required";
             }
+            if (!values.sel) {
+              errors.sel = "Required";
+            }
             return errors;
           }}
           onSubmit={(values, { setSubmitting, setErrors }) => {
             createRequest(
               values.name,
               values.short_description,
-              values.long_description
+              values.long_description,
+              values.public
             );
             setSubmitting(false);
           }}
@@ -150,6 +169,49 @@ function CreateModel({ changeStep }: Change) {
                 rows={4}
                 rowsMax={4}
               />
+              <Field
+                variant="outlined"
+                label="type"
+                className={styles.inputField}
+                component={TextField}
+                id="s"
+                name="sel"
+                value={selected}
+                select
+                InputProps={{
+                  onChange: (e: React.ChangeEvent<{ value: string }>) =>
+                    handleChosen(e.target.value),
+                }}
+              >
+                {options.map((item, index2) => (
+                  <MenuItem key={index2} value={item}>
+                    {item}
+                  </MenuItem>
+                ))}
+              </Field>
+              <div className={styles.publicContainer}>
+                {/* <Field
+                  className={styles.inputField}
+                  component={CheckboxWithLabel}
+                  type="checkbox"
+                  name="public"
+                  Label={{ label: "public" }}
+                  value="public"
+                  variant="outlined"
+                /> */}
+                <label>
+                  <Field
+                    className={styles.checkbox}
+                    type="checkbox"
+                    name="public"
+                  />
+                  <p>public</p>
+                </label>
+                <p>
+                  when your model is public any one can access and requests to
+                  use it{" "}
+                </p>
+              </div>
               <input
                 type="file"
                 accept="images/*"

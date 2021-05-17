@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./fileVerStyles.module.css";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
+import Labels from "./Labels/Labels";
 // import {
 //   ReactPictureAnnotation,
 //   defaultShapeStyle,
@@ -40,7 +41,7 @@ function Labelling() {
       });
   }, [values.data.token]);
 
-  const [texts, setTexts] = useState<Array<any>>();
+  const [texts, setTexts] = useState<Array<Array<string>>>([[""]]);
 
   const setLabels = async (name: string, regions: any) => {
     var newArr = [] as any;
@@ -80,7 +81,7 @@ function Labelling() {
       newArr +
       "&user_id=1"; //req url
 
-    console.log("data");
+    // console.log("data");
     //   for (var key of data.entries()) {
     //     console.log(key[0] + ', ' + key[1]);
     // }
@@ -116,7 +117,7 @@ function Labelling() {
         enabledTools={["create-box"]}
         allowComments={true}
         onExit={(a: any) => {
-          console.log("a in exit", a);
+          // console.log("a in exit", a);
           setLabels(a.images[0].name, a.images[0].regions);
         }}
       />
@@ -145,7 +146,7 @@ function Labelling() {
       "https://graduationprojectt.herokuapp.com/api/predictfile/labels/57?image=" +
       name +
       "&user_id=1"; //req url
-    console.log("name of imageee", name);
+    // console.log("name of imageee", name);
     fetch(url, {
       method: "get",
       headers: {
@@ -156,31 +157,32 @@ function Labelling() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data[0].labels, "Yes Yes Yes Yes Yes");
+        // console.log(data[0].labels, "Yes Yes Yes Yes Yes");
         var newArr = [] as any;
 
-        console.log("data in setSelected ", data);
-        console.log("data[1] in setSelected", data[1]);
+        // console.log("data in setSelected ", data);
+        // console.log("data[1] in setSelected", data[1]);
         if (data.length !== 0 && data[0].labels !== null) {
           /*eslint-disable no-eval */
           // console.log("true");
 
-          console.log("data[0] .labels", data[0].labels[0]);
+          // console.log("data[0] .labels", data[0].labels[0]);
           //@ts-ignore;
           var labels = eval(data[0].labels[0]);
           //@ts-ignore;
-          console.log(" labels :eval data[0] in setSelected ", labels);
+          // console.log(" labels :eval data[0] in setSelected ", labels);
 
           //@ts-ignore;
           var text = JSON.parse(data[1]);
           //@ts-ignore;
-          console.log(" text in setSelected ", text);
+          // console.log(" text in setSelected ", text);
 
-          const arr = [];
+          const arr = [] as string[][];
           for (const [key, value] of Object.entries(text)) {
             console.log("key value in setSelected ", key, "  ", value);
             //@ts-ignore;
             value.push(key);
+            //@ts-ignore;
             arr.push(value);
           }
 
@@ -188,7 +190,7 @@ function Labelling() {
           setTexts(arr);
 
           labels.map((region: any) => {
-            console.log("reagion csl :", region.cls);
+            // console.log("reagion csl :", region.cls);
             newArr.push({
               cls: region.cls,
               color: "red",
@@ -219,7 +221,15 @@ function Labelling() {
         });
       });
   }
-
+  // const changeValue = (
+  //   e: React.ChangeEvent<HTMLInputElement>,
+  //   index: number
+  // ) => {
+  //   const arr = [...texts];
+  //   arr[index][0] = e.target.value;
+  //   setTexts(arr);
+  //   console.log(e.target.value);
+  // };
   // console.log(files , 123456789)
   // console.log("text out", texts)
   return (
@@ -260,12 +270,12 @@ function Labelling() {
       <div className={styles.annotation_container}>
         <div className={styles.div1}>
           <div>
-            <Anotate></Anotate>
+            <Anotate />
           </div>
         </div>
         {/* </div> */}
       </div>
-      <div className={styles.labels_container}>
+      {/* <div className={styles.labels_container}>
         <h1>Labels</h1>
         {texts?.map((item, index) => (
           <>
@@ -275,7 +285,8 @@ function Labelling() {
             </div>
           </>
         ))}
-      </div>
+      </div> */}
+      <Labels key={activeImage2.name} labels={texts} name={activeImage2.name} />
     </div>
   );
 }

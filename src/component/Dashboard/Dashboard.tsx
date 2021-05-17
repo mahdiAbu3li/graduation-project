@@ -10,6 +10,7 @@ import CreateNewModel from "../CreateNewModel/CreateNewModel";
 
 import ModelsRout from "../ModelRout/ModelRoute";
 import Settings from "../Settings/Settings";
+// import AllModels from "../AllModels/AllModels";
 
 // import ModelPage from "../ModelPage/ModelPage";
 
@@ -70,6 +71,20 @@ function Dashboard() {
                 setting
               </span>
             </div>
+
+            <div
+              className={`${styles.item} ${isOpen ? styles.close_item : ""}`}
+              onClick={() => goTo("/dashboard/AllModels")}
+            >
+              <div
+                className={`${styles.icon} ${isOpen ? styles.close_icon : ""}`}
+              >
+                <IoMdSettings />
+              </div>
+              <span className={` ${isOpen ? styles.close_span : ""}`}>
+                All Models
+              </span>
+            </div>
           </div>
 
           <div
@@ -98,6 +113,9 @@ function Dashboard() {
             <Route path="/dashboard/setting">
               <Settings />
             </Route>
+
+            <Route path="/dashboard/AllModels">{/* <AllModels /> */}</Route>
+
             {/* <Route path="/dashboard/setting">setting</Route>  */}
           </Switch>
         </div>

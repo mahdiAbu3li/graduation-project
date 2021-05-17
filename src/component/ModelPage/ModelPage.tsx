@@ -301,7 +301,7 @@ const ModelPage = () => {
             <span
               className={styles.tap}
               onClick={() =>
-                history.push("/dashboard/model/modelpage/description")
+                history.push("/dashboard/model/modelpage/"+modelId+"/description")
               }
             >
               Model Description

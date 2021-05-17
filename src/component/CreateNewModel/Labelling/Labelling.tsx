@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./LabellingStyles.module.css";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
+// import Labels from "../../ModelPage/fileVerification/Labels/Labels";
 // import {
 //   ReactPictureAnnotation,
 //   defaultShapeStyle,
@@ -62,13 +63,13 @@ function Labelling() {
       });
   }, [values.data.token]);
 
-  const [texts, setTexts] = useState<Array<any>>();
+  const [texts, setTexts] = useState<Array<Array<string>>>([[""]]);
   // console.log(JSON.stringify(annotationData));
   const setLabels = async (name: string, regions: any) => {
     var newArr = [] as any;
 
-    console.log("h", activeImage2.height);
-    console.log("region ", regions);
+    // console.log("h", activeImage2.height);
+    // console.log("region ", regions);
     regions.map((region: any) => {
       newArr.push({
         cls: region.cls,
@@ -85,7 +86,7 @@ function Labelling() {
       });
       return null;
     });
-
+    // console.log(newArr, "newww");
     var payload = {
       src: "",
       name: name,
@@ -99,7 +100,7 @@ function Labelling() {
     const url =
       "https://graduationprojectt.herokuapp.com/api/object_map_labeling/171 "; //req url
 
-    console.log("data");
+    // console.log("data");
     //   for (var key of data.entries()) {
     //     console.log(key[0] + ', ' + key[1]);
     // }
@@ -113,7 +114,34 @@ function Labelling() {
         // "Accept": "application/json",
       },
     });
-    console.log("res", await response.json());
+    // console.log("res", await response.json());
+    const res = await response.json();
+
+    /*eslint-disable no-eval */
+    console.log("true");
+    //@ts-ignore;
+    // console.log("data[0] ", res[0]);
+    // var labels = eval(res[0].labels);
+    //@ts-ignore;
+    // console.log(" labels :eval data[0] in setSelected ", labels);
+
+    //@ts-ignore;
+    var text = JSON.parse(res);
+    //@ts-ignore;
+    console.log(" texe", text);
+
+    const arr = [] as string[][];
+    for (const [key, value] of Object.entries(text)) {
+      console.log(key, "  ", value);
+      //@ts-ignore;
+      value.push(key);
+      //@ts-ignore;
+      arr.push(value);
+    }
+
+    console.log(arr, "mahdi");
+    //@ts-ignore;
+    setTexts(arr);
   };
 
   function Anotate() {
@@ -149,7 +177,7 @@ function Labelling() {
         enabledTools={["create-box"]}
         allowComments={true}
         onExit={(a: any) => {
-          console.log(a);
+          // console.log(a);
           setLabels(a.images[0].name, a.images[0].regions);
         }}
       />
@@ -210,14 +238,17 @@ function Labelling() {
           //@ts-ignore;
           console.log(" texe", text);
 
-          const arr = [];
+          const arr = [] as string[][];
           for (const [key, value] of Object.entries(text)) {
             console.log(key, "  ", value);
-            arr.push(key);
+            //@ts-ignore;
+            value.push(key);
+            //@ts-ignore;
             arr.push(value);
           }
 
           console.log(arr, "mahdi");
+          //@ts-ignore;
           setTexts(arr);
 
           labels.map((region: any) => {
@@ -292,23 +323,19 @@ function Labelling() {
             <Anotate></Anotate>
           </div>
         </div>
-        {/* </div> */}
       </div>
       <div className={styles.labels_container}>
         <h1>Labels</h1>
         {texts?.map((item, index) => (
           <>
-            {index % 2 === 0 ? (
-              <div className={styles.label} style={{ color: "{$'item[1]'}" }}>
-                <pre>{index % 2 === 0 ? item : ""}</pre>
-              </div>
-            ) : (
-              ""
-            )}
-            <pre>{index % 2 !== 0 ? item[1] : ""}</pre>
+            <div className={styles.label} style={{ color: "{$'item[1]'}" }}>
+              <p>{item[2]}</p>
+              <p>{item[0]}</p>
+            </div>
           </>
         ))}
       </div>
+      {/* <Labels key={activeImage2.name} labels={texts} name={activeImage2.name} /> */}
     </div>
   );
 }

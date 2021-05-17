@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./ModelsStyles.module.css";
+import styles from "./AllModelsStyles.module.css";
 // import {FaCircle } from "react-icons/fa";
 import { IoEllipse } from "react-icons/io5";
 
@@ -7,7 +7,7 @@ import { IoEllipse } from "react-icons/io5";
 import { useHistory } from "react-router";
 // import ModelPage from "../ModelPage/ModelPage";
 import { AuthContext } from "../../Contexts/AuthContext/AuthContext";
-const myModels = [
+const AllModels = [
   {
     name: "invoice 1",
     id: "1",
@@ -229,7 +229,7 @@ const Models = () => {
                 </div>
                 <div className={styles.theback}>
                   <img
-                    src={myModels[0].image.default}
+                    src={AllModels[0].image.default}
                     alt=""
                     style={{
                       width: "100%",
@@ -270,4 +270,4 @@ const Models = () => {
   );
 };
 
-export default Models;
+export default AllModels;

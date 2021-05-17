@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import styles from "./DescriptionStyles.module.css";
+import styles from "./ModelController.module.css";
 // import  Chart1  from '../Description/Chart1';
-import Chart1 from "./Chart1";
-import Chart2 from "./Chart2";
 
 // import { FaCircle } from "react-icons/fa";
 // import { RiDeleteBin5Fill } from "react-icons/all";
@@ -11,12 +9,12 @@ import Chart2 from "./Chart2";
 // import { AiOutlineCheckCircle } from "react-icons/all";
 // import { useHistory } from "react-router";
 // import login from "../../assets/images/login.png";
-import mahdi from "../../../assets/images/img6.jpg";
+// import mahdi from "../../../assets/images/img6.jpg"
 // import { GrStatusDisabledSmall } from "react-icons/gr";
 
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
 
-const Description = () => {
+const ModelController = () => {
   // const history = useHistory();
   // const [file, setFile] = useState([]);
 
@@ -94,23 +92,9 @@ const Description = () => {
             </div>
           </div>
         </div>
-
-        <div className={styles.chartAndPic}>
-          <div className={styles.chart}>
-            <Chart1 />
-          </div>
-
-          <div className={styles.picContainer}>
-            <img src={mahdi} alt="" className={styles.pic} />
-          </div>
-        </div>
-
-        <div>
-          <Chart2 />
-        </div>
       </div>
     </div>
   );
 };
 
-export default Description;
+export default ModelController;
