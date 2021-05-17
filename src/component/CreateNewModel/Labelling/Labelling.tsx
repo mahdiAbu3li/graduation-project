@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./LabellingStyles.module.css";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
-import Labels from "../../ModelPage/fileVerification/Labels/Labels";
+// import Labels from "../../ModelPage/fileVerification/Labels/Labels";
 // import {
 //   ReactPictureAnnotation,
 //   defaultShapeStyle,

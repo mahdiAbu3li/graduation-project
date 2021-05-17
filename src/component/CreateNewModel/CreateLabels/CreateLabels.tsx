@@ -4,7 +4,7 @@ import { Formik, Form, Field, FormikProps } from "formik";
 import { TextField } from "formik-material-ui";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import MenuItem from "@material-ui/core/MenuItem";
+// import MenuItem from "@material-ui/core/MenuItem";
 import { useParams } from "react-router-dom";
 import { AiOutlineMinusCircle } from "react-icons/ai";
 import rightImage from "../../../assets/images/c2.svg";
@@ -25,30 +25,30 @@ function CreateLabels({ changeStep }: Change) {
   ]);
   const values = useContext(AuthContext);
   // const [Color, setColor] = useState("#4363d8");
-  const colors = [
-    "#e6194b",
-    "#3cb44b",
-    "#ffe119",
-    "#4363d8",
-    "#f58231",
-    "#911eb4",
-    "#46f0f0",
-    "#f032e6",
-    "#bcf60c",
-    "#fabebe",
-    "#008080",
-    "#e6beff",
-    "#9a6324",
-    "#fffac8",
-    "#800000",
-    "#aaffc3",
-    "#808000",
-    "#ffd8b1",
-    "#000075",
-    "#808080",
-    "#ffffff",
-    "#000000",
-  ];
+  // const colors = [
+  //   "#e6194b",
+  //   "#3cb44b",
+  //   "#ffe119",
+  //   "#4363d8",
+  //   "#f58231",
+  //   "#911eb4",
+  //   "#46f0f0",
+  //   "#f032e6",
+  //   "#bcf60c",
+  //   "#fabebe",
+  //   "#008080",
+  //   "#e6beff",
+  //   "#9a6324",
+  //   "#fffac8",
+  //   "#800000",
+  //   "#aaffc3",
+  //   "#808000",
+  //   "#ffd8b1",
+  //   "#000075",
+  //   "#808080",
+  //   "#ffffff",
+  //   "#000000",
+  // ];
   const initialValues = {
     data: [{ label: "", color: "" }],
   };
@@ -63,13 +63,13 @@ function CreateLabels({ changeStep }: Change) {
   const addLabel = () => {
     setData([...data, { label: "", color: "#4363d8", model_id: modelId }]);
   };
-  const handleColor = (index: number, color: string) => {
-    const newData = [...data];
-    const item = { ...data[index] };
-    item.color = color;
-    newData[index] = item;
-    setData(newData);
-  };
+  // const handleColor = (index: number, color: string) => {
+  //   const newData = [...data];
+  //   const item = { ...data[index] };
+  //   item.color = color;
+  //   newData[index] = item;
+  //   setData(newData);
+  // };
 
   const handleDelete = (index: number) => {
     const newData = [...data];
@@ -189,7 +189,7 @@ function CreateLabels({ changeStep }: Change) {
                         }}
                       />
                     </div>
-                    <Field
+                    {/* <Field
                       component={TextField}
                       id="s"
                       name={`color${index}`}
@@ -211,7 +211,7 @@ function CreateLabels({ changeStep }: Change) {
                           ></div>
                         </MenuItem>
                       ))}
-                    </Field>
+                    </Field> */}
                   </div>
                 ))}
               </div>
