@@ -15,15 +15,16 @@ function CreateNewModel() {
   const [modelId, setModelId] = useState(mod ? mod : 0);
   let { path } = useRouteMatch();
   React.useEffect(() => {
+    // alert(1);
     if (step === 0) {
       history.push("/dashboard/create/create");
       window.localStorage.setItem("step", "0");
-    } else if (step === 1) {
-      history.push("/dashboard/create/upload/" + modelId);
-      window.localStorage.setItem("step", "1");
     } else if (step === 2) {
-      history.push("/dashboard/create/labels/" + modelId);
+      history.push("/dashboard/create/upload/" + modelId);
       window.localStorage.setItem("step", "2");
+    } else if (step === 1) {
+      history.push("/dashboard/create/labels/" + modelId);
+      window.localStorage.setItem("step", "1");
     } else if (step === 3) {
       history.push("/dashboard/create/training/" + modelId);
       window.localStorage.setItem("step", "3");
@@ -43,9 +44,9 @@ function CreateNewModel() {
           className={styles.stepper}
           stepClassName={styles.step}
         >
-          <Step label="create label" onClick={() => setStep(0)} />
-          <Step label="upload images" onClick={() => setStep(1)} />
-          <Step label="create labels" onClick={() => setStep(2)} />
+          <Step label="create Model" onClick={() => setStep(0)} />
+          <Step label="create labels" onClick={() => setStep(1)} />
+          <Step label="upload images" onClick={() => setStep(2)} />
           <Step label="training" onClick={() => setStep(3)} />
         </Stepper>
       </div>
