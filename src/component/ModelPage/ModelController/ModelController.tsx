@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./ModelController.module.css";
+import { useParams } from "react-router-dom";
 // import  Chart1  from '../Description/Chart1';
 
 // import { FaCircle } from "react-icons/fa";
@@ -15,17 +16,69 @@ import styles from "./ModelController.module.css";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
 
 const ModelController = () => {
-  // const history = useHistory();
-  // const [file, setFile] = useState([]);
+
+  const accept = async (id:number)=>{
+    var data = new FormData();
+    data.append("accept", "1");
+ 
+    // console.log("json" , data)
+
+    const url =
+      "https://graduationprojectt.herokuapp.com/api/user_has_model/"+id+"?accept=1"; //req url
+      const response = await fetch(url, {
+      method: "PUT",
+        
+      headers: {
+        Authorization: `Bearer ${values.data.token}`,
+      },
+    }
+    )
+    const res = await response.json();
+    console.log(res);
+  }
+
+  const refuser = async (id:number)=>{
+    var data = new FormData();
+    data.append("accept", "1");
+ 
+    // console.log("json" , data)
+
+    const url =
+      "https://graduationprojectt.herokuapp.com/api/user_has_model/"+id+"?accept=2"; //req url
+      const response = await fetch(url, {
+      method: "PUT",
+        
+      headers: {
+        Authorization: `Bearer ${values.data.token}`,
+      },
+    }
+    )
+    const res = await response.json();
+    console.log(res);
+  }
+
+  interface request{
+    id:number;
+    user_id: number;
+    model_id: number;
+    accept: number;
+    end_date: string;
+    un_read: number;
+    name:string;
+    owner_id: number;
+
+  }
+  const [file, setFile] = useState<Array<request>>();
+  const { modelId } = useParams<{ modelId: string }>();
 
   const values = React.useContext(AuthContext); //2
-  const [annotationData] = useState();
+  
 
   React.useEffect(() => {
     // بس لما تتحمل الصفحة اول مرة
     const url =
-      "https://graduationprojectt.herokuapp.com/api/images/predict/57?user_id=" +
-      values.data.id; //req url
+      "https://graduationprojectt.herokuapp.com/api/get_uhm_by_model/" +
+      modelId; //req url
     fetch(url, {
       method: "get",
       headers: {
@@ -42,56 +95,37 @@ const ModelController = () => {
             data,
             "mmmmmmmmmmmmmmmmmmmmmmKKKKKKKKKKKKKmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
           );
-          // setFiles(data);
+          setFile(data);
         } else return false;
       });
   }, [values.data.id, values.data.token]);
-  console.log(JSON.stringify(annotationData));
+  console.log("file " , file);
 
+  const copyArray = file?.filter((item) => item.accept === 0);
   return (
     <div className={styles.container}>
-      <div>
-        <div className={styles.container_cards}>
-          <div className={styles.card}>
-            <div className={styles.inner}>
-              <div className={styles.outer}></div>
-              <div className={styles.cardText}>
-                <p className={styles.cardKey}>Using Time</p>
-                <p className={styles.cardValue}>300 time</p>
-              </div>
-            </div>
+      {modelId}
+      <div className={styles.requests_container}>
+      {copyArray?.map((file) => (
+        <div className={styles.requests}>
+          <div className={styles.request_name}>
+            {file.name}
+          </div>
+          
+
+          <div className={styles.request_accept} onClick={() => accept(file.id)}>
+            accept
+
           </div>
 
-          <div className={styles.card}>
-            <div className={styles.inner}>
-              <div className={styles.outer}></div>
-              <div className={styles.cardText}>
-                <p className={styles.cardKey}>Using Time</p>
-                <p className={styles.cardValue}>300 time</p>
-              </div>
-            </div>
+          <div className={styles.request_reject} onClick={() => refuser(file.id)}>
+            no
+
           </div>
 
-          <div className={styles.card}>
-            <div className={styles.inner}>
-              <div className={styles.outer}></div>
-              <div className={styles.cardText}>
-                <p className={styles.cardKey}>Using Time</p>
-                <p className={styles.cardValue}>300 time</p>
-              </div>
-            </div>
-          </div>
+        </div>))}
 
-          <div className={styles.card}>
-            <div className={styles.inner}>
-              <div className={styles.outer}></div>
-              <div className={styles.cardText}>
-                <p className={styles.cardKey}>Using Time</p>
-                <p className={styles.cardValue}>300 time</p>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   );

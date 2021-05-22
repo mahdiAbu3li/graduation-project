@@ -16,8 +16,7 @@
   /* background-color: #f4f7fe; */
   /* background: linear-gradient(rgb(122 176 251)0%, rgb(62 114 187) 10%, rgb(32 70 123) 50%,rgb(12 39 76) 100%); */
   
-  background: linear-gradient( rgb(12 39 76) 0%, rgb(32 70 123) 30% ,rgb(62 114 187) 80%,rgb(78 145 239) 100% );
-  color:#e8eeff; 
+  background: linear-gradient( rgb(12 39 76) 0%, rgb(32 70 123) 30% ,rgb(41 84 144) 80%,rgb(32 70 123) 100% );  color:#e8eeff; 
  
   border-right: 1px outset #cccccc;
   display: flex;

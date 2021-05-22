@@ -7,7 +7,8 @@ import { IoEllipse } from "react-icons/io5";
 import { useHistory } from "react-router";
 // import ModelPage from "../ModelPage/ModelPage";
 import { AuthContext } from "../../Contexts/AuthContext/AuthContext";
-const AllModels = [
+
+const myModels = [
   {
     name: "invoice 1",
     id: "1",
@@ -18,85 +19,7 @@ const AllModels = [
     using_time: 30,
     description:
       "Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor",
-  },
-  {
-    name: "invoice 2",
-    id: "2",
-    date: "12/5/1555",
-    color: "orange",
-    image: require("../../assets/images/img5.png"),
-    img_training: 40,
-    using_time: 30,
-    description:
-      "lum maxime quod deserunt eligendi tetur, Ducimus, repudiandae temporibus omntetur, Ducimus, repudiandae temporibus omndolo mus, rep Lorem ipsum dolor sit amet consectetur, Ducimus, rep Lorem ipsum dolor sit amet consectetur, Ducimus, repLorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserrep Lorem ipsum dolor sit amet consectetur, Ducimus, repLorem ipsum dolor sit amet consectetur, Ducimus, unt eligendi dolor",
-  },
-  {
-    name: "invoice 3",
-    id: "3",
-    date: "12/5/1555",
-    color: "orange",
-    image: require("../../assets/images/img6.jpg"),
-    img_training: 40,
-    using_time: 30,
-    description:
-      "amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor",
-  },
-  {
-    name: "invoice 4",
-    id: "1",
-    date: "12/5/1555",
-    color: "orange",
-    image: require("../../assets/images/img6.png"),
-    img_training: 40,
-    using_time: 30,
-    description:
-      "amet consudiandae temporibus omnis illum maxime quod deserunt eligendi dolor amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolorLorem  temporibus omnisdolor",
-  },
-  {
-    name: "invoice 5",
-    id: "2",
-    date: "12/5/1555",
-    color: "orange",
-    image: require("../../assets/images/img8.JPG"),
-    img_training: 40,
-    using_time: 30,
-    description:
-      "Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor",
-  },
-  {
-    name: "invoice 6",
-    id: "3",
-    date: "12/5/1555",
-    color: "orange",
-    image: require("../../assets/images/img3.png"),
-    img_training: 40,
-    using_time: 30,
-    description:
-      "Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor",
-  },
-  {
-    name: "invoice 8",
-    id: "1",
-    date: "12/5/1555",
-    color: "orange",
-    image: require("../../assets/images/img1.png"),
-    img_training: 40,
-    using_time: 30,
-    description:
-      " Lorem ipsum dolor sit amet consectetur, Ducimus, rep Lorem ipsum dolor sit amet consectetur, Ducimus, rep Lorem ipsum dolor sit amet consectetur, Ducimus, repLorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor",
-  },
-  {
-    name: "invoice 9",
-    id: "2",
-    date: "12/5/1555",
-    color: "orange",
-    image: require("../../assets/images/img2.png"),
-    img_training: 40,
-    using_time: 30,
-    description:
-      "Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor",
-  },
-];
+  }]
 
 const labels = [
   {
@@ -121,7 +44,7 @@ const labels = [
   },
 ];
 
-const Models = () => {
+const AllModels = () => {
   const history = useHistory();
   const values = React.useContext(AuthContext);
   interface Models {
@@ -142,8 +65,7 @@ const Models = () => {
   const [models, setModels] = useState<Array<Models>>();
   React.useEffect(() => {
     const url =
-      "https://graduationprojectt.herokuapp.com/api/show_model_user_owns/" +
-      values.data.id;
+      "https://graduationprojectt.herokuapp.com/api/public_model";
     fetch(url, {
       method: "get",
       headers: {
@@ -229,7 +151,7 @@ const Models = () => {
                 </div>
                 <div className={styles.theback}>
                   <img
-                    src={AllModels[0].image.default}
+                    src={myModels[0].image.default}
                     alt=""
                     style={{
                       width: "100%",
@@ -245,18 +167,11 @@ const Models = () => {
                   />
                   <div className={styles.backButtoContainer}
 
-
                   >
                     <div className={styles.backButton} onClick={() =>
-                      history.push("/dashboard/model/modelpage/" + i.id)
-                    }
-                    >Use Model</div>
-                    <div className={styles.backButton} onClick={() =>
-                      history.push("/dashboard/model/modelpage/" + i.id + "/description")
+                      history.push("/dashboard/Allmodels/" + i.id +"/modeldescription")
                     }>See Description</div>
-                    <div className={styles.backButton} onClick={() =>
-                      history.push("/dashboard/model/modelpage/" + i.id + "/controller")
-                    }>Control Model</div>
+                    
 
 
 

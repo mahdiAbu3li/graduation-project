@@ -228,9 +228,9 @@
 .backButtoContainer{
   position: relative;
   width: 50%;
-  height: 40%;
+  height: 13%;
   background: red;
-  top: 28%;
+  top: 45%;
   left: 28%;
   display: grid;
   cursor: pointer;
@@ -240,4 +240,7 @@
 }
 .backButton{
   border: blue solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

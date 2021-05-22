@@ -10,7 +10,7 @@ import CreateNewModel from "../CreateNewModel/CreateNewModel";
 
 import ModelsRout from "../ModelRout/ModelRoute";
 import Settings from "../Settings/Settings";
-// import AllModels from "../AllModels/AllModels";
+import AllModelsRout from "../AllModels/AllModelRoute";
 
 // import ModelPage from "../ModelPage/ModelPage";
 
@@ -114,7 +114,9 @@ function Dashboard() {
               <Settings />
             </Route>
 
-            <Route path="/dashboard/AllModels">{/* <AllModels /> */}</Route>
+            <Route path={["/dashboard/AllModels"]}>
+              <AllModelsRout />
+              </Route>
 
             {/* <Route path="/dashboard/setting">setting</Route>  */}
           </Switch>
