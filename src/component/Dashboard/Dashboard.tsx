@@ -4,7 +4,7 @@ import { AiFillHome } from "react-icons/ai";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoMdSettings } from "react-icons/io";
-import { Switch, Route, useHistory, useRouteMatch } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 // import Models from "../Models/Models";
 import CreateNewModel from "../CreateNewModel/CreateNewModel";
 
@@ -15,7 +15,6 @@ import Settings from "../Settings/Settings";
 // import ModelPage from "../ModelPage/ModelPage";
 
 function Dashboard() {
-  let match = useRouteMatch();
   const [isOpen, setIsOpen] = React.useState(false);
   const history = useHistory();
   const goTo = (path: string) => {

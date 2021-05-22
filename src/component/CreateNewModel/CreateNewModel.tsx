@@ -6,6 +6,7 @@ import { Stepper, Step } from "react-form-stepper";
 import Labelling from "../CreateNewModel/Labelling/Labelling";
 import CreateModel from "./CreateModel/CreateModel";
 import CreateLabels from "./CreateLabels/CreateLabels";
+import { AuthContext } from "../../Contexts/AuthContext/AuthContext";
 
 function CreateNewModel() {
   const history = useHistory();
@@ -14,8 +15,38 @@ function CreateNewModel() {
   const mod = window.localStorage.getItem("modelId");
   const [modelId, setModelId] = useState(mod ? mod : 0);
   let { path } = useRouteMatch();
+  const values = React.useContext(AuthContext);
+  // const changeState = (state: number) => {
+  //   const data = { state_id: state };
+  //   const url = "https://graduationprojectt.herokuapp.com/api/model/" + modelId;
+  //   fetch(url, {
+  //     method: "put",
+  //     body: JSON.stringify(data),
+  //     headers: {
+  //       Authorization: `Bearer ` + values.data.token,
+  //     },
+  //   });
+  // };
+
   React.useEffect(() => {
-    // alert(1);
+    const data = { state_id: step };
+    const url = "https://graduationprojectt.herokuapp.com/api/model/" + modelId;
+    const savedStep = window.localStorage.getItem("state");
+    if (savedStep !== null ? parseInt(savedStep) : -1 < step) {
+      alert(1);
+
+      fetch(url, {
+        method: "post",
+        body: JSON.stringify(data),
+        headers: {
+          Authorization: `Bearer ` + values.data.token,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data, "sttt");
+        });
+    }
     if (step === 0) {
       history.push("/dashboard/create/create");
       window.localStorage.setItem("step", "0");
@@ -29,7 +60,7 @@ function CreateNewModel() {
       history.push("/dashboard/create/training/" + modelId);
       window.localStorage.setItem("step", "3");
     }
-  }, [step, history, modelId]);
+  }, [step, history, modelId, values.data.token]);
 
   const changeStep = (step: number, modelId: number) => {
     setModelId(modelId);
@@ -65,7 +96,7 @@ function CreateNewModel() {
           <Labelling />
         </Route>
       </Switch>
-      {step !== 2 && (
+      {step !== 100 && (
         <div className={styles.footer}>
           {step > 0 && (
             <button onClick={() => setStep((step - 1) % 4)}>back</button>

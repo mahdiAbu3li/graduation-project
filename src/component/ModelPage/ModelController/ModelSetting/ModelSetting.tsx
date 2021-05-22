@@ -111,13 +111,16 @@ function ModelSetting() {
     data.append("name", name);
     data.append("short_description", short_description);
     data.append("description", description);
-    data.append("image", image ? image : "");
+    if (image) {
+      console.log("ma123");
+      data.append("image", image);
+    }
     data.append("owner_id", values.data.id.toString());
     data.append("type", selected);
 
-    const url = "https://graduationprojectt.herokuapp.com/api/model" + modelId;
+    const url = "https://graduationprojectt.herokuapp.com/api/model/" + modelId;
     const response = await fetch(url, {
-      method: "put",
+      method: "post",
       body: data,
       headers: {
         Authorization: `Bearer ` + values.data.token,
@@ -175,12 +178,12 @@ function ModelSetting() {
           }}
           onSubmit={(values, { setSubmitting, setErrors }) => {
             console.log(values.public);
-            // createRequest(
-            //   values.name,
-            //   values.short_description,
-            //   values.long_description,
-            //   values.public
-            // );
+            createRequest(
+              values.name,
+              values.short_description,
+              values.long_description,
+              values.public
+            );
             setSubmitting(false);
           }}
         >

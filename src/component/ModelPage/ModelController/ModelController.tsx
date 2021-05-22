@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./ModelController.module.css";
 import ModelSetting from "./ModelSetting/ModelSetting";
 // import  Chart1  from '../Description/Chart1';
@@ -13,10 +13,10 @@ import ModelSetting from "./ModelSetting/ModelSetting";
 // import mahdi from "../../../assets/images/img6.jpg"
 // import { GrStatusDisabledSmall } from "react-icons/gr";
 
-import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
+// import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
 
 const ModelController = () => {
-  const values = React.useContext(AuthContext); //2
+  // const values = React.useContext(AuthContext); //2
 
   // React.useEffect(() => {
   //   // بس لما تتحمل الصفحة اول مرة
