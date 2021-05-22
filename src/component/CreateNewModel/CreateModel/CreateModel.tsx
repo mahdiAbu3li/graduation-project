@@ -30,7 +30,7 @@ function CreateModel({ changeStep }: Change) {
     short_description: "",
     long_description: "",
     image: "",
-    public: "",
+    public: false,
     sel: "",
   };
   interface Values {
@@ -38,14 +38,14 @@ function CreateModel({ changeStep }: Change) {
     short_description: string;
     long_description: string;
     image: string;
-    public: string;
+    public: boolean;
     sel: string;
   }
   const createRequest = async (
     name: string,
     short_description: string,
     description: string,
-    isPublic: string
+    isPublic: boolean
   ) => {
     // const data = {
     //   name: name,
@@ -54,9 +54,11 @@ function CreateModel({ changeStep }: Change) {
     //   image: image,
     // };
     const data = new FormData();
-    console.log(image);
-    if (isPublic === "true") data.append("public_state", "1");
-    else data.append("public_state", "0");
+    console.log("is Public", typeof isPublic);
+    if (isPublic === true) {
+      data.append("public_state", "1");
+      console.log("صبحي اخوه لمعروف");
+    } else data.append("public_state", "0");
     data.append("name", name);
     data.append("short_description", short_description);
     data.append("description", description);
@@ -79,6 +81,7 @@ function CreateModel({ changeStep }: Change) {
     console.log(response);
     if (response.status === 201) {
       const res = await response.json();
+      console.log("معروووووف ابن الادعشري");
 
       changeStep(1, res.id);
       window.localStorage.setItem("modelId", res.id);
@@ -116,9 +119,7 @@ function CreateModel({ changeStep }: Change) {
             if (!values.short_description) {
               errors.short_description = "Required";
             }
-            // if (!values.sel) {
-            //   errors.sel = "Required";
-            // }
+
             return errors;
           }}
           onSubmit={(values, { setSubmitting, setErrors }) => {

@@ -332,7 +332,9 @@ const ModelPage = () => {
           </div>
           <div className={styles.upload}>{isUpload && <UploadImages />}</div>
         </div>
+        
         <div>
+
           <div className={styles.container_files}>
             {copyArray?.map((file: any) => (
               <div className={styles.container_file}>
