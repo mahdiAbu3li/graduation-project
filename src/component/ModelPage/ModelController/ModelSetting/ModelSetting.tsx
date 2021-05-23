@@ -1,46 +1,95 @@
 import React, { useState, useContext } from "react";
-import styles from "./CreateModelStyles.module.css";
+import styles from "./ModelSettingStyles.module.css";
 import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
 import Button from "@material-ui/core/Button";
-import { AuthContext } from "../../../Contexts/AuthContext/AuthContext";
-import mahdi from "../../../assets/images/login.png";
+import { AuthContext } from "../../../../Contexts/AuthContext/AuthContext";
+import mahdi from "../../../../assets/images/login.png";
 import CircularProgress from "@material-ui/core/CircularProgress";
 // import { CheckboxWithLabel } from "formik-material-ui";
 import MenuItem from "@material-ui/core/MenuItem";
+import { useParams } from "react-router-dom";
 
-// const MyInput = ({ field, form, ...props }: any) => {
-//   return (
-//     <input {...field} {...props} type="file" style={{ display: "none" }} />
-//   );
-// };
-
-interface Change {
-  changeStep: (a: number, b: number) => void;
-}
 const options = ["invoices", "paper", "government paper"];
-function CreateModel({ changeStep }: Change) {
+function ModelSetting() {
   const [image, setImage] = useState<File>();
-  const [urlImage, setUrlImage] = useState("");
-  const [modelID] = useState(1);
+  const { modelId } = useParams<{ modelId: string }>();
+  const [urlImage, setUrlImage] = useState(
+    "https://res.cloudinary.com/hi5/image/upload/models/" + modelId + "/image"
+  );
+
   const [selected, setSelected] = useState("invoices");
   const values = useContext(AuthContext);
-  const initialValues = {
-    name: "",
-    short_description: "",
-    long_description: "",
-    image: "",
-    public: false,
-    sel: "",
-  };
   interface Values {
     name: string;
     short_description: string;
     long_description: string;
-    image: string;
+    // image: string;
     public: boolean;
-    sel: string;
+    // sel: string;
   }
+  const [initialValues, setInitialValues] = useState<Values>({
+    name: "",
+    short_description: "",
+    long_description: "",
+    // image: "",
+    public: false,
+    // sel: "",
+  });
+  React.useEffect(() => {
+    const url = "https://graduationprojectt.herokuapp.com/api/model/" + modelId;
+    fetch(url, {
+      method: "get",
+      //   body: data,
+      headers: {
+        Authorization: `Bearer ` + values.data.token,
+        // "Content-Type": "application/json",
+        // "Content-Type": "multipart/form-data",
+        // Accept: "application/json",
+        // 'Content-Type': 'application/json'
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (Object.keys(data).length !== 0) {
+          const newData = {
+            name: data.name,
+            short_description: data.short_description,
+            long_description: data.description,
+
+            public: data.public_state === 1 ? true : false,
+          };
+          console.log(newData);
+          setInitialValues(newData);
+        }
+      });
+    const url1 =
+      "https://graduationprojectt.herokuapp.com/api/model/image/" + modelId;
+    fetch(url1, {
+      method: "get",
+      //   body: data,
+      headers: {
+        Authorization: `Bearer ` + values.data.token,
+        // "Content-Type": "application/json",
+        // "Content-Type": "multipart/form-data",
+        // Accept: "application/json",
+        // 'Content-Type': 'application/json'
+      },
+    })
+      .then((res) => res)
+      .then((data) => {
+        console.log(data);
+        // setUrlImage(data.url);
+      });
+  }, [modelId, values.data.token]);
+  //   const initialValues1 = {
+  //     name: "",
+  //     short_description: "",
+  //     long_description: "",
+
+  //     public: "",
+  //   };
+
   const createRequest = async (
     name: string,
     short_description: string,
@@ -54,19 +103,20 @@ function CreateModel({ changeStep }: Change) {
     //   image: image,
     // };
     const data = new FormData();
-    console.log("is Public", typeof isPublic);
-    if (isPublic === true) {
-      data.append("public_state", "1");
-      console.log("صبحي اخوه لمعروف");
-    } else data.append("public_state", "0");
+    // console.log(image);
+    if (isPublic === true) data.append("public_state", "1");
+    else data.append("public_state", "0");
     data.append("name", name);
     data.append("short_description", short_description);
     data.append("description", description);
-    data.append("image", image ? image : "");
+    if (image) {
+      console.log("ma123");
+      data.append("image", image);
+    }
     data.append("owner_id", values.data.id.toString());
     data.append("type", selected);
 
-    const url = "https://graduationprojectt.herokuapp.com/api/model";
+    const url = "https://graduationprojectt.herokuapp.com/api/model/" + modelId;
     const response = await fetch(url, {
       method: "post",
       body: data,
@@ -79,12 +129,11 @@ function CreateModel({ changeStep }: Change) {
       },
     });
     console.log(response);
-    if (response.status === 201) {
+    if (response.status === 200) {
       const res = await response.json();
-      console.log("معروووووف ابن الادعشري");
 
-      changeStep(1, res.id);
-      window.localStorage.setItem("modelId", res.id);
+      console.log(res);
+
       return true;
     } else return false;
   };
@@ -102,14 +151,15 @@ function CreateModel({ changeStep }: Change) {
   const handleChosen = (value: string) => {
     setSelected(value);
   };
-  console.log(modelID, "mahdiimad");
+  console.log(initialValues, "init");
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
+      {/* <div className={styles.header}>
         <h1>start by creating your model</h1>
-      </div>
+      </div> */}
       <div className={styles.form_container}>
         <Formik
+          enableReinitialize
           initialValues={initialValues}
           validate={(values) => {
             const errors: Partial<Values> = {};
@@ -119,10 +169,13 @@ function CreateModel({ changeStep }: Change) {
             if (!values.short_description) {
               errors.short_description = "Required";
             }
-
+            // if (!values.sel) {
+            //   errors.sel = "Required";
+            // }
             return errors;
           }}
           onSubmit={(values, { setSubmitting, setErrors }) => {
+            console.log(values.public);
             createRequest(
               values.name,
               values.short_description,
@@ -149,6 +202,7 @@ function CreateModel({ changeStep }: Change) {
                 name="name"
                 label="Model Name"
                 variant="outlined"
+                // defaultValue={initialValues.name}
               />
 
               <Field
@@ -229,7 +283,7 @@ function CreateModel({ changeStep }: Change) {
                 className={styles.button}
                 type="submit"
               >
-                Create
+                Save
               </Button>
 
               {isSubmitting && <CircularProgress />}
@@ -246,4 +300,4 @@ function CreateModel({ changeStep }: Change) {
   );
 }
 
-export default CreateModel;
+export default ModelSetting;

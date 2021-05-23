@@ -9,16 +9,17 @@ import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
 // } from "react-picture-annotation";
 
 import ReactImageAnnotate from "react-image-annotate";
+import { useParams } from "react-router-dom";
 // import { GiProtectionGlasses } from "react-icons/gi";
 
 function Labelling() {
   const values = React.useContext(AuthContext); //2
-
+  const { modelId } = useParams<{ modelId: string }>();
   const [classes, setClasses] = useState([]);
 
   React.useEffect(() => {
     const url =
-      "https://graduationprojectt.herokuapp.com/api/label_of_model/171"; //req url
+      "https://graduationprojectt.herokuapp.com/api/label_of_model/" + modelId; //req url
     fetch(url, {
       method: "get",
       headers: {
@@ -35,13 +36,14 @@ function Labelling() {
         setClasses(data);
         // } else return false;
       });
-  }, [values.data.token]);
+  }, [modelId, values.data.token]);
 
   const [files, setFiles] = useState([]);
 
   React.useEffect(() => {
     // بس لما تتحمل الصفحة اول مرة
-    const url = "https://graduationprojectt.herokuapp.com/api/dataset/171"; //req url
+    const url =
+      "https://graduationprojectt.herokuapp.com/api/dataset/" + modelId; //req url
     fetch(url, {
       method: "get",
       headers: {
@@ -61,7 +63,7 @@ function Labelling() {
           setFiles(data.resources);
         } else return false;
       });
-  }, [values.data.token]);
+  }, [modelId, values.data.token]);
 
   const [texts, setTexts] = useState<Array<Array<string>>>([[""]]);
   // console.log(JSON.stringify(annotationData));
@@ -98,7 +100,8 @@ function Labelling() {
     data.append("nodes", JSON.stringify(payload));
 
     const url =
-      "https://graduationprojectt.herokuapp.com/api/object_map_labeling/171 "; //req url
+      "https://graduationprojectt.herokuapp.com/api/object_map_labeling/" +
+      modelId; //req url
 
     // console.log("data");
     //   for (var key of data.entries()) {
@@ -124,9 +127,9 @@ function Labelling() {
     // var labels = eval(res[0].labels);
     //@ts-ignore;
     // console.log(" labels :eval data[0] in setSelected ", labels);
-
+    console.log("mamamam", res);
     //@ts-ignore;
-    var text = JSON.parse(res);
+    var text = res;
     //@ts-ignore;
     console.log(" texe", text);
 
@@ -202,7 +205,9 @@ function Labelling() {
 
   function setSelectedImage(name: string) {
     const url =
-      "https://graduationprojectt.herokuapp.com/api/modelfile/labels/171?image=" +
+      "https://graduationprojectt.herokuapp.com/api/modelfile/labels/" +
+      modelId +
+      "?image=" +
       name; //req url
     console.log(name, "nnn");
     fetch(url, {
@@ -282,7 +287,7 @@ function Labelling() {
       });
   }
   // console.log(files , 123456789)
-  // console.log("classes " , classes)
+  console.log("texts ", texts);
   return (
     <div className={styles.container}>
       <div className={styles.images_container}>

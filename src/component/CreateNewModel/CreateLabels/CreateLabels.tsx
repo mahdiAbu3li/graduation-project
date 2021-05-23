@@ -18,12 +18,48 @@ interface Data {
 interface Change {
   changeStep: (a: number, b: number) => void;
 }
+const color = ["blue", "green", "yellow"];
 function CreateLabels({ changeStep }: Change) {
+  const [isLoading, setIsLoading] = useState(true);
   const { modelId } = useParams<{ modelId: string }>();
-  const [data, setData] = useState<Array<Data>>([
-    { label: "", color: "#4363d8", model_id: modelId },
-  ]);
   const values = useContext(AuthContext);
+  const [data, setData] = useState<Array<Data>>([
+    { label: "", color: "red", model_id: modelId },
+  ]);
+  React.useEffect(() => {
+    const url =
+      "https://graduationprojectt.herokuapp.com/api/label_of_model/" + modelId;
+    // setIsLoading(false);
+    fetch(url, {
+      method: "get",
+      // body: JSON.stringify(newData),
+      headers: {
+        Authorization: `Bearer ` + values.data.token,
+        // "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((datar: string[]) => {
+        console.log(datar.length, " this is data");
+        if (datar.length !== 0) {
+          setIsLoading(false);
+          var newData = [] as Data[];
+          datar.map((item, index) => {
+            console.log(item, "item");
+            newData.push({
+              label: item,
+              color: index === 0 ? "red" : color[index - 1],
+              model_id: modelId,
+            });
+            return null;
+          });
+          console.log(newData, "newData");
+          setData(newData);
+        } else {
+          setIsLoading(false);
+        }
+      });
+  }, [modelId, values.data.token]);
   // const [Color, setColor] = useState("#4363d8");
   // const colors = [
   //   "#e6194b",
@@ -61,7 +97,10 @@ function CreateLabels({ changeStep }: Change) {
     data[index].label = value;
   };
   const addLabel = () => {
-    setData([...data, { label: "", color: "#4363d8", model_id: modelId }]);
+    setData([
+      ...data,
+      { label: "", color: color[data.length - 1], model_id: modelId },
+    ]);
   };
   // const handleColor = (index: number, color: string) => {
   //   const newData = [...data];
@@ -101,25 +140,29 @@ function CreateLabels({ changeStep }: Change) {
     //   },
     var requests = [] as any;
     // eslint-disable-next-line array-callback-return
-    data.map((item) => {
-      const newData = {
-        label: item.label,
-        model_id: item.model_id,
-      };
-      console.log(newData);
-      requests.push(
-        fetch(url, {
-          method: "post",
-          body: JSON.stringify(newData),
-          headers: {
-            Authorization: `Bearer ` + values.data.token,
-            "Content-Type": "application/json",
-            // "Content-Type": "multipart/form-data",
-            // Accept: "application/json",
-            // 'Content-Type': 'application/json'
-          },
-        })
-      );
+    data.map((item, index) => {
+      // console.log(color[index], "color");
+      if (item.label !== "") {
+        const newData = {
+          label: item.label,
+          model_id: item.model_id,
+          color: color[index],
+        };
+        console.log(newData, "newww");
+        requests.push(
+          fetch(url, {
+            method: "post",
+            body: JSON.stringify(newData),
+            headers: {
+              Authorization: `Bearer ` + values.data.token,
+              "Content-Type": "application/json",
+              // "Content-Type": "multipart/form-data",
+              // Accept: "application/json",
+              // 'Content-Type': 'application/json'
+            },
+          })
+        );
+      }
     });
     const response = await Promise.all(requests);
     console.log(response);
@@ -131,6 +174,7 @@ function CreateLabels({ changeStep }: Change) {
     //   return true;
     // } else return false;
   };
+  console.log(isLoading, "data");
   return (
     <div className={styles.container}>
       <div className={styles.formContainer}>
@@ -167,29 +211,46 @@ function CreateLabels({ changeStep }: Change) {
                   // backgroundColor: "red",
                 }}
               >
-                {data.map((label, index) => (
-                  <div className={styles.row}>
-                    <div className={styles.deleteAndSelect}>
-                      <AiOutlineMinusCircle
-                        className={styles.delete}
-                        onClick={() => handleDelete(index)}
-                      />
-                      <Field
-                        className={styles.inputField}
-                        component={TextField}
-                        type="text"
-                        name={`label${index}`}
-                        label={`label ${index + 1}`}
-                        variant="outlined"
-                        // onKeyUp={() => handleLabel(index)}
-                        // ref={labelInput}
-                        InputProps={{
-                          onChange: (e: React.FormEvent<HTMLInputElement>) =>
-                            handleLabel(index, e.currentTarget.value),
-                        }}
-                      />
-                    </div>
-                    {/* <Field
+                {isLoading ? (
+                  <div className={styles.loading}>
+                    <CircularProgress />
+                  </div>
+                ) : (
+                  data.map((label, index) => (
+                    <div key={index} className={styles.row}>
+                      <div className={styles.deleteAndSelect}>
+                        <AiOutlineMinusCircle
+                          className={styles.delete}
+                          onClick={() => handleDelete(index)}
+                        />
+
+                        <Field
+                          key={`${label.label}`}
+                          className={styles.inputField}
+                          // style={{ borderColor: `${label.color}` }}
+                          style={{
+                            root: {
+                              "& label.Mui-focused": {
+                                color: "green",
+                              },
+                            },
+                          }}
+                          defaultValue={`${label.label}`}
+                          component={TextField}
+                          type="text"
+                          name={`label${index}`}
+                          // name={`label12`}
+                          label={`label ${index + 1}`}
+                          variant="outlined"
+                          // onKeyUp={() => handleLabel(index)}
+                          // ref={labelInput}
+                          InputProps={{
+                            onChange: (e: React.FormEvent<HTMLInputElement>) =>
+                              handleLabel(index, e.currentTarget.value),
+                          }}
+                        />
+                      </div>
+                      {/* <Field
                       component={TextField}
                       id="s"
                       name={`color${index}`}
@@ -212,8 +273,9 @@ function CreateLabels({ changeStep }: Change) {
                         </MenuItem>
                       ))}
                     </Field> */}
-                  </div>
-                ))}
+                    </div>
+                  ))
+                )}
               </div>
               {isSubmitting && <CircularProgress />}
             </Form>

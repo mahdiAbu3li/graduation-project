@@ -10,7 +10,7 @@ import CreateNewModel from "../CreateNewModel/CreateNewModel";
 
 import ModelsRout from "../ModelRout/ModelRoute";
 import Settings from "../Settings/Settings";
-// import AllModels from "../AllModels/AllModels";
+import AllModelsRout from "../AllModels/AllModelRoute";
 
 // import ModelPage from "../ModelPage/ModelPage";
 
@@ -18,7 +18,19 @@ function Dashboard() {
   const [isOpen, setIsOpen] = React.useState(false);
   const history = useHistory();
   const goTo = (path: string) => {
-    history.push(path);
+    // console.log(
+    //   "location",
+    //   window.location.pathname.split("/")[2],
+    //   " path",
+    //   path.split("/")[2]
+    // );
+    if (
+      window.location.pathname.split("/")[2] !== path.split("/")[2] ||
+      window.location.pathname.split("/")[2] !== "create"
+    ) {
+      // console.log(true);
+      history.push(path);
+    }
   };
   return (
     <>
@@ -114,7 +126,9 @@ function Dashboard() {
               <Settings />
             </Route>
 
-            <Route path="/dashboard/AllModels">{/* <AllModels /> */}</Route>
+            <Route path={["/dashboard/AllModels"]}>
+              <AllModelsRout />
+              </Route>
 
             {/* <Route path="/dashboard/setting">setting</Route>  */}
           </Switch>
