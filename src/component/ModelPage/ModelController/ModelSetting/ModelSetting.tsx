@@ -15,9 +15,7 @@ function ModelSetting() {
   const [image, setImage] = useState<File>();
   const { modelId } = useParams<{ modelId: string }>();
   const [urlImage, setUrlImage] = useState(
-    "https://res.cloudinary.com/hi5/image/upload/v1619392994/models/" +
-      modelId +
-      "/image"
+    "https://res.cloudinary.com/hi5/image/upload/models/" + modelId + "/image"
   );
 
   const [selected, setSelected] = useState("invoices");

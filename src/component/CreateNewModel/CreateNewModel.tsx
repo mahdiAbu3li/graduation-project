@@ -33,8 +33,6 @@ function CreateNewModel() {
     const url = "https://graduationprojectt.herokuapp.com/api/model/" + modelId;
     const savedStep = window.localStorage.getItem("state");
     if (savedStep !== null ? parseInt(savedStep) : -1 < step) {
-      alert(1);
-
       fetch(url, {
         method: "post",
         body: JSON.stringify(data),

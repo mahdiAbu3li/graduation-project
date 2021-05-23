@@ -4,7 +4,7 @@
   height: 100%;
 
   display: grid;
-  grid-template: 50px 1600px 600px 600px / minmax(800px, auto);
+  grid-template: 50px 850px 600px 600px / minmax(800px, auto);
   /* background-color: aqua; */
 }
 
@@ -25,8 +25,12 @@
 .modelSetting {
   padding: 40px;
 }
+.requests {
+  padding: 40px;
+}
 .fieldset {
   min-width: 1000px;
+  min-height: 80vh;
 }
 .fieldset legend {
   color: blue;

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./ModelController.module.css";
 import ModelSetting from "./ModelSetting/ModelSetting";
+import ModelRequests from "./ModelRequests/ModelRequests";
 // import  Chart1  from '../Description/Chart1';
 
 // import { FaCircle } from "react-icons/fa";
@@ -59,7 +60,14 @@ const ModelController = () => {
           <ModelSetting />
         </fieldset>
       </div>
-      <div className={styles.requests} id="requests"></div>
+      <div className={styles.requests} id="requests">
+        <fieldset className={styles.fieldset}>
+          <legend>
+            <pre style={{ fontSize: "22px" }}> model Requests </pre>{" "}
+          </legend>
+          <ModelRequests />
+        </fieldset>
+      </div>
       <div className={styles.re_train} id="re_train"></div>
     </div>
   );
