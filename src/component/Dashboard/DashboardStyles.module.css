@@ -1,6 +1,6 @@
 .container {
   /* background-color: aqua; */
-  
+
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -15,15 +15,25 @@
   /* background-color: #f9f9f9; */
   /* background-color: #f4f7fe; */
   /* background: linear-gradient(rgb(122 176 251)0%, rgb(62 114 187) 10%, rgb(32 70 123) 50%,rgb(12 39 76) 100%); */
-  
-  background: linear-gradient( rgb(12 39 76) 0%, rgb(32 70 123) 30% ,rgb(41 84 144) 80%,rgb(32 70 123) 100% );  color:#e8eeff; 
- 
-  border-right: 1px outset #cccccc;
+
+  /* background: linear-gradient(
+    rgb(12 39 76) 0%,
+    rgb(32 70 123) 30%,
+    rgb(41 84 144) 80%,
+    rgb(32 70 123) 100%
+  ); */
+  background-color: white;
+  /* color: #e8eeff; */
+  color: #a9afbb;
+
+  /* border-right: 1px outset #cccccc; */
   display: flex;
   flex-direction: column;
 
-   box-shadow: 1px 1px 10px rgb(41 84 144);
-  
+  /* box-shadow: 1px 1px 10px rgb(41 84 144); */
+  box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%),
+    0 4px 25px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+  z-index: 22;
 }
 .nav .navLogo {
   flex-basis: 50px;
@@ -43,9 +53,7 @@
 }
 
 .nav .navShrink:hover span {
-  
   color: #0f2b52;
-  
 }
 .nav .navShrink .back {
   font-size: 25px;
@@ -66,9 +74,9 @@
 .content {
   grid-area: content;
   overflow-y: scroll;
-  background-color:#eff0f7;
+  /* background-color: #eff0f7; */
+  background-color: #eeeeee;
   /* padding: 10px 10px 100px 10px; */
-  margin: 10px;
 }
 .nav .navList {
   flex-grow: 1;
@@ -83,19 +91,20 @@
   cursor: pointer;
   /* color:rgb(221 60 51); */
 }
-.navList .item span{
-  color:#e8eeff;
+.navList .item span {
+  /* color: #926FB7; */
+  color: #3c4d6d;
 }
 .navList .item:hover {
   background-color: #d2dffc;
-  color:#0f2b52;
+  color: #0f2b52;
   box-shadow: 1px 1px 5px #6992ce;
   border-bottom: 2px solid #0f2b52;
   border-top: 2px solid #0f2b52;
 }
-.navList .item:hover span{
+.navList .item:hover span {
   /* background-color: #d2dffc; */
-  color:#0f2b52;
+  color: #0f2b52;
 }
 
 .icon {
@@ -108,7 +117,7 @@ span {
   width: 100%;
   padding: 8px;
 
-  color:#0f2b52;
+  color: #0f2b52;
 }
 
 /* when close nav side  */
@@ -139,4 +148,25 @@ span {
 }
 .close_navShrink {
   justify-content: center !important;
+}
+.header {
+  display: flex;
+  justify-content: flex-end;
+}
+.logout {
+  width: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 20px;
+  color: #0f2b52;
+  font-size: 18px;
+  cursor: pointer;
+}
+.logout:hover {
+  color: red;
+}
+
+.activeNav {
+  background-color: yellow;
 }

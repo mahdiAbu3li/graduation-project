@@ -42,11 +42,11 @@ function LoginCard() {
     );
 
     if (response.status === 401) {
-      console.log(1231231321);
+      // console.log(1231231321);
       return false;
     } else {
       const result = await response.json();
-      console.log(result);
+      // console.log(result);
       const data: Data = {
         id: result.user.id,
         name: result.user.name,

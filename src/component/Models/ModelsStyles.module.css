@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   /* background-color: red; */
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@
 }
 
 .container_models {
-  background-color: #eff0f7;
+  /* background-color: #eff0f7; */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-column-gap: 2vw;
@@ -41,14 +41,12 @@
 }
 
 .maincontainer {
-
   aspect-ratio: 4/4;
 
   display: flex;
   justify-content: center;
 
   background: none;
-
 }
 
 /* THE CARD HOLDS THE FRONT AND BACK FACES */
@@ -102,31 +100,30 @@
   /* border-radius: 18px; */
   background: #f5f9ff;
   /* box-shadow: 1px 1px 10px rgb(41 84 144); */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.16), 0 2px 3px rgba(27, 27, 27, 0.23);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(27, 27, 27, 0.23);
   font-family: roboto;
   text-align: center;
 
   z-index: 0;
 }
 
-
-.frontContainer{
+.frontContainer {
   width: 100%;
-  height:100%;
+  height: 100%;
 
   position: absolute;
   left: 0;
-  top:0;
+  top: 0;
   /* background-color: #ffff004f ; */
   z-index: 50;
 
   display: grid;
-  grid-template-rows: 25% 15% 30% 20% 10% ;
+  grid-template-rows: 25% 15% 30% 20% 10%;
   grid-template-columns: 1fr;
   /* grid-template-areas: "text" "stats"; */
 }
 
-.modelNameAndReq{
+.modelNameAndReq {
   display: grid;
   grid-template-columns: 70% 30%;
 
@@ -135,37 +132,37 @@
   width: 100%;
 }
 
- .text {
-  font-family: 'Bowlby One SC', cursive;
+.text {
+  font-family: "Bowlby One SC", cursive;
   word-break: break-all;
-  word-wrap: break-word; 
+  word-wrap: break-word;
   background-color: red;
-  color:yellow;
+  color: yellow;
 }
 
 /* .svg {
   width: 10%;
-} */ 
+} */
 
-.modelName{
+.modelName {
   /* background-color:blue; */
   /* font-size: 24px; */
   /* margin-right:60% ; */
   width: 80%;
   display: flex;
-  color:white;
+  color: white;
   text-align: left;
-  background-color: red;
+  /* background-color: red; */
 }
-.pNameStyle{
-  padding-right:10% ;
+.pNameStyle {
+  padding-right: 10%;
   /* text-align:center; */
   width: 100%; /* whatever width you want */
   word-break: break-all;
-  word-wrap: break-word;  
+  word-wrap: break-word;
   padding-left: 5%;
   font-size: 90px;
-  background-color: yellow; 
+  /* background-color: yellow; */
   /* color: red;
   
   /* margin: 0; */
@@ -181,34 +178,32 @@
   background-color: yellow; 
 
 } */
-.card_number_req{
+.card_number_req {
   width: 35%;
   height: 50%;
-   /* border: rgb(169 11 11 / 77%) outset; */
-    background-color: rgb(228, 32, 32);
-    /* padding: 2% 3% 2% 3%; */
-    /* margin-right: -50%; */
-    border-radius: 50%;
-    color: rgb(224, 210, 210);
-    z-index: 200;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5%;
-    /* box-shadow: 3px 3px 5px rgb(77 18 18); */
+  /* border: rgb(169 11 11 / 77%) outset; */
+  background-color: rgb(228, 32, 32);
+  /* padding: 2% 3% 2% 3%; */
+  /* margin-right: -50%; */
+  border-radius: 50%;
+  color: rgb(224, 210, 210);
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5%;
+  /* box-shadow: 3px 3px 5px rgb(77 18 18); */
   /* padding-right: 20px; */
-
 }
-.modelType{
+.modelType {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: flex-end;
   padding-right: 10%;
   font-size: 17px;
-
 }
-.modelDescription{
+.modelDescription {
   width: 100%;
   height: 100%;
   display: flex;
@@ -216,60 +211,54 @@
   padding-left: 20%;
   font-size: 17px;
   text-align: left;
-  background-color: blue;
-
+  /* background-color: blue; */
 }
-.pDiscriptionStyle{
-  padding-right:10% ;
+.pDiscriptionStyle {
+  padding-right: 10%;
   /* text-align:center; */
   width: 100%; /* whatever width you want */
   word-break: break-all;
-  word-wrap: break-word;  
+  word-wrap: break-word;
   padding-left: 5%;
   font-size: 36px;
   /* color: red;
   background-color: yellow; */
   /* margin: 0; */
 }
-.modelInformation{
+.modelInformation {
   width: 100%;
   height: 100%;
-  
+
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
 
   align-items: center;
- 
 }
 .stat {
   display: grid;
-  grid-template-rows: 1fr 1fr ;
+  grid-template-rows: 1fr 1fr;
   font-size: 100%;
   color: black;
 }
-.value{
+.value {
   margin-bottom: 5%;
   font-size: 18px;
 }
-.type{
+.type {
   font-size: 16px;
 }
-.stat:nth-child(2){
+.stat:nth-child(2) {
   border-left: rgb(197, 196, 196) solid 1px;
   border-right: rgb(197, 196, 196) solid 1px;
 }
-.modelDate{
+.modelDate {
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 15px;
   color: rgb(66, 63, 63);
-
-
 }
-
-
 
 .card_text {
   /* background-color: rgb(250, 223, 232); */
@@ -280,7 +269,7 @@
   grid-template-rows: 30% 15% 55%;
   grid-template-areas: "model_name" "date" "pareraph";
 }
-.card_title{
+.card_title {
   grid-area: model_name;
   margin-top: 1px;
   font-size: 100%;
@@ -290,18 +279,16 @@
   box-shadow: 1px 1px 10px rgb(41 84 144);
   /* border-style: outset; */
   /* background-color: pink */
-  display: flex; 
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   /* padding-right: 0px; */
-  
 }
 .card_text_name {
   font-size: 100%;
   margin-left: 30%;
   /* border:green solid; */
-  
 }
 
 .card_text_1 {
@@ -354,38 +341,41 @@
   /* grid-template-columns: 300px; */
   grid-template-rows: 80% 20%;
   grid-template-areas: "image" "buttons";
-
 }
-.backImage{
+.backImage {
   grid-area: image;
 }
-.backButtoContainer{
+.backButtoContainer {
   grid-area: buttons;
   position: relative;
   width: 100%;
   height: 100%;
- 
+
   display: grid;
   grid-template-columns: 25% 33% 30%;
   grid-template-rows: 1fr;
   gap: 5%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  background: linear-gradient(rgb(60 112 185) 10% ,rgb(55 106 177) 10%, rgb(32 70 123) 50% ,rgb(12 39 76) 100% );
+  background: linear-gradient(
+    rgb(60 112 185) 10%,
+    rgb(55 106 177) 10%,
+    rgb(32 70 123) 50%,
+    rgb(12 39 76) 100%
+  );
 
   align-items: center;
 
-  color:white;
-
+  color: white;
 }
-.backButton{
+.backButton {
   border: green solid;
   cursor: pointer;
   height: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left:5% ;
+  margin-left: 5%;
   border-radius: 20%;
   /* display: flex;
   align-items: center;
@@ -396,27 +386,27 @@
     , #4069a3 0%, rgb(64 105 163) 100%);
         box-shadow: 0 1rem 1.25rem 0 rgb(22 75 195 / 50%), 0 -0.25rem 1.5rem rgb(32 70 123) inset, 0 0.75rem 0.5rem rgb(255 255 255 / 40%) inset, 0 0.25rem 0.5rem 0 rgb(32 70 123) inset; */
 }
-.backButton:hover{
+.backButton:hover {
   color: #0f2b52;
   background-color: #d2dffc;
-  box-shadow: 0 0.2rem 0.25rem 0 rgb(5 26 74 / 39%), 0 -0.25rem 1.2rem rgb(25 68 128) inset, 0 0.75rem 0.5rem rgb(255 255 255 / 40%) inset, 0 0.25rem 0.5rem 0 rgb(34 72 128) inset;
-   
+  box-shadow: 0 0.2rem 0.25rem 0 rgb(5 26 74 / 39%),
+    0 -0.25rem 1.2rem rgb(25 68 128) inset,
+    0 0.75rem 0.5rem rgb(255 255 255 / 40%) inset,
+    0 0.25rem 0.5rem 0 rgb(34 72 128) inset;
 }
 
-
-
-.clip{
+.clip {
   background: red;
   clip-path: polygon(56% 0, 49% 17%, 30% 21%, 20% 31%, 18% 49%, 0 63%, 0 0);
   z-index: 5;
   position: absolute;
-  top:0%;
+  top: 0%;
   left: 0;
   width: 100%;
   height: 100%;
 }
 
-.clip1{
+.clip1 {
   background: rgb(41 84 144);
   position: absolute;
   top: 0%;
@@ -427,7 +417,7 @@
   -webkit-clip-path: circle(36.9% at 26% 14%);
   clip-path: circle(18.9% at 40% -4%);
 }
-.clip2{
+.clip2 {
   background: rgb(41 84 144);
   position: absolute;
   top: 0%;
@@ -438,7 +428,7 @@
   -webkit-clip-path: circle(36.9% at 26% 14%);
   clip-path: circle(49.9% at -8% -1%);
 }
-.clip3{
+.clip3 {
   background: rgb(41 84 144);
   position: absolute;
   top: 0%;
@@ -449,23 +439,21 @@
   /* -webkit-clip-path: circle(16.9% at 26% 14%); */
   -webkit-clip-path: circle(15.9% at 52% 29%);
   clip-path: circle(31.9% at 26% -3%);
-
 }
-.clip4{
+.clip4 {
   background: rgb(41 84 144);
-    position: absolute;
-    top: 0%;
-    left: 0;
-    z-index: 10;
-    width: 100%;
-    height: 100%;
-    /* -webkit-clip-path: circle(16.9% at 26% 14%); */
-    -webkit-clip-path: circle(15.9% at 53% 45%);
-    clip-path: circle(49.9% at -25% 24%);
+  position: absolute;
+  top: 0%;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  /* -webkit-clip-path: circle(16.9% at 26% 14%); */
+  -webkit-clip-path: circle(15.9% at 53% 45%);
+  clip-path: circle(49.9% at -25% 24%);
 }
 
-
-.clip5{
+.clip5 {
   background: #f4f7fe;
   position: absolute;
   top: 0%;
@@ -477,16 +465,59 @@
   -webkit-clip-path: circle(15.9% at 83% 45%);
   clip-path: circle(47.9% at 57% 74%);
 }
-.clip6{
+.clip6 {
   background: rgb(41 84 144);
-    position: absolute;
-    top: 0%;
-    left: 0;
-    z-index: 10;
-    width: 100%;
-    height: 100%;
-    /* -webkit-clip-path: circle(16.9% at 26% 14%); */
-    -webkit-clip-path: circle(15.9% at 83% 45%);
-    clip-path: circle(54.9% at -37% 33%);
+  position: absolute;
+  top: 0%;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  /* -webkit-clip-path: circle(16.9% at 26% 14%); */
+  -webkit-clip-path: circle(15.9% at 83% 45%);
+  clip-path: circle(54.9% at -37% 33%);
 }
 
+/*  do not touch please these styles */
+
+.loading {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  background-color: #fff;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  padding: 0 30px;
+  /* border: #d2dffc 1px solid; */
+  border-radius: 5px;
+  position: relative;
+  margin: 20px 0;
+}
+
+.header p {
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  /* color: #fff; */
+  z-index: 11;
+}
+
+.rect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background-color: #0f2b52;
+  clip-path: polygon(0 0, 0 100%, 20px 0%);
+  /* clip-path: polygon(25% 0, 100% 43%, 100% 66%, 22% 100%, 0 100%, 0 0); */
+}

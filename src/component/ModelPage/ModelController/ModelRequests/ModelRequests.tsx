@@ -103,24 +103,28 @@ const ModelRequests = () => {
   const copyArray = file?.filter((item) => item.accept === 0);
   return (
     <div className={styles.container}>
-      {modelId}
+      <div className={styles.header}>
+        <h2>table of requests</h2>{" "}
+      </div>
       <div className={styles.requests_container}>
         {copyArray?.map((file) => (
           <div className={styles.requests}>
-            <div className={styles.request_name}>{file.name}</div>
+            <div className={styles.request_name}>
+              <p>{file.name}</p>
+            </div>
 
             <div
               className={styles.request_accept}
               onClick={() => accept(file.id)}
             >
-              accept
+              <button className={styles.acceptButton}>accept</button>
             </div>
 
             <div
               className={styles.request_reject}
               onClick={() => refuser(file.id)}
             >
-              no
+              <button className={styles.rejectButton}>reject</button>
             </div>
           </div>
         ))}

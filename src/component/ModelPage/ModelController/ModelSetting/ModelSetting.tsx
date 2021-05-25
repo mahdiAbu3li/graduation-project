@@ -4,7 +4,7 @@ import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
 import Button from "@material-ui/core/Button";
 import { AuthContext } from "../../../../Contexts/AuthContext/AuthContext";
-import mahdi from "../../../../assets/images/login.png";
+// import mahdi from "../../../../assets/images/login.png";
 import CircularProgress from "@material-ui/core/CircularProgress";
 // import { CheckboxWithLabel } from "formik-material-ui";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -15,7 +15,10 @@ function ModelSetting() {
   const [image, setImage] = useState<File>();
   const { modelId } = useParams<{ modelId: string }>();
   const [urlImage, setUrlImage] = useState(
-    "https://res.cloudinary.com/hi5/image/upload/models/" + modelId + "/image"
+    "https://res.cloudinary.com/hi5/image/upload/models/" +
+      modelId +
+      "/image?" +
+      Date.now()
   );
 
   const [selected, setSelected] = useState("invoices");
@@ -293,7 +296,14 @@ function ModelSetting() {
       </div>
       <div className={styles.card_container}>
         <div className={styles.card}>
-          <img src={urlImage !== "" ? urlImage : mahdi} alt="123" />
+          <img src={urlImage} alt="123" />
+          {/* <img
+            src={
+              "https://res.cloudinary.com/hi5/image/upload/models/186/image?t=" +
+              new Date().getTime()
+            }
+            alt="123"
+          /> */}
         </div>
       </div>
     </div>
