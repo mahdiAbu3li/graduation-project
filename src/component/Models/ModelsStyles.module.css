@@ -344,6 +344,7 @@
 }
 .backImage {
   grid-area: image;
+  z-index: 1;
 }
 .backButtoContainer {
   grid-area: buttons;
@@ -365,7 +366,7 @@
   );
 
   align-items: center;
-
+  z-index: 3;
   color: white;
 }
 .backButton {
