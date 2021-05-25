@@ -147,7 +147,7 @@ function Labelling() {
     setTexts(arr);
   };
 
-  function Anotate() {
+  const Anotate = () => {
     return (
       <ReactImageAnnotate
         labelImages
@@ -178,14 +178,15 @@ function Labelling() {
         //   }
         // ]}
         enabledTools={["create-box"]}
-        allowComments={true}
+        // allowComments={true}
+
         onExit={(a: any) => {
           // console.log(a);
           setLabels(a.images[0].name, a.images[0].regions);
         }}
       />
     );
-  }
+  };
 
   interface ActiveImage2 {
     src: string;

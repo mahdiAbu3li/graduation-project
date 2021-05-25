@@ -127,12 +127,26 @@ const Models = () => {
           </div>
         ))}
       </div>
-      <div>Models I have</div>
-      {isLoadingMy ? <CircularProgress /> : <ModelsComponent models={models} />}
-      <div>Models I Used</div>
+      <div className={styles.header}>
+        <p>Models I have</p>
+        <div className={styles.rect}></div>
+      </div>
+      {isLoadingMy ? (
+        <div className={styles.loading}>
+          <CircularProgress />
+        </div>
+      ) : (
+        <ModelsComponent models={models} />
+      )}
+      <div className={styles.header}>
+        <p>Models I Used</p>
+        <div className={styles.rect}></div>
+      </div>
 
       {isLoadingUse ? (
-        <CircularProgress />
+        <div className={styles.loading}>
+          <CircularProgress />
+        </div>
       ) : (
         <ModelsComponent models={useModels} />
       )}

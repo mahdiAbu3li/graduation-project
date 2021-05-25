@@ -8,7 +8,8 @@ import mahdi from "../../../assets/images/login.png";
 import CircularProgress from "@material-ui/core/CircularProgress";
 // import { CheckboxWithLabel } from "formik-material-ui";
 import MenuItem from "@material-ui/core/MenuItem";
-
+import Swal from "sweetalert2";
+import Zoom from "@material-ui/core/Zoom";
 // const MyInput = ({ field, form, ...props }: any) => {
 //   return (
 //     <input {...field} {...props} type="file" style={{ display: "none" }} />
@@ -20,9 +21,10 @@ interface Change {
 }
 const options = ["invoices", "paper", "government paper"];
 function CreateModel({ changeStep }: Change) {
+  const [checked, setChecked] = React.useState(false);
   const [image, setImage] = useState<File>();
   const [urlImage, setUrlImage] = useState("");
-  const [modelID] = useState(1);
+  // const [modelID] = useState(1);
   const [selected, setSelected] = useState("invoices");
   const values = useContext(AuthContext);
   const initialValues = {
@@ -86,7 +88,15 @@ function CreateModel({ changeStep }: Change) {
       changeStep(1, res.id);
       window.localStorage.setItem("modelId", res.id);
       return true;
-    } else return false;
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: response.statusText,
+        // footer: "<a href>Why do I have this issue?</a>",
+      });
+      return false;
+    }
   };
   const uploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files !== null) {
@@ -102,12 +112,12 @@ function CreateModel({ changeStep }: Change) {
   const handleChosen = (value: string) => {
     setSelected(value);
   };
-  console.log(modelID, "mahdiimad");
+  console.log(checked, "mahdiimad");
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
+      {/* <div className={styles.header}>
         <h1>start by creating your model</h1>
-      </div>
+      </div> */}
       <div className={styles.form_container}>
         <Formik
           initialValues={initialValues}
@@ -128,8 +138,12 @@ function CreateModel({ changeStep }: Change) {
               values.short_description,
               values.long_description,
               values.public
-            );
-            setSubmitting(false);
+            ).then((isCreated) => {
+              if (!isCreated) {
+                setChecked(!checked);
+                setSubmitting(false);
+              }
+            });
           }}
         >
           {({ submitForm, isSubmitting, touched, errors, setFieldValue }) => (
@@ -208,7 +222,7 @@ function CreateModel({ changeStep }: Change) {
                   />
                   <p>public</p>
                 </label>
-                <p>
+                <p onClick={() => setChecked(!checked)}>
                   when your model is public any one can access and requests to
                   use it{" "}
                 </p>
@@ -232,15 +246,28 @@ function CreateModel({ changeStep }: Change) {
                 Create
               </Button>
 
-              {isSubmitting && <CircularProgress />}
+              {isSubmitting && (
+                <div className={styles.loading}>
+                  {" "}
+                  <CircularProgress />
+                </div>
+              )}
             </Form>
           )}
         </Formik>
       </div>
       <div className={styles.card_container}>
-        <div className={styles.card}>
-          <img src={urlImage !== "" ? urlImage : mahdi} alt="123" />
-        </div>
+        <Zoom
+          in={true}
+          style={{
+            // transitionDelay: checked ? "5000ms" : "5000ms",
+            transitionDuration: "9000ms",
+          }}
+        >
+          <div className={styles.card}>
+            <img src={urlImage !== "" ? urlImage : mahdi} alt="123" />
+          </div>
+        </Zoom>
       </div>
     </div>
   );

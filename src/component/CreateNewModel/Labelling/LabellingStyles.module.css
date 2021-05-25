@@ -3,8 +3,8 @@
   height: 100%;
   /* background-color: aqua; */
   display: grid;
-  grid-template: minmax(500px, 1fr) / minmax(200px, 1fr) minmax(800px, 7fr) minmax(
-      300px,
+  grid-template: minmax(500px, 1fr) / minmax(150px, 1fr) minmax(700px, 7fr) minmax(
+      250px,
       3fr
     );
 }
@@ -38,7 +38,7 @@
 }
 .annotation_container {
   border: 1px solid #cccccc;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   /* display: flex; */
   /* margin: auto; */
 }

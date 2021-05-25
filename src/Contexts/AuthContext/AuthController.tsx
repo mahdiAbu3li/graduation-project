@@ -19,13 +19,14 @@ const AuthController: React.FC<{}> = ({ children }) => {
 
   const onLogin = () => {
     setIsLogin("true");
-    history.push("/dashboard");
+    history.push("/dashboard/model");
     window.localStorage.setItem("isLogin", "true");
   };
   const onLogout = () => {
     history.push("/");
     setIsLogin("false");
     window.localStorage.setItem("isLogin", "false");
+    setdata({ id: 0, name: "", token: "", email: "" });
   };
   const setData = (data: Data) => {
     setdata(data);

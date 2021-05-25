@@ -4,13 +4,12 @@ import ModelPage from "../ModelPage/ModelPage";
 import Models from "../Models/Models";
 import Verify from "../ModelPage/fileVerification/fileVer";
 import Description from "../ModelPage/Description/Description";
-import ModelController from "../ModelPage/ModelController/ModelController"
+import ModelController from "../ModelPage/ModelController/ModelController";
 
 export const ModelRoute = () => {
   return (
     <Switch>
       <Route exact path="/dashboard/model">
-        var
         <Models />
       </Route>
       <Route exact path="/dashboard/model/modelpage/:modelId">
@@ -23,9 +22,8 @@ export const ModelRoute = () => {
         <Description />
       </Route>
       <Route exact path="/dashboard/model/modelpage/:modelId/controller">
-        <ModelController/>
+        <ModelController />
       </Route>
-
     </Switch>
   );
 };
