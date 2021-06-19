@@ -1,20 +1,11 @@
 import React, { useState } from "react";
 import styles from "./DescriptionStyles.module.css";
-// import  Chart1  from '../Description/Chart1';
 import Chart1 from "./Chart1";
 import Chart2 from "./Chart2";
-
-// import { FaCircle } from "react-icons/fa";
-// import { RiDeleteBin5Fill } from "react-icons/all";
-// import { IoEllipse } from "react-icons/all";
-// import { HiOutlineDownload } from "react-icons/all";
-// import { AiOutlineCheckCircle } from "react-icons/all";
-// import { useHistory } from "react-router";
-// import login from "../../assets/images/login.png";
 import mahdi from "../../../assets/images/img6.jpg";
-// import { GrStatusDisabledSmall } from "react-icons/gr";
 
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
+import { useParams } from "react-router-dom";
 
 const Description = () => {
   // const history = useHistory();
@@ -22,11 +13,11 @@ const Description = () => {
 
   const values = React.useContext(AuthContext); //2
   const [annotationData] = useState();
+  const { modelId } = useParams<{ modelId: string }>();
 
   React.useEffect(() => {
-    // بس لما تتحمل الصفحة اول مرة
     const url =
-      "https://graduationprojectt.herokuapp.com/api/images/predict/57?user_id=" +
+      "https://graduationprojectt.herokuapp.com/api/images/predict/"+modelId+"?user_id=" +
       values.data.id; //req url
     fetch(url, {
       method: "get",
@@ -42,7 +33,7 @@ const Description = () => {
         if (data.length > 0) {
           console.log(
             data,
-            "mmmmmmmmmmmmmmmmmmmmmmKKKKKKKKKKKKKmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
+            "mmmmm"
           );
           // setFiles(data);
         } else return false;
@@ -56,40 +47,40 @@ const Description = () => {
         <div className={styles.container_cards}>
           <div className={styles.card}>
             <div className={styles.inner}>
-              <div className={styles.outer}></div>
+              <div className={styles.outer} style={{background :"#0a1f55"}}></div>
               <div className={styles.cardText}>
                 <p className={styles.cardKey}>Using Time</p>
-                <p className={styles.cardValue}>300 time</p>
+                <p className={styles.cardValue}>30 times</p>
               </div>
             </div>
           </div>
 
           <div className={styles.card}>
             <div className={styles.inner}>
-              <div className={styles.outer}></div>
+              <div className={styles.outer} style={{background :"#1a6871"}}></div>
               <div className={styles.cardText}>
-                <p className={styles.cardKey}>Using Time</p>
-                <p className={styles.cardValue}>300 time</p>
+                <p className={styles.cardKey}>Training Files</p>
+                <p className={styles.cardValue}>50 Files</p>
               </div>
             </div>
           </div>
 
           <div className={styles.card}>
             <div className={styles.inner}>
-              <div className={styles.outer}></div>
+              <div className={styles.outer} style={{background :"#38b0a2"}}></div>
               <div className={styles.cardText}>
-                <p className={styles.cardKey}>Using Time</p>
-                <p className={styles.cardValue}>300 time</p>
+                <p className={styles.cardKey}>Accurecy</p>
+                <p className={styles.cardValue}>85%</p>
               </div>
             </div>
           </div>
 
           <div className={styles.card}>
             <div className={styles.inner}>
-              <div className={styles.outer}></div>
+              <div className={styles.outer} style={{background :"#94dfd7"}}></div>
               <div className={styles.cardText}>
-                <p className={styles.cardKey}>Using Time</p>
-                <p className={styles.cardValue}>300 time</p>
+                <p className={styles.cardKey}>Number of <br /> Users</p>
+                <p className={styles.cardValue}>3 users</p>
               </div>
             </div>
           </div>

@@ -2,7 +2,7 @@
   width: 100%;
   height: 100vh;
   /* background-color: #edf0f7; */
-  background-color: #0d1154;
+  background-color: #bfece8;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,13 +17,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* box-shadow: 0 0 20px #d5dcec; */
+  box-shadow: 0 0 5px black;
+  overflow: hidden;
 }
 .container_card_background {
   width: 97%;
   height: 96%;
   border-radius: 40px;
-  background-color: #f4f7fe;
+  background-color:white;
   display: flex;
   justify-content: center;
 }
@@ -33,6 +34,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  /* background-color: red; */
   /* height: 100%; */
 }
 .right {
@@ -62,6 +64,8 @@ img {
   z-index: 55;
   display: flex;
   justify-content: center;
+  margin-top: 110px;
+  margin-left: -30px;
 }
 
 @media only screen and (min-width: 992px) {
@@ -93,7 +97,7 @@ img {
 }
 
 .clip1 {
-  background: rgb(41 84 144);
+  background: rgb(12 17 81);
   position: absolute;
   top: 0%;
   left: 10%;
@@ -104,7 +108,7 @@ img {
   clip-path: circle(18.9% at 40% -4%);
 }
 .clip2 {
-  background: rgb(41 84 144);
+  background: rgb(12 17 81);
   position: absolute;
   top: 0%;
   left: 10%;
@@ -115,7 +119,7 @@ img {
   clip-path: circle(49.9% at -8% -1%);
 }
 .clip3 {
-  background: rgb(41 84 144);
+  background: rgb(12 17 81);
   position: absolute;
   top: 0%;
   left: 10%;
@@ -127,7 +131,7 @@ img {
   clip-path: circle(31.9% at 26% -3%);
 }
 .clip4 {
-  background: rgb(41 84 144);
+  background: rgb(12 17 81);
   position: absolute;
   top: 0%;
   left: 0;
@@ -140,7 +144,7 @@ img {
 }
 
 .clip5 {
-  background: #f4f7fe;
+  background:white;
   position: absolute;
   top: 0%;
   left: 0;
@@ -152,7 +156,7 @@ img {
   clip-path: circle(47.9% at 57% 74%);
 }
 .clip6 {
-  background: rgb(41 84 144);
+  background: rgb(12 17 81);
   position: absolute;
   top: 0%;
   left: 0;
@@ -165,13 +169,14 @@ img {
 }
 
 .rect {
-  width: 600px;
-  height: 600px;
+  width: 800px;
+  height: 800px;
   position: absolute;
   top: 0;
   left: 0;
   border-radius: 40px;
-  background: linear-gradient(#00bca8, #0d1154);
+  overflow: hidden;
+  /* background: linear-gradient(#00bca8, #0d1154); */
 }
 .rect2 {
   width: 600px;

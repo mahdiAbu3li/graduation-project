@@ -77,7 +77,7 @@ function LoginCard() {
   return (
     <>
       <div className={styles.container}>
-        <h2 className={styles.header}>Login to HI5</h2>
+        {/* <h2 className={styles.header}>Login to HI5</h2/> */}
         <Formik
           initialValues={initialValues}
           validate={(values) => {

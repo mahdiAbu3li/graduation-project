@@ -15,7 +15,6 @@
   grid-row-gap: 20px;
   padding: 20px; 
   align-items: center;
-
 }
 
 .card{
@@ -31,37 +30,36 @@
 .inner{
   width: 90%;
   height: 80%;
-  border: red solid;
+  /* border: #0a1f55 solid 1px; */
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(27, 27, 27, 0.23);
 }
 
 .outer{
-  border: yellow solid;
-  background-color:brown;
   width: 39%;
   height: 85%;
   margin-top: -25px;
-  /* margin-left: 10px; */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(27, 27, 27, 0.23);
 
 }
 
 .cardText{
-  /* width: 100%; */
   display: flex;
   flex-direction: column;
-  /* justify-content: flex-end; */
   align-items: flex-end;
   padding: 10px;
   margin-right: 0px;
-  
 }
+
 .cardKey{
   color: rgb(114, 111, 111);
   font-size: 18px;
   margin-bottom: 0px;
 }
+
 .cardValue{
   margin-top: 0px;
   font-size: 25px;
@@ -70,27 +68,34 @@
 .chartAndPic{
   display: flex;
   flex-direction: row;
-  /* margin-left: 44px; */
   margin-top: 15px;
   height: 450px;
-  justify-content: space-around;
-
-
+  justify-content: space-between;
+  /* background-color: red; */
+  padding-left: 3.5%;
+  padding-right: 1%;
 }
+
 .chart{
-  border: black solid;
+  /* border: black solid; */
+  width: 40%;
+  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-
-
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(27, 27, 27, 0.23);
+  /* padding-left: 8px; */
 }
+
 .picContainer{
-  border: red solid;
+  /* border: red solid; */
   height: 100%;
-  width:700px;
+  width:50%;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(27, 27, 27, 0.23);
 
 }
+
 .pic{
   height: 100%;
   width: 50%;
@@ -104,6 +109,7 @@
 .tap:hover{
   color:red;
 }
+
 .container_files{
   /* background-color:yellow; */
   height: 100%;
@@ -114,16 +120,7 @@
   /* flex: 1 1 0%; */
   gap:8px;
   padding:10px 20px;
-
 }
-
-/* element.style {
-  height: 100%;
-  overflow: auto scroll;
-  display: grid;
-  align-content: flex-start;
-  flex: 1 1 0%;
-} */
 
 * {
   box-sizing: border-box;
@@ -144,6 +141,7 @@
     /* justify-content: center; */
     grid-template-columns: 60px minmax(100px, 1fr) 120px 100px  100px;
 }
+
 .container_file:hover { 
   background-color:rgb(64 105 163 / 52%); 
   box-shadow: 1px 1px 10px rgb(41 84 144);
@@ -153,26 +151,20 @@
   position:relative;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   height: 100%;
-  /* width: 100%; */
-  /* object-fit:none ; */
-
-  /* background-color: springgreen; */
 }
+
 .imgDiv{
   display: flex;
   align-items: center;
 }
+
 .img{
   height: 50px;
   width : 100%;
   position:relative;
-  /* max-width: 100%; */
-  
-  /* /* display: block; */
-  /* object-fit:fill ; */
 }
+
 .buttones{
   /* background-color: cyan; */
   display: flex;
@@ -182,15 +174,13 @@
 }
 
 .icons{
-  /* size : 50px; */
-  /* height: 50px; */
   color:rgb(3, 3, 71);
-  /* padding: 3px */
-
 }
+
 .cintainer_button{
   cursor: pointer;
 }
+
 .container_states > div {
   display: flex;
   align-items: center;

@@ -6,7 +6,7 @@ function Chart1() {
     () => [
       {
         label: 'Series 1',
-        data: [[0, 10], [1, 20], [2, 40], [3, 20], [4, 70]]
+        data: [[0, 80], [1, 82], [2, 83], [3, 85]]
       },
      
     ],
@@ -15,7 +15,7 @@ function Chart1() {
  
   const axes = React.useMemo(
     () => [
-      { primary: true, type: 'linear', position: 'bottom' },
+      { primary: true, type: 'ordinal', position: 'bottom' },
       { type: 'linear', position: 'left' }
     ],
     []
@@ -26,8 +26,8 @@ function Chart1() {
     // space of its parent element automatically
     <div
       style={{
-        width: '400px',
-        height: '300px'
+        width: '80%',
+        height: '80%',
       }}
     >
       <Chart data={data} axes={axes} />

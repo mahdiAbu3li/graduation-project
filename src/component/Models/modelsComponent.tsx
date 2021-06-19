@@ -1,9 +1,8 @@
 import React from "react";
 import styles from "./ModelsStyles.module.css";
-// import { IoEllipse } from "react-icons/io5";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import Zoom from "@material-ui/core/Zoom";
-// import { AuthContext } from "../../Contexts/AuthContext/AuthContext";
+
 
 const myModels = [
   {
@@ -38,11 +37,8 @@ interface Models {
 
 const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
   const history = useHistory();
-  // const values = React.useContext(AuthContext);
-
-  // const [useModels, setUseModels] = useState<Array<Models>>();
-
-  // console.log("usrmodel " , useModels)
+  
+ 
 
   return (
     <div className={styles.container_models}>
@@ -51,11 +47,13 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
           <Zoom
             in={true}
             style={{
-              transitionDuration: "3000ms",
-              transitionDelay: `${500 * index}ms`,
+              transitionDuration: "900ms",
+              transitionDelay: `${200 * index}ms`,
             }}
           >
+           
             <div className={styles.flip_card}>
+           
               <div className={styles.flip_card_inner}>
                 <div className={styles.thefront}>
                   <div className={styles.clip}></div>
@@ -69,7 +67,8 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
                   <div className={styles.frontContainer}>
                     <div className={styles.modelNameAndReq}>
                       <div className={styles.modelName}>
-                        {/* <p>{i.name}</p> */}
+                      
+                        <p>{i.name} {i.state_id}</p>
                         {/* <svg viewBox="0 0 56 18">
                         <text x="0" y="15">{i.name}</text>
                       </svg> */}
@@ -132,6 +131,7 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
                           >
                             {/* <h1>heading</h1> */}
                             <p className={styles.pDiscriptionStyle}>
+                              {i.description}
                               farah farah farah farah farah farahfarah farah
                               farah farah farah farah farahfarah farah farah
                               farah{" "}
@@ -153,11 +153,11 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
                       </div>
 
                       <div className={styles.stat}>
-                        <div className={styles.value}>11</div>
+                        <div className={styles.value}></div>
                         <div className={styles.type}>photos training</div>
                       </div>
                     </div>
-                    <div className={styles.modelDate}>{i.created_date}</div>
+                    <div className={styles.modelDate}>{(i.created_date).split("T")[0]}  </div>
                   </div>
 
                   {/* 
@@ -205,7 +205,7 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
                 <div className={styles.theback}>
                   <div className={styles.backImage}>
                     <img
-                      src={myModels[0].image.default}
+                      src={`https://res.cloudinary.com/hi5/image/upload/models/${i.id}/image`}
                       alt=""
                       style={{
                         width: "100%",
@@ -219,8 +219,10 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
                       }}
                     />
                   </div>
-                  <div className={styles.backButtoContainer}>
-                    <div
+                  <div >
+                    {i.state_id === 5 || i.name ==='ahmad' ?
+                    <div className={styles.backButtoContainer}>
+                   <div
                       className={styles.backButton}
                       onClick={() =>
                         history.push("/dashboard/model/modelpage/" + i.id)
@@ -246,8 +248,35 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
                         )
                       }
                     >
-                      control
+                      <div>control</div>
+                      
                     </div>
+                    </div>
+                    :
+                    <div
+                      className={styles.backButtoContainer}
+                    >
+                      <div></div>
+                      <div className={styles.backButton}  onClick={() =>{
+                        history.push(
+                          "/dashboard/create/" + i.id 
+                        )
+                        if(i.state_id===0){
+                        window.localStorage.setItem("step", "0")
+                      }else if(i.state_id===1){
+                          window.localStorage.setItem("step", "1")
+                        }else if(i.state_id===2){
+                        window.localStorage.setItem("step", "3")
+                        
+                        }else if(i.state_id===3){
+                        window.localStorage.setItem("step", "4")
+                        }
+                      }
+                      }> Continue Creating</div>
+                      
+                    </div>
+                    }
+
 
                     {/* <div className={styles.backButton} onClick={() =>
                       history.push("/dashboard/model/modelpage/" + i.id)

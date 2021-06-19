@@ -140,7 +140,7 @@ function CreateLabels({ changeStep }: Change) {
     //   },
     var requests = [] as any;
     // eslint-disable-next-line array-callback-return
-    data.map((item, index) => {
+    data.map((item , index) => {
       // console.log(color[index], "color");
       if (item.label !== "") {
         const newData = {

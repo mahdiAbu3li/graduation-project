@@ -11,33 +11,26 @@ import { AuthContext } from "../../Contexts/AuthContext/AuthContext";
 function CreateNewModel() {
   const history = useHistory();
   const localStep = window.localStorage.getItem("step");
-  const [step, setStep] = useState(localStep ? parseInt(localStep) : 0);
+  const [step, setStep] = useState(localStep? parseInt(localStep):0);
   const mod = window.localStorage.getItem("modelId");
   const [modelId, setModelId] = useState(mod ? mod : 0);
   let { path } = useRouteMatch();
   const values = React.useContext(AuthContext);
-  // const changeState = (state: number) => {
-  //   const data = { state_id: state };
-  //   const url = "https://graduationprojectt.herokuapp.com/api/model/" + modelId;
-  //   fetch(url, {
-  //     method: "put",
-  //     body: JSON.stringify(data),
-  //     headers: {
-  //       Authorization: `Bearer ` + values.data.token,
-  //     },
-  //   });
-  // };
+
 
   React.useEffect(() => {
-    const data = { state_id: step };
+    // const data = { state_id: step };
+    const data = new FormData()
+    data.append("state_id" , step.toString())
     const url = "https://graduationprojectt.herokuapp.com/api/model/" + modelId;
     const savedStep = window.localStorage.getItem("state");
     if (savedStep !== null ? parseInt(savedStep) : -1 < step) {
       fetch(url, {
         method: "post",
-        body: JSON.stringify(data),
+        body: data,
         headers: {
           Authorization: `Bearer ` + values.data.token,
+          'Content-Type': 'application/json'
         },
       })
         .then((res) => res.json())
@@ -72,6 +65,15 @@ function CreateNewModel() {
           activeStep={step}
           className={styles.stepper}
           stepClassName={styles.step}
+          styleConfig={{
+            activeBgColor:'#239c92',
+            activeTextColor:'#fff',
+            completedBgColor	:'#085a53',
+            completedTextColor:'#fff',
+            inactiveBgColor:"#bfece8",
+            inactiveTextColor:'#fff'
+          }}
+          
         >
           <Step label="create Model" onClick={() => setStep(0)} />
           <Step label="create labels" onClick={() => setStep(1)} />

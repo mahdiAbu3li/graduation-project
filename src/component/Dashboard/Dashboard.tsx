@@ -76,7 +76,7 @@ function Dashboard() {
             <NavLink
               className={`${styles.item} ${isOpen ? styles.close_item : ""}`}
               // onClick={() => goTo("/dashboard/model")}
-              activeStyle={{ backgroundColor: "red" }}
+              activeStyle={{ backgroundColor: "rgb(191,236,232)" , color:"red"   }}
               to="/dashboard/model"
             >
               <div
@@ -91,6 +91,9 @@ function Dashboard() {
             <NavLink
               className={`${styles.item} ${isOpen ? styles.close_item : ""}`}
               // onClick={() => goTo("/dashboard/create")}
+              onClick={() => {
+                window.localStorage.setItem("step", "0")
+              }}
               to="/dashboard/create"
             >
               <div

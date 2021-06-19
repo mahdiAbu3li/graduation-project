@@ -104,7 +104,7 @@ const ModelRequests = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h2>table of requests</h2>{" "}
+        <h2>table of requests</h2>
       </div>
       <div className={styles.requests_container}>
         {copyArray?.map((file) => (

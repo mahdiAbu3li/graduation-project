@@ -1,27 +1,11 @@
 import React, { useState } from "react";
 import styles from "./ModelsStyles.module.css";
 import { IoEllipse } from "react-icons/io5";
-// import { useHistory } from "react-router";
 import { AuthContext } from "../../Contexts/AuthContext/AuthContext";
 import ModelsComponent from "./modelsComponent";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import { useHistory } from "react-router";
 
-// import image from "../../assets/images/color.jpg";
-
-// const myModels = [
-//   {
-//     name: "invoice 1",
-//     id: "1",
-//     date: "12/5/1555",
-//     color: "orange",
-//     image: require("../../assets/images/img4.jpg"),
-//     img_training: 40,
-//     using_time: 30,
-//     description:
-//       "Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor",
-//   },
-
-// ];
 
 const labels = [
   {
@@ -47,7 +31,7 @@ const labels = [
 ];
 
 const Models = () => {
-  // const history = useHistory();
+  const history = useHistory();
   const values = React.useContext(AuthContext);
 
   const [isLoadingMy, setIsLoadingMy] = useState(true);
@@ -129,7 +113,7 @@ const Models = () => {
       </div>
       <div className={styles.header}>
         <p>Models I have</p>
-        <div className={styles.rect}></div>
+        
       </div>
       {isLoadingMy ? (
         <div className={styles.loading}>
@@ -140,7 +124,6 @@ const Models = () => {
       )}
       <div className={styles.header}>
         <p>Models I Used</p>
-        <div className={styles.rect}></div>
       </div>
 
       {isLoadingUse ? (
