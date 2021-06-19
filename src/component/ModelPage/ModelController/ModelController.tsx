@@ -48,9 +48,9 @@ const ModelController = () => {
   return (
     <div className={styles.container}>
       <div className={styles.tabs}>
-        <a href="#modelSetting">model settings</a>
-        <a href="#requests">requests</a>
-        <a href="#re_train">re train setting</a>
+        <a href="#modelSetting">Model Settings</a>
+        <a href="#requests">Requests of Model</a>
+        <a href="#re_train">Re-train Model</a>
       </div>
       <div className={styles.modelSetting} id="modelSetting">
         <fieldset className={styles.fieldset}>

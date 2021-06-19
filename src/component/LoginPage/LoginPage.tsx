@@ -29,7 +29,7 @@ function LoginPage() {
                 </div>
                 <div className={styles.right}>
                   <h1>
-                    Welcome to <span>HI5</span>
+                    Welcome to <span>HI5 555</span>
                   </h1>
                   <h3>
                     if you new here click here to create a new account to log

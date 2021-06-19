@@ -73,7 +73,7 @@ function CreateModel({ changeStep }: Change) {
       method: "post",
       body: data,
       headers: {
-        Authorization: `Bearer ` + values.data.token,
+        Authorization: "Bearer"  + values.data.token,
         // "Content-Type": "application/json",
         // "Content-Type": "multipart/form-data",
         // Accept: "application/json",

@@ -2,28 +2,23 @@ import React, { useState } from "react";
 import styles from "./fileVerStyles.module.css";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
 import Labels from "./Labels/Labels";
-// import {
-//   ReactPictureAnnotation,
-//   defaultShapeStyle,
-//   DefaultInputSection,
-// } from "react-picture-annotation";
+import { useParams } from "react-router-dom";
+
 
 import ReactImageAnnotate from "react-image-annotate";
 
 function Labelling() {
-  const values = React.useContext(AuthContext); //2
+  const { modelId } = useParams<{ modelId: string }>();
+  const values = React.useContext(AuthContext); 
 
   const [files, setFiles] = useState([]);
-  // const [annotationData, setAnnotationData] = useState();
 
   React.useEffect(() => {
-    // بس لما تتحمل الصفحة اول مرة
     const url =
-      "https://graduationprojectt.herokuapp.com/api/images/predict/57?user_id=1"; //req url
+      "https://graduationprojectt.herokuapp.com/api/images/predict/+"+"253"+"?user_id=1"; 
     fetch(url, {
       method: "get",
       headers: {
-        //the same
         Authorization: `Bearer ${values.data.token}`,
         "Content-Type": "application/json",
       },
@@ -45,7 +40,7 @@ function Labelling() {
 
   const setLabels = async (name: string, regions: any) => {
     var newArr = [] as any;
-    // console.log("region in set label", regions)
+    
     regions.map((region: any) => {
       newArr.push({
         cls: region.cls,
@@ -143,7 +138,7 @@ function Labelling() {
   // const[json , setJson] = useState();
   function setSelectedImage(name: string) {
     const url =
-      "https://graduationprojectt.herokuapp.com/api/predictfile/labels/57?image=" +
+      "https://graduationprojectt.herokuapp.com/api/predictfile/labels/"+modelId+"?image=" +
       name +
       "&user_id=1"; //req url
     // console.log("name of imageee", name);
@@ -230,19 +225,21 @@ function Labelling() {
   //   setTexts(arr);
   //   console.log(e.target.value);
   // };
-  // console.log(files , 123456789)
+  console.log("files ",files)
   // console.log("text out", texts)
+
+
   return (
     <div className={styles.container}>
       <div className={styles.images_container}>
-        {files?.map((
-          file: any //files
-        ) => (
+        {files?.map(( file: any  ) => (
+          //  console.log("id",file.public_id)
           <div
             className={`${styles.images} ${
               file.url === activeImage2?.src ? styles.active : ""
             }`}
-            key={file.public_id.split("/")[5]}
+            
+            key={file.id}
           >
             <img
               src={file.url}
@@ -256,8 +253,8 @@ function Labelling() {
                 //   height: file.height
                 // })
 
-                // console.log(file.public_id.split("/")[5])
-                setSelectedImage(file.public_id.split("/")[5]);
+                console.log("iddddddddddddd",file.id)
+                setSelectedImage(file.id);
 
                 activeImage2.height = file.height;
                 activeImage2.width = file.width;

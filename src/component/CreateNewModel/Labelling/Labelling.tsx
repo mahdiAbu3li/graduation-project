@@ -162,6 +162,7 @@ function Labelling() {
             regions: activeImage2.regions,
           },
         ]}
+        // sryle={{"color":"red"}}
         //     [{
         //       cls: activeImage2.regions,
         //       color: "#ff0000",
