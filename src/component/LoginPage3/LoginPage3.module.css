@@ -1,0 +1,126 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  background-color: #bfece8;
+  padding: 6vh 4vw;
+}
+.card {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  position: relative;
+  background-color: antiquewhite;
+}
+.right {
+  width: 100%;
+  height: 100%;
+  /* max-width: 400px; */
+  /* background-color: red; */
+  display: none;
+}
+.left {
+  width: 100%;
+  height: 100%;
+  max-width: 820px;
+}
+.halfCircle {
+  /* background: url("../../assets/images/halfcircle.svg");
+  background-size: cover; */
+  clip-path: circle(59.5% at 50% 70%);
+  background-color: #fff;
+  width: 100%;
+  height: 90vh;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 500;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  /* box-shadow: 2px 2px 2px red blue; */
+  /* border: 2px black solid; */
+}
+.imgContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 50%; */
+  /* background-color: aqua; */
+}
+.imgContainer img {
+  width: 100%;
+  height: auto;
+}
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .left {
+    background: url("../../assets/images/wave.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 600;
+    width: 1167px;
+  }
+  .card {
+    background-color: #fff;
+  }
+  .halfCircle {
+    /* clip-path: circle(33.5% at 52% 51%); */
+    /* background-color: aqua; */
+    clip-path: none;
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    left: 90px;
+    top: 20vh;
+    box-shadow: 0 0px 16px -19px rgb(0 0 0 / 56%),
+      0 4px 25px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+
+    /* border: 2px black solid; */
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .card {
+    display: flex;
+  }
+  .right {
+    /* background-color: red; */
+    display: grid;
+    grid-template-rows: 30% 70%;
+  }
+  .header {
+    /* display: grid;
+    grid-template-columns: 100px auto; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16vh 3vw 0 3vw;
+    /* height: 15vh; */
+  }
+  .header p {
+    font-size: 3rem;
+    text-transform: uppercase;
+    color: #0c1151;
+    font-family: BlinkMacSystemFont;
+    letter-spacing: 2px;
+    font-weight: bold;
+  }
+  .header img {
+    width: 50%;
+    height: auto;
+  }
+}

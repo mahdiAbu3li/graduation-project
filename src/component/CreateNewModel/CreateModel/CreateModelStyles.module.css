@@ -15,7 +15,9 @@
   grid-area: form;
   padding: 0 40px;
 }
-
+.button {
+  background-color: aqua !important;
+}
 .header {
   grid-area: header;
   display: flex;
@@ -36,7 +38,7 @@
   width: 60%;
   display: flex;
   justify-content: center;
-  border:rgb(35,156,146) 2.5px dashed;
+  border: rgb(35, 156, 146) 2.5px dashed;
 }
 
 .uploadImage:hover {
