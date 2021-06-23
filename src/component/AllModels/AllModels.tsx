@@ -88,15 +88,10 @@ const AllModels = () => {
         console.log(data);
       });
   }, [values.data.id, values.data.token]);
-  // const [step, setStep] = useState(0);
 
-  // React.useEffect(() => {
-  //   if (step === 0) {
-  //     history.push("/dashboard/create/upload");
-  //   } else if (step === 1) {
-  //     history.push("/dashboard/create/verify");
-  //   }
-  // }, [step, history]);
+  // const copy = models?.filter((i) => i.)
+
+
 const setValue = (e: React.ChangeEvent<HTMLSelectElement>) => {
   console.log(e.target.value , "farahh")
 }
