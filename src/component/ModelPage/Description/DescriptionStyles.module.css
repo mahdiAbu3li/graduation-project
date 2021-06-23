@@ -43,6 +43,9 @@
   height: 85%;
   margin-top: -25px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(27, 27, 27, 0.23);
+  padding: 8px;
+  display: flex;
+  justify-content: center;
 
 }
 

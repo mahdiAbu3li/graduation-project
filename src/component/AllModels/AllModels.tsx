@@ -7,6 +7,7 @@ import { IoEllipse } from "react-icons/io5";
 import { useHistory } from "react-router";
 // import ModelPage from "../ModelPage/ModelPage";
 import { AuthContext } from "../../Contexts/AuthContext/AuthContext";
+import ModelsComponent from "./modelsComponent";
 
 const myModels = [
   {
@@ -44,7 +45,12 @@ const labels = [
   },
 ];
 
+const options = ["All" , "Invoices", "License ", "ID Cards" , "Birth Certificate" , "Certificate"];
+
+
+
 const AllModels = () => {
+  const [type, setType] = useState<String>("All");
   const history = useHistory();
   const values = React.useContext(AuthContext);
   interface Models {
@@ -62,6 +68,8 @@ const AllModels = () => {
     short_description: string;
     state_id: number;
   }
+
+
   const [models, setModels] = useState<Array<Models>>();
   React.useEffect(() => {
     const url =
@@ -89,29 +97,44 @@ const AllModels = () => {
   //     history.push("/dashboard/create/verify");
   //   }
   // }, [step, history]);
-
+const setValue = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  console.log(e.target.value , "farahh")
+}
   return (
     <div className={styles.container}>
       {/* <img src={require('../../assets/images/color.jpg').default} alt=""></img>
       <img src={require('../../assets/images/color2.jpg').default} alt=""></img> */}
 
-      <div className={styles.container_states}>
-        {labels.map((i) => (
-          <div>
-            <IoEllipse color={i.color} size="25px"></IoEllipse>
-            {/* <FaCircle
-              style={{ color: i.color, fontSize: "25pxpx" }}
-            ></FaCircle> */}
 
-            <span>{i.title}</span>
-          </div>
-        ))}
+      <div className={styles.header}>
+        <div className={styles.title}>
+          <p>Public ModelS</p>
+        </div>
 
-        {/* models */}
+
+        <div className={styles.selectContainer}>
+          <select name="cars" id="cars" className={styles.select} onChange={(e) => setValue(e)} >
+            {
+              options.map((item, index2) => (
+                <option key={index2} value={item} >
+                  {item}
+                </option>
+              ))
+            }
+
+{/* 
+
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option> */}
+        </select>
+        </div>
+       
       </div>
 
-      <div className={styles.container_models}>
-        {models &&
+      <ModelsComponent models={models} />
+        {/* {models &&
           models.map((i) => (
             <div className={styles.maincontainer}>
               <div className={styles.thecard}>
@@ -179,8 +202,7 @@ const AllModels = () => {
                 </div>
               </div>
             </div>
-          ))}
-      </div>
+          ))} */}
     </div>
   );
 };

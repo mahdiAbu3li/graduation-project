@@ -1,0 +1,325 @@
+.container{
+  /* background-color: green; */
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template: 60px 1fr/auto;
+  grid-template-areas:
+    "header"
+    "content";
+}
+
+.header{
+  /* background-color: red; */
+  background-color: #f8fefd;
+  grid-area: header;
+  width: 100%;
+  height:10%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 2%;
+  /* border: 1px red solid; */
+  position: relative;
+  position: fixed;
+
+}
+.logo{
+  width: 10%;
+  height: 100%;
+  padding: 10px;
+  position: absolute;
+  left: 2px;
+  top:0px;
+  /* border:1px green solid; */
+}
+.header .buttonsContainer{
+  width: 300px;
+  height: 100%;
+  /* background-color: royalblue; */
+  position:absolute;
+  right: 10px;
+  top: 1px;
+  
+  display: flex;
+  justify-content: space-between;
+  /* align-content: center; */
+  align-items: center;
+  
+}
+.button{
+  /* background-color: saddlebrown; */
+  cursor: pointer;
+  width: 80px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #0f236b;
+  /* border: 2px red solid; */
+  font-weight: bold;
+  
+}
+.button:hover{
+  color: #1d7c7d;
+}
+.allcontent{
+  /* background-color: darkblue; */
+  background-color: #f8fefd;
+  width: 100%;
+  height: 100%;
+  grid-area: content;
+
+}
+.first{
+  /* background-color: blue; */
+  background-color: #f8fefd;
+  height: 800px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /* background-image: url("../../assets/images/back.svg"); */
+}
+.first .content{
+  /* background-color: cadetblue; */
+  /* background-color: #f8fefd; */
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: normal;
+  font-family: "Segoe UI",Arial,sans-serif;
+  font-weight: 700;
+}
+.first .image{
+  /* background-color: yellow; */
+  animation: moveleft 1s linear 1;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  width: 50%;
+  padding-left: 20px;
+}
+.first h1{
+  animation: moveright 1s linear 1;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  color: #1d7c7d;
+  font-weight: 700;
+  font-family: BlinkMacSystemFont;
+  font-size: 11vh;
+}
+.first .button{
+  color:white;
+  background-color: #0f236b;
+  height: 7%;
+  width: 120px;
+  border-radius: 30px;
+  padding: 10px 20px;
+}
+
+.first .button:hover{
+  cursor: pointer;
+  background-color: #1d7c7d;
+  color:white
+}
+
+.second{
+  background-color: #f8fefd;
+  height: 15%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.second .image{
+  animation: moveleft 1s linear 1;
+  transform: none;
+  transition-property: opacity,transform,-webkit-transform;
+  transition-duration: 2s;
+  width: 30%;
+  padding-right: 5%;
+}
+.second .content{
+  /* background-color: cadetblue; */
+  /* background-color: #f8fefd; */
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: normal;
+  font-family: "Segoe UI",Arial,sans-serif;
+  font-weight: 700;
+  padding-left: 5%;
+  padding-right: 2%;
+}
+.second h1{
+  animation: moveright 1s linear 1;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  color: #1d7c7d;
+  font-weight: 700;
+  font-family: BlinkMacSystemFont;
+  font-size: 5vh;
+}
+.second p{
+  font-size: mediums;
+  line-height: 1.8em;
+  font-weight: 500;
+  color: #9091a5;
+
+}
+
+.third{
+  /* background-color: red; */
+
+}
+.third .titel h1{
+  color:#29787f;
+  font-family: BlinkMacSystemFont;
+  font-size: 5vh;
+  font-weight: bolder;
+}
+.third .allcontent{
+  display: flex;
+  justify-content: center;
+  /* flex-direction: column; */
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: poppins, sans-serif;
+  font-weight: 700;   
+   /* color: #4b7285; */
+   background-color: #cff5f1;
+   box-shadow: 0 0px 9px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(27, 27, 27, 0.23);
+   padding-top: 4vh;
+   padding-bottom: 4vh;
+
+}
+.third h1{
+  /* margin: auto; */
+  text-align: center;
+  font-size: 25px;
+  color:#0f236b;
+}
+
+.third .component{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  height: 45vh;
+  width: 64vh;
+  background-color: #f7fdfc;
+  margin: 10px;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(27, 27, 27, 0.23);
+}
+.third .component .image{
+  animation: moveleft 1s linear 1;
+  transform: none;
+  transition-property: opacity,transform,-webkit-transform;
+  transition-duration: 2s;
+  width: 55%;
+  margin-bottom:0px ;
+  position: absolute;
+  bottom: 5px;
+
+}
+.third .component .content{
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: normal;
+  font-family: "Segoe UI",Arial,sans-serif;
+  position: absolute;
+  top: 5px;
+  border:1px red sol
+}
+
+.who{
+  /* background-color: rebeccapurple; */
+  /* background-color: #546864; */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: poppins, sans-serif;
+  font-weight: 700;   
+  height: 30%;
+  /* flex-direction: row; */
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #f7fdfc;
+}
+.who .titel h1{
+  color:#29787f;
+  font-family: BlinkMacSystemFont;
+  font-size: 5vh;
+  font-weight: bolder;
+
+}
+.cardContainer{
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: center;
+  /* flex-direction: column; */
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: poppins, sans-serif;
+  font-weight: 700;   
+  height: 30%;
+  /* flex-direction: row; */
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #f7fdfc;
+
+}
+.who .card{
+  background-color: #f7fdfc;
+  display: flex;
+  flex-direction: column;
+  justify-content: sp;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  height: 50vh;
+  width: 40vh;
+  /* background-color: green; */
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 3px rgba(27, 27, 27, 0.23);
+  overflow: hidden;
+  position: relative;
+  z-index: 100;
+  
+}
+
+.who .card .name{
+  position: absolute;
+  bottom: 10%;
+  left: 14%;
+  font-family: BlinkMacSystemFont;
+
+}
+
+.clip {
+  background: red;
+  /* clip-path: circle(44.9% at 62% 22%); */
+  background: red;
+  /* clip-path: circle(44.9% at 62% 22%); */
+  border-radius: 48%;
+  z-index: 5;
+  position: absolute;
+  top: 0%;
+  left: 0;
+  width: 107%;
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 16%), 0 2px 3px rgb(27 27 27 / 23%);
+  margin-left: 31px;
+  margin-top: -128px;
+
+}

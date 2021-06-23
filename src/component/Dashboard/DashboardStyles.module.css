@@ -23,7 +23,7 @@
     rgb(41 84 144) 80%,
     rgb(32 70 123) 100%
   ); */
-  background-color: white;
+  background-color: #cff5f126;
   /* color: #e8eeff; */
   color: #a9afbb;
 
@@ -40,6 +40,10 @@
   flex-basis: 50px;
   display: grid;
   place-items: center;
+  height: 10%;
+  width: 100%;
+  padding-top: 5%;
+  /* border: 2px red solid; */
 }
 
 .nav .navShrink {
@@ -79,7 +83,7 @@
   grid-area: content;
   overflow-y: scroll;
   /* background-color: #eff0f7; */
-  background-color: #f8fefd;
+  background-color: #cff5f126;
   /* padding: 10px 10px 100px 10px; */
 }
 .nav .navList {
@@ -127,7 +131,7 @@ span {
   width: 100%;
   padding: 8px;
 
-  /* color: #fff; */
+  /* color: red; */
 }
 
 /* when close nav side  */

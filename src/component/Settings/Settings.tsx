@@ -102,13 +102,14 @@ const Settings = () => {
             <Form>
               {console.log(isSubmitting)}
               <div className={styles.profile}>
-                <h3 className={styles.header}>Profile</h3>
+                <h3 className={styles.header}>Edit your User Personal Information </h3>
                 <Field
                   component={TextField}
                   type="text"
                   name="name"
                   label="User Name"
                   variant="outlined"
+                  className={styles.text}
                 />
                 <Field
                   component={TextField}
@@ -116,6 +117,7 @@ const Settings = () => {
                   name="email"
                   label="Email"
                   variant="outlined"
+                  className={styles.text}
                 />
                 <Field
                   component={TextField}
@@ -123,7 +125,9 @@ const Settings = () => {
                   name="password"
                   label="Password"
                   variant="outlined"
+                  className={styles.text}
                 />
+
                 <Button
                   variant="outlined"
                   className={styles.button}
@@ -179,13 +183,14 @@ const Settings = () => {
             <Form>
               {console.log(isSubmitting)}
               <div className={styles.password}>
-                <h3 className={styles.header}>Password</h3>
+                <h3 className={styles.header}>Change Your Password</h3>
                 <Field
                   component={TextField}
                   type="password"
                   name="oldPassword"
                   label="Old Password"
                   variant="outlined"
+                  className={styles.text}
                 />
                 <Field
                   component={TextField}
@@ -193,6 +198,7 @@ const Settings = () => {
                   name="password"
                   label="Password"
                   variant="outlined"
+                  className={styles.text}
                 />
                 <Field
                   component={TextField}
@@ -200,13 +206,14 @@ const Settings = () => {
                   name="passwordConfirmation"
                   label="Confirm Password"
                   variant="outlined"
+                  className={styles.text}
                 />
                 <Button
                   variant="outlined"
                   className={styles.button}
                   type="submit"
                 >
-                  Reset password
+                  Reset
                 </Button>
               </div>
 

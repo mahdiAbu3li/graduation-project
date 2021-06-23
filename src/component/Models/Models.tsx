@@ -13,12 +13,16 @@ const labels = [
     title: "Model Created",
   },
   {
-    color: "#fad276",
+    color: "rgb(98 177 203)",
+    title: "Label created",
+  },
+  {
+    color: "rgb(255 236 192)",
     title: "Data Uploded",
   },
   {
     color: "c4f6ab",
-    title: "Data Processed",
+    title: "Model Labeling",
   },
   {
     color: "f3c8ef",
@@ -111,9 +115,10 @@ const Models = () => {
           </div>
         ))}
       </div>
+
       <div className={styles.header}>
         <p>Models I have</p>
-        
+
       </div>
       {isLoadingMy ? (
         <div className={styles.loading}>

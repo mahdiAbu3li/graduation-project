@@ -7,7 +7,7 @@ export const ModelRoute = () => {
   return (
     <Switch>
       <Route exact path="/dashboard/AllModels">
-        var
+        
         <AllModels />
       </Route>
       <Route exact path="/dashboard/Allmodels/:modelId/modeldescription">

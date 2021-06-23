@@ -1,74 +1,21 @@
 import React from "react";
-import styles from "./ModelsStyles.module.css";
+import styles from "./AllModelsStyles.module.css";
 import { useHistory, useParams } from "react-router";
 import Zoom from "@material-ui/core/Zoom";
-import { IoEllipse } from "react-icons/io5";
-
 
 
 const myModels = [
-  // {
-  //   name: "invoice 1",
-  //   id: "1",
-  //   date: "12/5/1555",
-  //   color: "orange",
-  //   image: require("../../assets/images/img4.jpg"),
-  //   img_training: 40,
-  //   using_time: 30,
-    
-  //   description:
-  //     "Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor",
-  // }, 
-
   {
-  color: "#fad276",
-  state_id:2,
-  created_date: "12/6/2021",
-  name: "Products",
-  image: require("../../assets/images/img4.jpg"),
-  short_description: "extract information",
-  description: "This model to extract information from invoices",
-  id: 5,
-  number_of_using: 12,
-  number_of_retraining: 40,
-  public_state: 1,
-  number_of_req: 3,
-  photos_training:10,
+    name: "invoice 1",
+    id: "1",
+    date: "12/5/1555",
+    color: "orange",
+    image: require("../../assets/images/img4.jpg"),
+    img_training: 40,
+    using_time: 30,
+    description:
+      "Lorem ipsum dolor sit amet consectetur, Ducimus, repudiandae temporibus omnis illum maxime quod deserunt eligendi dolor",
   },
-
-  {
-  color: "#fad276",
-  photos_training:10,
-  state_id:1,
-  created_date: "20/5/2021",
-  name: "Invoice 1",
-  image: require("../../assets/images/img4.jpg"),
-  short_description: "",
-  description: "This model to extract information from invoices",
-  id: 1,
-  number_of_using: 12,
-  img_training: 40,
-  public_state: 1,
-  number_of_req: 2,
-  number_of_retraining: 40,
-  },
-  {
-  color: "orange",
-  photos_training:10,
-  state_id:4,
-  created_date: "1/6/2021",
-  name: "Invoice 2",
-  image: require("../../assets/images/img4.jpg"),
-  short_description: "",
-  description: "This model to extract information from invoices",
-  id: 1,
-  number_of_using: 12,
-  img_training: 40,
-  public_state: 1,
-  number_of_req: 0,
-  number_of_retraining: 40,
-  },
- 
 ];
 
 interface Models {
@@ -85,14 +32,13 @@ interface Models {
   public_state: number;
   short_description: string;
   state_id: number;
-  number_of_req: number;
 }
 
 const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
   const history = useHistory();
-  
 
-  const colores=["#b7dfec" , "rgb(98 177 203)" , "rgb(255 236 192)" ,"c4f6ab", "f3c8ef" , "02b902" ,]
+  const colores=["#b7dfec" , "#fad276" , "#c4f6ab" , "#f3c8ef" , "#02b902"]
+  
  
 
   return (
@@ -123,9 +69,7 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
                     <div className={styles.modelNameAndReq}>
                       <div className={styles.modelName}>
                       
-
-                        <h1><IoEllipse color={`${colores[i.state_id]}`} size="25px"></IoEllipse>
-                        &nbsp; &nbsp; {i.name}</h1>
+                        <p>{i.name} {i.state_id}</p>
                         {/* <svg viewBox="0 0 56 18">
                         <text x="0" y="15">{i.name}</text>
                       </svg> */}
@@ -149,18 +93,9 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
                         </foreignObject>
                       </svg> */}
                       </div>
-                      {/* <div className={styles.circleContainer}>
-                        
-                        <div className={styles.card_number_req}>
-                          {i.number_of_req}
-                        </div>
-                      </div> */}
 
                       <div className={styles.circleContainer}>
-                        {i.number_of_req !==0 ?
-                        <div className={styles.card_number_req}>
-                          {i.number_of_req}
-                        </div> : <div></div> }
+                        
                       </div>
                     </div>
 
@@ -195,8 +130,10 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
                           >
                             {/* <h1>heading</h1> */}
                             <p className={styles.pDiscriptionStyle}>
-                              {i.description}This model to extract information from invoices
-                              {" "}
+                              {i.description}
+                              farah farah farah farah farah farahfarah farah
+                              farah farah farah farah farahfarah farah farah
+                              farah{" "}
                             </p>
                           </div>
                         </foreignObject>
@@ -205,8 +142,8 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
 
                     <div className={styles.modelInformation}>
                       <div className={styles.stat}>
-                        {/* <div className={styles.value}>{i.number_of_retraining}</div> */}
-                        <div className={styles.type}>retraining times</div>
+                        <div className={styles.value}>hi</div>
+                        <div className={styles.type}>read</div>
                       </div>
 
                       <div className={styles.stat}>
@@ -215,7 +152,7 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
                       </div>
 
                       <div className={styles.stat}>
-                        {/* <div className={styles.value}>{i.photos_training}</div> */}
+                        <div className={styles.value}></div>
                         <div className={styles.type}>photos training</div>
                       </div>
                     </div>
@@ -282,62 +219,21 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
                     />
                   </div>
                   <div >
-                    {i.state_id === 5 || i.name ==='ahmad' ?
+                    
                     <div className={styles.backButtoContainer}>
+                      <div></div>  
                    <div
                       className={styles.backButton}
                       onClick={() =>
-                        history.push("/dashboard/model/modelpage/" + i.id)
+                        history.push("/dashboard/Allmodels/" + i.id +"/modeldescription")
                       }
                     >
-                      use
+                      See More Description
                     </div>
-                    <div
-                      className={styles.backButton}
-                      onClick={() =>
-                        history.push(
-                          "/dashboard/model/modelpage/" + i.id + "/description"
-                        )
-                      }
-                    >
-                      description
+                   
+                    
                     </div>
-                    <div
-                      className={styles.backButton}
-                      onClick={() =>
-                        history.push(
-                          "/dashboard/model/modelpage/" + i.id + "/controller"
-                        )
-                      }
-                    >
-                      <div>control</div>
-                      
-                    </div>
-                    </div>
-                    :
-                    <div
-                      className={styles.backButtoContainer}
-                    >
-                      <div></div>
-                      <div className={styles.backButton}  onClick={() =>{
-                        history.push(
-                          "/dashboard/create/" + i.id 
-                        )
-                        if(i.state_id===0){
-                        window.localStorage.setItem("step", "0")
-                      }else if(i.state_id===1){
-                          window.localStorage.setItem("step", "1")
-                        }else if(i.state_id===2){
-                        window.localStorage.setItem("step", "3")
-                        
-                        }else if(i.state_id===3){
-                        window.localStorage.setItem("step", "4")
-                        }
-                      }
-                      }> Continue Creating</div>
-                      
-                    </div>
-                    }
+                    
 
 
                     {/* <div className={styles.backButton} onClick={() =>

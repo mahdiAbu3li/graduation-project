@@ -20,11 +20,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* border: 1px red solid; */
 }
 
 .header {
   /* align-self: flex-start; */
-  color: #7e7c7c;
+  color: #0f236b;
+  text-align: center;
 }
 
 .profile {
@@ -33,7 +35,9 @@
   justify-content: space-between;
   /* background-color: aqua; */
 
+  width: 70%;
   height: 400px;
+  align-items: center;
 }
 
 .password {
@@ -41,4 +45,25 @@
   flex-direction: column;
   justify-content: space-between;
   height: 400px;
+  width: 70%;
+  /* border: 1px red solid; */
+  align-content: center;
+  align-items: center;
+}
+.text{
+  width: 90%;
+}
+.button{
+  background-color: #0f236b !important;
+  color:white  !important;
+  font-weight: bold;
+  /* font-size: 20px; */
+  width: 50%;
+}
+.button:hover{
+  background-color: #2da895  !important;
+}
+Button{
+  background-color:red;
+  color: green;
 }

@@ -13,6 +13,7 @@ import ModelsRout from "../ModelRout/ModelRoute";
 import Settings from "../Settings/Settings";
 import AllModelsRout from "../AllModels/AllModelRoute";
 import Swal from "sweetalert2";
+import logo from "../../assets/images/logo.png";
 // import ModelPage from "../ModelPage/ModelPage";
 
 function Dashboard() {
@@ -70,13 +71,13 @@ function Dashboard() {
       >
         <div className={styles.nav}>
           <div className={styles.navLogo}>
-            <div>hi5 logo</div>
+            <img src={logo} alt="" style={{width:"60%"}} />
           </div>
           <div className={styles.navList}>
             <NavLink
               className={`${styles.item} ${isOpen ? styles.close_item : ""}`}
               // onClick={() => goTo("/dashboard/model")}
-              activeStyle={{ backgroundColor: "rgb(191,236,232)" , color:"red"   }}
+              activeStyle={{ backgroundColor: "rgb(191,236,232)" , color:"red"}}
               to="/dashboard/model"
             >
               <div

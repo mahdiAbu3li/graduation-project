@@ -4,7 +4,7 @@ import { Formik, Form, Field } from "formik";
 import { TextField } from "formik-material-ui";
 import Button from "@material-ui/core/Button";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext";
-import mahdi from "../../../assets/images/login.png";
+import model from "../../../assets/images/model.svg";
 import CircularProgress from "@material-ui/core/CircularProgress";
 // import { CheckboxWithLabel } from "formik-material-ui";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -19,7 +19,7 @@ import Zoom from "@material-ui/core/Zoom";
 interface Change {
   changeStep: (a: number, b: number) => void;
 }
-const options = ["invoices", "paper", "government paper"];
+const options = ["Invoices", "License ", "ID Cards" , "Birth Certificate" , "Certificate"];
 function CreateModel({ changeStep }: Change) {
   const [checked, setChecked] = React.useState(false);
   const [image, setImage] = useState<File>();
@@ -206,7 +206,7 @@ function CreateModel({ changeStep }: Change) {
               </Field>
               <div className={styles.publicContainer}>
                 {/* <Field
-                  className={styles.inputField}
+                  className={styles.inputField} 
                   component={CheckboxWithLabel}
                   type="checkbox"
                   name="public"
@@ -261,11 +261,11 @@ function CreateModel({ changeStep }: Change) {
           in={true}
           style={{
             // transitionDelay: checked ? "5000ms" : "5000ms",
-            transitionDuration: "9000ms",
+            transitionDuration: "900ms",
           }}
         >
           <div className={styles.card}>
-            <img src={urlImage !== "" ? urlImage : mahdi} alt="123" />
+            <img src={urlImage !== "" ? urlImage : model} alt="123" />
           </div>
         </Zoom>
       </div>

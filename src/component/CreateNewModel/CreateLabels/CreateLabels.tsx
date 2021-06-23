@@ -9,6 +9,8 @@ import { useParams } from "react-router-dom";
 import { AiOutlineMinusCircle } from "react-icons/ai";
 import rightImage from "../../../assets/images/c2.svg";
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext";
+import Zoom from "@material-ui/core/Zoom";
+
 
 interface Data {
   label: string;
@@ -290,9 +292,23 @@ function CreateLabels({ changeStep }: Change) {
           add another Label
         </Button>
       </div>
-      <div className={styles.right}>
+      
+      {/* <div className={styles.right}>
         <img src={rightImage} alt="a" />
-      </div>
+      </div> */}
+
+      <Zoom
+        in={true}
+        style={{
+          // transitionDelay: checked ? "5000ms" : "5000ms",
+          transitionDuration: "900ms",
+        }}
+      >
+        <div className={styles.card}>
+          <img src={rightImage} alt="123" />
+        </div>
+      </Zoom>
+
       <div className={styles.bottom}>
         <Button
           variant="outlined"
