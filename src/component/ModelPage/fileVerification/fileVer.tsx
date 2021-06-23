@@ -4,18 +4,17 @@ import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
 import Labels from "./Labels/Labels";
 import { useParams } from "react-router-dom";
 
-
 import ReactImageAnnotate from "react-image-annotate";
 
 function Labelling() {
   const { modelId } = useParams<{ modelId: string }>();
-  const values = React.useContext(AuthContext); 
+  const values = React.useContext(AuthContext);
 
   const [files, setFiles] = useState([]);
 
   React.useEffect(() => {
     const url =
-      "https://graduationprojectt.herokuapp.com/api/images/predict/+"+"253"+"?user_id=1"; 
+      "https://graduationprojectt.herokuapp.com/api/images/predict/+253?user_id=1";
     fetch(url, {
       method: "get",
       headers: {
@@ -40,7 +39,7 @@ function Labelling() {
 
   const setLabels = async (name: string, regions: any) => {
     var newArr = [] as any;
-    
+
     regions.map((region: any) => {
       newArr.push({
         cls: region.cls,
@@ -138,7 +137,9 @@ function Labelling() {
   // const[json , setJson] = useState();
   function setSelectedImage(name: string) {
     const url =
-      "https://graduationprojectt.herokuapp.com/api/predictfile/labels/"+modelId+"?image=" +
+      "https://graduationprojectt.herokuapp.com/api/predictfile/labels/" +
+      modelId +
+      "?image=" +
       name +
       "&user_id=1"; //req url
     // console.log("name of imageee", name);
@@ -225,20 +226,18 @@ function Labelling() {
   //   setTexts(arr);
   //   console.log(e.target.value);
   // };
-  console.log("files ",files)
+  console.log("files ", files);
   // console.log("text out", texts)
-
 
   return (
     <div className={styles.container}>
       <div className={styles.images_container}>
-        {files?.map(( file: any  ) => (
+        {files?.map((file: any) => (
           //  console.log("id",file.public_id)
           <div
             className={`${styles.images} ${
               file.url === activeImage2?.src ? styles.active : ""
             }`}
-            
             key={file.id}
           >
             <img
@@ -253,7 +252,7 @@ function Labelling() {
                 //   height: file.height
                 // })
 
-                console.log("iddddddddddddd",file.id)
+                console.log("iddddddddddddd", file.id);
                 setSelectedImage(file.id);
 
                 activeImage2.height = file.height;

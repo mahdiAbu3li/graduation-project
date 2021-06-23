@@ -1,28 +1,20 @@
 import React, { useState } from "react";
 import styles from "./DescriptionStyles.module.css";
+import Chart1 from "./Chart1";
+import Chart2 from "./Chart2";
+import mahdi from "../../../assets/images/img6.jpg";
+import Swal from "sweetalert2";
 
 import { AuthContext } from "../../../Contexts/AuthContext/AuthContext"; //1
 import { useParams } from "react-router-dom";
 
 const Description = () => {
-  const { modelId } = useParams<{ modelId: string }>();
+  // const history = useHistory();
+  // const [file, setFile] = useState([]);
 
-  // interface Model {
-  //   created_date: string;
-  //   current: null;
-  //   description: string;
-  //   id: number;
-  //   last_use_date: string;
-  //   name: string;
-  //   number_of_using: number;
-  //   owner_id: number;
-  //   progress: number;
-  //   progress_re: number;
-  //   public_state: number;
-  //   short_description: string;
-  //   state_id: number;
-  // }
-  // const [file, setFile] = useState<Model>();
+  const values = React.useContext(AuthContext); //2
+  const [annotationData] = useState();
+  const { modelId } = useParams<{ modelId: string }>();
 
   const request = async () => {
     var data = new FormData();
@@ -47,85 +39,164 @@ const Description = () => {
     console.log(res);
   };
 
-  const values = React.useContext(AuthContext); //2
-  const [annotationData] = useState();
+  React.useEffect(() => {
+    const url =
+      "https://graduationprojectt.herokuapp.com/api/images/predict/" +
+      modelId +
+      "?user_id=" +
+      values.data.id; //req url
+    fetch(url, {
+      method: "get",
+      headers: {
+        //the same
+        Authorization: `Bearer ${values.data.token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (res.status === 201) {
+          Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "request has been sent",
+            // footer: "<a href>Why do I have this issue?</a>",
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: res.statusText,
+            // footer: "<a href>Why do I have this issue?</a>",
+          });
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data, "nooooo");
+        if (data.length >= 0) {
+          console.log(data, "mmmmm");
 
-  // React.useEffect(() => {
-  //   // بس لما تتحمل الصفحة اول مرة
-  //   const url =
-  //     "https://graduationprojectt.herokuapp.com/api/model/" +
-  //     modelId; //req url
-  //   fetch(url, {
-  //     method: "get",
-  //     headers: {
-  //       //the same
-  //       Authorization: `Bearer ${values.data.token}`,
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data, "nooooo");
-  //       if (data.length > 0) {
-  //         console.log(
-  //           data,
-  //           "mmmmmmmmmmmmmmmmmmmmmmKKKKKKKKKKKKKmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm"
-  //         );
-  //         setFile(data);
-  //       } else return false;
-  //     });
-  // }, [values.data.id, values.data.token]);
-
+          // setFiles(data);
+        } else {
+          return false;
+        }
+      });
+  }, [modelId, values.data.id, values.data.token]);
   console.log(JSON.stringify(annotationData));
 
   return (
     <div className={styles.container}>
-      <div>
-        {modelId}
-        <div className={styles.container_cards}>
-          <div className={styles.card}>
-            <div className={styles.inner}>
-              <div className={styles.outer}></div>
-              <div className={styles.cardText}>
-                <p className={styles.cardKey}>Using Time</p>
-                <p className={styles.cardValue}>300 time</p>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.card}>
-            <div className={styles.inner}>
-              <div className={styles.outer}></div>
-              <div className={styles.cardText}>
-                <p className={styles.cardKey}>Using Time</p>
-                <p className={styles.cardValue}>300 time</p>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.card}>
-            <div className={styles.inner}>
-              <div className={styles.outer}></div>
-              <div className={styles.cardText}>
-                <p className={styles.cardKey}>Using Time</p>
-                <p className={styles.cardValue}>300 time</p>
-              </div>
-            </div>
-          </div>
-
-          <div className={styles.card}>
-            <div className={styles.inner}>
-              <div className={styles.outer}></div>
-              <div className={styles.cardText}>
-                <p className={styles.cardKey}>Using Time</p>
-                <p className={styles.cardValue}>300 time</p>
-              </div>
+      <div className={styles.container_cards}>
+        <div className={styles.card}>
+          <div className={styles.inner}>
+            <div
+              className={styles.outer}
+              style={{ background: "#0a1f55" }}
+            ></div>
+            <div className={styles.cardText}>
+              <p className={styles.cardKey}>Using Time</p>
+              <p className={styles.cardValue}>30 times</p>
             </div>
           </div>
         </div>
 
-        <div style={{ border: " red solid" }} onClick={() => request()}>
-          request to use it
+        <div className={styles.card}>
+          <div className={styles.inner}>
+            <div
+              className={styles.outer}
+              style={{ background: "#1a6871" }}
+            ></div>
+            <div className={styles.cardText}>
+              <p className={styles.cardKey}>Training Files</p>
+              <p className={styles.cardValue}>50 Files</p>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.card}>
+          <div className={styles.inner}>
+            <div
+              className={styles.outer}
+              style={{ background: "#38b0a2" }}
+            ></div>
+            <div className={styles.cardText}>
+              <p className={styles.cardKey}>Accurecy</p>
+              <p className={styles.cardValue}>85%</p>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.card}>
+          <div className={styles.inner}>
+            <div
+              className={styles.outer}
+              style={{ background: "#94dfd7" }}
+            ></div>
+            <div className={styles.cardText}>
+              <p className={styles.cardKey}>
+                Number of <br /> Users
+              </p>
+              <p className={styles.cardValue}>3 users</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.detailsContainer}>
+        <div className={styles.details}>
+          <div>name</div>
+          <div>model 1</div>
+          <div>date</div>
+          <div>12/5/2020</div>
+          <div>type</div>
+          <div>invoices</div>
+          <div>short description</div>
+          <div>sd321</div>
+          <div>description</div>
+          <div>
+            this model is created to use by people who works in casher in kfc
+            because they have many of invoices
+          </div>
+        </div>
+
+        <div className={styles.picContainer}>
+          <img src={mahdi} alt="" className={styles.pic} />
+          <div className={styles.keys}>
+            <div>
+              <div className={styles.key}>name</div>
+              <div className={styles.value}>mahdi</div>
+            </div>
+            <div>
+              <div className={styles.key}>name</div>
+              <div className={styles.value}>mahdi</div>
+            </div>
+            <div>
+              <div className={styles.key}>name</div>
+              <div className={styles.value}>mahdi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles.chartContainer}>
+        <div className={styles.chart1Container}>
+          <div className={styles.chart1}>
+            <Chart1 />
+          </div>
+        </div>
+        <div className={styles.chart2Container}>
+          <div className={styles.chart2}>
+            <Chart2 />
+            <p>
+              this is chart to show number of using time in the model my name is
+              amahdi
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className={styles.request}>
+        <div className={styles.button} onClick={() => request()}>
+          make request to use this model
         </div>
       </div>
     </div>

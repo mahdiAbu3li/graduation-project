@@ -5,7 +5,6 @@ import Zoom from "@material-ui/core/Zoom";
 import { IoEllipse } from "react-icons/io5";
 
 
-
 const myModels = [
   // {
   //   name: "invoice 1",
@@ -106,9 +105,7 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
               transitionDelay: `${200 * index}ms`,
             }}
           >
-           
             <div className={styles.flip_card}>
-           
               <div className={styles.flip_card_inner}>
                 <div className={styles.thefront}>
                   <div className={styles.clip}></div>
@@ -219,7 +216,9 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
                         <div className={styles.type}>photos training</div>
                       </div>
                     </div>
-                    <div className={styles.modelDate}>{(i.created_date).split("T")[0]}  </div>
+                    <div className={styles.modelDate}>
+                      {i.created_date.split("T")[0]}{" "}
+                    </div>
                   </div>
 
                   {/* 
@@ -281,64 +280,79 @@ const ModelsComponent = ({ models }: { models: Array<Models> | undefined }) => {
                       }}
                     />
                   </div>
-                  <div >
-                    {i.state_id === 5 || i.name ==='ahmad' ?
-                    <div className={styles.backButtoContainer}>
-                   <div
-                      className={styles.backButton}
-                      onClick={() =>
-                        history.push("/dashboard/model/modelpage/" + i.id)
-                      }
-                    >
-                      use
-                    </div>
-                    <div
-                      className={styles.backButton}
-                      onClick={() =>
-                        history.push(
-                          "/dashboard/model/modelpage/" + i.id + "/description"
-                        )
-                      }
-                    >
-                      description
-                    </div>
-                    <div
-                      className={styles.backButton}
-                      onClick={() =>
-                        history.push(
-                          "/dashboard/model/modelpage/" + i.id + "/controller"
-                        )
-                      }
-                    >
-                      <div>control</div>
-                      
-                    </div>
-                    </div>
-                    :
-                    <div
-                      className={styles.backButtoContainer}
-                    >
-                      <div></div>
-                      <div className={styles.backButton}  onClick={() =>{
-                        history.push(
-                          "/dashboard/create/" + i.id 
-                        )
-                        if(i.state_id===0){
-                        window.localStorage.setItem("step", "0")
-                      }else if(i.state_id===1){
-                          window.localStorage.setItem("step", "1")
-                        }else if(i.state_id===2){
-                        window.localStorage.setItem("step", "3")
-                        
-                        }else if(i.state_id===3){
-                        window.localStorage.setItem("step", "4")
-                        }
-                      }
-                      }> Continue Creating</div>
-                      
-                    </div>
-                    }
-
+                  <div>
+                    {i.state_id !== 5 || i.id === 256 ? (
+                      <div className={styles.backButtoContainer}>
+                        <div
+                          className={styles.backButton}
+                          onClick={() =>
+                            history.push("/dashboard/model/modelpage/" + i.id)
+                          }
+                        >
+                          use
+                        </div>
+                        <div
+                          className={styles.backButton}
+                          onClick={() =>
+                            history.push(
+                              "/dashboard/model/modelpage/" +
+                                i.id +
+                                "/description"
+                            )
+                          }
+                        >
+                          description
+                        </div>
+                        <div
+                          className={styles.backButton}
+                          onClick={() =>
+                            history.push(
+                              "/dashboard/model/modelpage/" +
+                                i.id +
+                                "/controller"
+                            )
+                          }
+                        >
+                          <div>control</div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className={styles.backButtoContainer}>
+                        <div></div>
+                        <div
+                          className={styles.backButton}
+                          onClick={() => {
+                            window.localStorage.setItem(
+                              "modelId",
+                              i.id.toString()
+                            );
+                            if (i.state_id === 0) {
+                              history.push("/dashboard/create/create/" + i.id);
+                              window.localStorage.setItem("step", "0");
+                            } else if (i.state_id === 1) {
+                              history.push("/dashboard/create/labels/" + i.id);
+                              window.localStorage.setItem("step", "1");
+                            } else if (i.state_id === 2) {
+                              history.push("/dashboard/create/upload/" + i.id);
+                              window.localStorage.setItem("step", "2");
+                            } else if (i.state_id === 3) {
+                              history.push(
+                                "/dashboard/create/labelling/" + i.id
+                              );
+                              window.localStorage.setItem("step", "3");
+                            } else if (i.state_id === 4) {
+                              history.push(
+                                "/dashboard/create/training/" + i.id
+                              );
+                              window.localStorage.setItem("step", "4");
+                            }
+                          }}
+                        >
+                          {" "}
+                          Continue Creating {i.id}
+                        </div>
+                      </div>
+                    )}
 
                     {/* <div className={styles.backButton} onClick={() =>
                       history.push("/dashboard/model/modelpage/" + i.id)

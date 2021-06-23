@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="247.889" y1="-0.598" x2="247.889" y2="229.17" id="gradient-0" gradientTransform="matrix(0.999984, -0.005667, 0.002442, 0.430939, 0.127796, -0.145128)">
+      <!-- <stop offset="0" style="stop-color: rgb(14, 30, 107)"/> -->
+      <!-- <stop offset="1" style="stop-color: rgba(165, 165, 165, 1)"/> -->
+      <stop offset="0" style="stop-color: rgb(8, 26, 72)" />
+                    <stop
+                      offset="0.258"
+                      style= style="stop-color: rgb(14, 30, 107)"
+                    />
+                    <!-- <stop
+                      offset="0.655"
+                       style="stop-color: rgb(25, 103, 112)"
+                      
+                    />
+                    <stop
+                      offset="1"
+                       style="stop-color: rgb(44, 204, 177)"
+                      
+                    /> -->
+    </linearGradient>
+  </defs>
+  <path d="M -4.366 -1.21 C -3.087 -15.294 -2.917 243.867 -1 227.186 C 0.27 216.138 26.45 185.964 69.666 156.484 C 109.65 129.208 171.076 110.902 186.993 107.656 C 236.584 97.544 305.015 101.46 353.791 113.146 C 438.323 133.398 499.674 218.75 500.123 218.767 C 502.749 218.866 501.178 -5.138 500.123 -1.771" style="fill: url(#gradient-0); stroke: rgba(0, 0, 0, 0);"/>
+</svg>

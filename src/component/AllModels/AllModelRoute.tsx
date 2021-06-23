@@ -1,7 +1,7 @@
 import { Route, Switch } from "react-router";
 
 import AllModels from "../AllModels/AllModels";
-import ModelDescription from "../AllModels/Description/Description";
+import ModelDescription from "./Description/Description";
 
 export const ModelRoute = () => {
   return (

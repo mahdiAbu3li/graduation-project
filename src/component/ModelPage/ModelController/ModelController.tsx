@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./ModelController.module.css";
 import ModelSetting from "./ModelSetting/ModelSetting";
 import ModelRequests from "./ModelRequests/ModelRequests";
+import { DiVisualstudio } from "react-icons/di";
+import { Divider } from "@material-ui/core";
 // import  Chart1  from '../Description/Chart1';
 
 // import { FaCircle } from "react-icons/fa";
@@ -52,21 +54,23 @@ const ModelController = () => {
         <a href="#requests">Requests of Model</a>
         <a href="#re_train">Re-train Model</a>
       </div>
-      <div className={styles.modelSetting} id="modelSetting">
-        <fieldset className={styles.fieldset}>
-          <legend>
-            <pre style={{ fontSize: "22px" }}> model Setting </pre>{" "}
-          </legend>
-          <ModelSetting />
-        </fieldset>
+      <div className={styles.card} id="modelSetting">
+        <div className={styles.fieldset}>
+          <div className={styles.header}> model Setting </div> <ModelSetting />
+        </div>
       </div>
-      <div className={styles.requests} id="requests">
-        <fieldset className={styles.fieldset}>
-          <legend>
-            <pre style={{ fontSize: "22px" }}> model Requests </pre>{" "}
-          </legend>
+      <div className={styles.card} id="requests">
+        <div className={styles.fieldset}>
+          <div className={styles.header}> model Requests </div>
           <ModelRequests />
-        </fieldset>
+        </div>
+      </div>
+      <div className={styles.card} id="requests">
+        <div className={styles.fieldset}>
+          <div className={styles.header}> re train model </div>
+
+          {/* <ModelRequests /> */}
+        </div>
       </div>
       <div className={styles.re_train} id="re_train"></div>
     </div>

@@ -73,7 +73,7 @@ function CreateModel({ changeStep }: Change) {
       method: "post",
       body: data,
       headers: {
-        Authorization: "Bearer"  + values.data.token,
+        Authorization: "Bearer " + values.data.token,
         // "Content-Type": "application/json",
         // "Content-Type": "multipart/form-data",
         // Accept: "application/json",
@@ -148,13 +148,15 @@ function CreateModel({ changeStep }: Change) {
         >
           {({ submitForm, isSubmitting, touched, errors, setFieldValue }) => (
             <Form
-              style={{
-                display: "flex",
-                justifyContent: "space-around",
-                // backgroundColor: "red",
-                height: "100%",
-                width: "100%",
-              }}
+              style={
+                {
+                  // display: "flex",
+                  // justifyContent: "space-around",
+                  // backgroundColor: "red",
+                  // height: "100%",
+                  // width: "100%",
+                }
+              }
             >
               <Field
                 className={styles.inputField}

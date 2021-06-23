@@ -5,6 +5,7 @@ import { FiLogOut } from "react-icons/fi";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoMdSettings } from "react-icons/io";
+import { MdPublic } from "react-icons/md";
 import { Switch, Route, NavLink } from "react-router-dom";
 // import Models from "../Models/Models";
 import CreateNewModel from "../CreateNewModel/CreateNewModel";
@@ -77,7 +78,11 @@ function Dashboard() {
             <NavLink
               className={`${styles.item} ${isOpen ? styles.close_item : ""}`}
               // onClick={() => goTo("/dashboard/model")}
-              activeStyle={{ backgroundColor: "rgb(191,236,232)" , color:"red"}}
+              activeClassName={styles.active2}
+              // activeStyle={{
+              //   color: "red !important",
+              //   backgroundColor: "rgb(191,236,232)",
+              // }}
               to="/dashboard/model"
             >
               <div
@@ -91,9 +96,10 @@ function Dashboard() {
             </NavLink>
             <NavLink
               className={`${styles.item} ${isOpen ? styles.close_item : ""}`}
+              activeClassName={styles.active2}
               // onClick={() => goTo("/dashboard/create")}
               onClick={() => {
-                window.localStorage.setItem("step", "0")
+                window.localStorage.setItem("step", "0");
               }}
               to="/dashboard/create"
             >
@@ -108,6 +114,7 @@ function Dashboard() {
             </NavLink>
             <NavLink
               className={`${styles.item} ${isOpen ? styles.close_item : ""}`}
+              activeClassName={styles.active2}
               // onClick={() => goTo("/dashboard/setting")}
               to="/dashboard/setting"
             >
@@ -123,13 +130,14 @@ function Dashboard() {
 
             <NavLink
               className={`${styles.item} ${isOpen ? styles.close_item : ""}`}
+              activeClassName={styles.active2}
               // onClick={() => goTo("/dashboard/AllModels")}
               to="/dashboard/AllModels"
             >
               <div
                 className={`${styles.icon} ${isOpen ? styles.close_icon : ""}`}
               >
-                <IoMdSettings />
+                <MdPublic />
               </div>
               <span className={` ${isOpen ? styles.close_span : ""}`}>
                 All Models
